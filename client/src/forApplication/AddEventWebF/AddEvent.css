@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+.all-add-event {
+    display: flex;
+    flex-direction: row;
+
+    padding: 1%;
+
+    background-color: #ac9c9c;
+    min-height: 50vh;
+    /* width: 80vw; */
+
+    align-self: center;
+
+}
+
+.left-add-event {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.right-add-event {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.label-add-event {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+
+    font-size: 1.7rem;
+    height: 50%;
+}
+
+.date-time-text {
+    margin-bottom: 0;
+}
+
+.input-add-event {
+    display: block;
+    width: 80%;
+}
+
+
+.half-input {
+    width: 40%;
+}
+
+.custom-text-area {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-and-date-time {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+}
+
+.submit-btn-create-event {
+    width: max(10%, 100px);
+    height: 5vh;
+    margin: 10px auto;
+    
+}
+
+.date-time-input {
+    align-self: flex-start;
+}
+
+
+
+
+
+/* Styles for Datetime */
+
+/* Styling for the calendar */
+.react-datetime-picker {
+    position: relative;
+    width: 100%;
+  }
+  
+  /* Styling for the input field */
+  .react-datetime-picker input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+  /* Styling for the calendar popover */
+  .react-calendar {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for the calendar days */
+  .react-calendar__month-view__days__day {
+    padding: 4px;
+  }
+  
+  /* Styling for the selected date */
+  .react-calendar__tile--active {
+    background-color: #007bff;
+    color: #fff;
+  }

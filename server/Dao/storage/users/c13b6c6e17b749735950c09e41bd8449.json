@@ -1,0 +1,12 @@
+{
+    "name": "John",
+    "surname": "Doe",
+    "email": "johndoe@example.com",
+    "password": "password123",
+    "igName": "johndoe_ig",
+    "photo": "https://example.com/johndoe.jpg",
+    "id": "c13b6c6e17b749735950c09e41bd8449",
+    "streak": 0,
+    "rating": 0,
+    "rola": 1
+}

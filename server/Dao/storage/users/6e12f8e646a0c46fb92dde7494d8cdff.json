@@ -1,0 +1,12 @@
+{
+    "id": "6e12f8e646a0c46fb92dde7494d8cdff",
+    "name": "Bob",
+    "surname": "Johnson",
+    "rola": "1",
+    "email": "bob@example.com",
+    "password": "bob456",
+    "streak": 8,
+    "rating": 7,
+    "igName": "bob_johnson",
+    "photo": "bob.jpg"
+}

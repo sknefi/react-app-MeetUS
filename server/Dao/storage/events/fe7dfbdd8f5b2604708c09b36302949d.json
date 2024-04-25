@@ -1,0 +1,15 @@
+{
+    "name": "Summer Festival",
+    "dateTime": "2024-04-18T12:30:00Z",
+    "location": "Central Park, New York",
+    "expectedCountOfMembers": 500,
+    "price": 15,
+    "info": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde odit harum ea in praesentium nulla labore voluptates doloremque ullam beatae placeat amet, quod, voluptatum, non necessitatibus ab aperiam voluptatibus iure!",
+    "photo": "-",
+    "id": "fe7dfbdd8f5b2604708c09b36302949d",
+    "listOfGroups": [
+        "a7fe8b7147abdd436fdf010daf4b8932",
+        "4e6bffc95e6bfd4332d7b7d4320ca818",
+        "f4ecdbde3740abf67a87e7da67210274"
+    ]
+}

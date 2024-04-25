@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.counter {
+    align-self: flex-start;
+    margin: 1rem;
+
+    display: flex;
+    flex-direction: row;
+    
+    width: calc(100% - 2rem);
+    box-sizing: border-box;
+
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+
+    margin: 1rem;
+}
+
+
+.mi-thumb-down,
+.mi-thumb-up,
+.mi-idk{
+    margin-left: .3rem;
+    font-size: 2rem;
+
+}
+.mi-thumb-up {
+    color: green;
+}
+
+.mi-thumb-down {
+    color: red;
+    margin-top: .5rem;
+}
+
+.mi-idk {
+    margin: 0;
+    color: orange;
+}

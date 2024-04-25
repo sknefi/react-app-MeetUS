@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    height: 10vh;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2vh 0;
+    padding: 1% 3%;
+
+    border-bottom: 2px solid #424242;
+}
+
+.left-navbar {
+    height: 10vh;
+    width: auto;
+    cursor: pointer;
+
+}
+
+.mid-navbar {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.right-navbar {
+    cursor: pointer;
+}
+
+.profilPhoto {
+    height: 10vh;
+    width: auto;
+}
+
+.icon-and-text {
+    height: 10vh;
+    width: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ohnik-icon {
+    color: #fe3c72;
+}
+
+.top-icon {
+    color: #fd5564;
+}
+
+.group-icon,
+.profilPhoto {
+    color: #424242;
+}
+
+.top-icon, .ohnik-icon {
+    height: 7vh;
+    width: auto;
+}
+
+.top-text, .ohnik-text {
+    height: 3vh;
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.group-icon {
+    height: 10vh;
+    width: auto;
+    cursor: pointer;
+}
+
+
+
+
+

@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    margin: 0; /* Ensure no margin for h1 and h2 */
+}
+
+
+.card{
+    width: 40%;
+    border-radius: 20px;
+    border: 2px solid rebeccapurple;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin-top: 1vh;
+}
