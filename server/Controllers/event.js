@@ -25,7 +25,7 @@ router.get('/list', (req, res) => {
 })
 
 // DONE
-router.get('/getEventGroups', (req, res) => {
+router.post('/getEventGroups', (req, res) => {
     eGetEventGroupsAbl(req, res)
 })
 

@@ -13,7 +13,16 @@ function EventProvider({ children }) {
         state: "ready",
         error: null,
         data: null,
-    });
+    })
+
+    const [eventGroupsLoadObject, setEventGroupsLoadObject] = useState({
+        state: "ready",
+        error: null,
+        data: null,
+    })
+
+
+
     const location = useLocation();
     //console.log(location);
 
@@ -22,7 +31,7 @@ function EventProvider({ children }) {
 
     useEffect(() => {
         handleLoad();
-    }, []);
+    }, [location.pathname]);
 
     async function handleLoad() {
         setEventLoadObject((current) => ({ ...current, state: "pending" }));
@@ -50,20 +59,24 @@ function EventProvider({ children }) {
   }
 
     async function handleGetEventGroups(dtoIn) {
-        setGroupLoadObject( (current) => ( {...current, state: 'pending'} ))
+        setEventGroupsLoadObject( (current) => ( {...current, state: 'pending'} ))
 
         // console.log('fetching')
         const response = await fetch(`${gateway}/event/getEventGroups`, {
-            method: 'GET'
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+              },
+            body: JSON.stringify(dtoIn),
         })
         // console.log('fetched')
         const responseJson = await response.json()
 
         if (response.status < 400) {
-            setGroupLoadObject( {state: 'ready', data: responseJson} )
+            setEventGroupsLoadObject( {state: 'ready', data: responseJson} )
             return responseJson
         } else {
-            setGroupLoadObject( (current) => ( 
+            setEventGroupsLoadObject( (current) => ( 
                 {
                     state: 'error',
                     data: current.data,
@@ -71,10 +84,10 @@ function EventProvider({ children }) {
                 }))
             throw new Error(JSON.stringify(responseJson, null, 2))
         }
-
     }
   const value = {
-    event: eventLoadObject.data
+    event: eventLoadObject.data,
+    getEventGroups: handleGetEventGroups
   }
 
   return (
