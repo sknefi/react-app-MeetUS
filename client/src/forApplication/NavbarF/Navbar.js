@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 
 import './Navbar.css'
-import { useMycolorContext, useChangeColorContext, useAllInfoContext, useUpdateUserAllInfoContext, usePrintUserContext,  } from '../../Technician/Contexts/AllContext'
+import { useAllInfoContext } from '../../Technician/Contexts/AllContext'
 import { useNavigate } from 'react-router-dom'
  
 import profilPhoto from '../images/profilPhoto.png'

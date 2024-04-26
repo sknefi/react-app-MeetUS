@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+.all-event-web {
+    display: flex;
+    flex-direction: column;
+}
 
 .event-image {
     width: 100%;
@@ -13,4 +17,10 @@
 
 .event-info {
     margin: 2rem;
+}
+
+.event-name {
+    text-align: center;
+    margin: 30px;
+    font-size: 5rem;
 }

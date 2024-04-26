@@ -1,9 +1,20 @@
 import './EventWeb.css'
 import party from '../images/party.jpeg'
 import EventWebDiv from './EventWebDiv'
-import { useParams, useLocation } from 'react-router-dom'
+import { useContext } from 'react'
+import { EventContext } from '../../Technician/Contexts/EventContext'
 
-const EventWeb = ({params}) => {
+const EventWeb = () => {
+    const { event }  = useContext(EventContext);
+    console.log(event)
+
+    if (!event) {
+        return <div>Loading...</div>;
+    }
+
+    const { name, info, listOfGroups } = event;
+    console.log(name)
+
     const Event = {
         id:                     2,
         name:                   'Epic techno',
@@ -27,7 +38,7 @@ const EventWeb = ({params}) => {
             groupCreator: 1
         },
         {
-            id: 2,
+            id: 'cb9bb1a4ccc7291970cc329c2bbe3031',
             name: 'Tigers',
             members: [2, 4],
             maxMembers: 6,
@@ -45,17 +56,18 @@ const EventWeb = ({params}) => {
     ]
         
     // const a = useParams()
-    // console.log(a.eventId)
+    // console.log(a.id)
 
     // const location = useLocation();
     // console.log(location.pathname); // Current path
     // console.log(location.search); // Query parameters
 
   return (
-    <div>
+    <div className='all-event-web'>
 
-        <img className='event-image' src={party} alt={Event.name} />
-        <p className="event-info">{Event.info}</p>
+        <h2 className='event-name'>{event.name}</h2>
+        <img className='event-image' src={party} alt={event.name} />
+        <p className="event-info">{event.info}</p>
 
         { Event.listOfGroups.map( eGroupId => 
             Groups.map( group => {

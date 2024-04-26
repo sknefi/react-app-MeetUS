@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom'
 import { useContext, useState } from 'react'
 
 import { EventListContext } from '../../Technician/Contexts/EventListContext'
-import { GroupListProvider } from '../../Technician/Contexts/GroupListProvider'
 
 import './Events.css'
 import ModalCreateEvent from "../AddEventWebF/ModalCreateEvent.js"
@@ -10,16 +9,14 @@ import ModalCreateEvent from "../AddEventWebF/ModalCreateEvent.js"
 
 const Events = () => {
     const { eventList, eHandlerMap, eState } = useContext(EventListContext)
-
-    console.log(eventList)
-    console.log(typeof eventList)
     
+
     //eventList.map( (x) => console.log(x))  // error: 'eventList.map is not a function'
 
     const allEvents = [
         {
-            id:                     1,
-            name:                   'Lucerna oldies',
+            id:                     'a3cd3dbfab81719a8cdb9f783384ff86',
+            name:                   'Art Exhibiton',
             listOfGroups:           [1, 2, 3],
             dateTime:               new Date("2024-04-18T12:30:00Z"),
             location:               "Praha 2",
@@ -31,8 +28,8 @@ const Events = () => {
         },
 
         {
-            id:                     2,
-            name:                   'Epic techno',
+            id:                     '2db13c923776be7d80993fbd4455dc4f',
+            name:                   'Jazz Night',
             listOfGroups:           [3, 4],
             dateTime:               new Date("2026-04-18T12:30:00Z"),
             location:               "Praha 1",
@@ -44,8 +41,8 @@ const Events = () => {
         },
 
         {
-            id:                     3,
-            name:                   'Šumavský ples',
+            id:                     'fe7dfbdd8f5b2604708c09b36302949d',
+            name:                   'Summer Festival',
             listOfGroups:           [1, 2, 3, 4],
             dateTime:               new Date("2025-04-18T12:30:00Z"),
             location:               "Šumava",

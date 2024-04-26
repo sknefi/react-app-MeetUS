@@ -9,13 +9,12 @@ import Events from "./forApplication/Dashboard/Events.js"
 import Navbar from "./forApplication/NavbarF/Navbar.js"
 import EventWeb from "./forApplication/EventWebF/EventWeb.js"
 
-import EventListProvider from "./Technician/Providers/EventProvider.js";
+import EventListProvider from "./Technician/Providers/EventListProvider.js";
 import GroupListProvider from "./Technician/Providers/GroupListProvider.js";
+import EventProvider from "./Technician/Providers/EventProvider.js";
 
 
-/*
-ako spraviť aby všetky farby v .css boli premenné var(...)
-*/
+
 
 const App = () => {
 
@@ -184,14 +183,16 @@ const App = () => {
             <Routes>
               <Route path="/" index element={
                 <EventListProvider>
-                    <Events />
-                    {/* <GroupListProvider> */}
-                  {/* </GroupListProvider> */}
+                      <Events />
                 </EventListProvider>
 
               } />
 
-              <Route path="event/:eventId" element={<EventWeb />} />
+              <Route path="event/:id" element={
+                <EventProvider> {/* Use EventProvider here */}
+                  <EventWeb/>
+                </EventProvider>
+              } />
             </Routes>
         </BrowserRouter>
         </AllInfoProvider>
