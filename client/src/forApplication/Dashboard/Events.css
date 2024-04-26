@@ -15,7 +15,8 @@ p {
 
 .all-event-dashboard {
     cursor: pointer;
-    z-index: -123;
+    display: flex;
+    flex-direction: column;
 }
 
 .event {

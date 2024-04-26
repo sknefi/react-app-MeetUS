@@ -1,6 +1,21 @@
-import './Events.css'
+import { useNavigate } from 'react-router-dom'
+import { useContext, useState } from 'react'
 
-const Event = () => {
+import { EventListContext } from '../../Technician/Contexts/EventListContext'
+import { GroupListProvider } from '../../Technician/Contexts/GroupListProvider'
+
+import './Events.css'
+import ModalCreateEvent from "../AddEventWebF/ModalCreateEvent.js"
+
+
+const Events = () => {
+    const { eventList, eHandlerMap, eState } = useContext(EventListContext)
+
+    console.log(eventList)
+    console.log(typeof eventList)
+    
+    //eventList.map( (x) => console.log(x))  // error: 'eventList.map is not a function'
+
     const allEvents = [
         {
             id:                     1,
@@ -77,6 +92,11 @@ const Event = () => {
         }
     ]
 
+    const navigate = useNavigate()
+
+    const redirectToEvent = (eventId) => {
+        navigate(`/event/${eventId}`);
+    }
 
     function eventGroups(event) {
         return event.listOfGroups.map( eGroupId => 
@@ -137,18 +157,22 @@ const Event = () => {
 
   return (
     <div className='all-event-dashboard'>
-        {allEvents.map(event =>
-            <div className='event' key={event.id}>
-                {leftSide(event)}
+        <ModalCreateEvent/>
+        {/* <div>{eventList}</div> */}
 
+
+        {(allEvents.map(event =>
+            <div className='event' key={event.id} onClick={() => redirectToEvent(event.id)}>
+                {leftSide(event)}
                 {rightSide(event)}
             </div>
+
         
-            )}
+            ))}
         
     
     </div>
   )
 }
 
-export default Event
+export default Events

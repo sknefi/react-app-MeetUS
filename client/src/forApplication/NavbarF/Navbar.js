@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 
 import './Navbar.css'
-import { useMycolorContext, useChangeColorContext, useAllInfoContext, useUpdateUserAllInfoContext, usePrintUserContext,  } from '../Contexts/AllContext'
+import { useMycolorContext, useChangeColorContext, useAllInfoContext, useUpdateUserAllInfoContext, usePrintUserContext,  } from '../../Technician/Contexts/AllContext'
+import { useNavigate } from 'react-router-dom'
  
 import profilPhoto from '../images/profilPhoto.png'
 import ohnik from '../images/ohnik.png'
@@ -18,6 +19,12 @@ const Navbar = () => {
     const data = useAllInfoContext()
     const loggedInUser = data.LoggedUser
     
+    const navigate = useNavigate()
+
+    const redirectToMain = () => {
+        navigate('/')
+    }
+
     /* Nastaviť user.photo namiesto ikonky profilPhoto */
     /* pridať Log out funkcionalitu (presmerovanie na prihlasovací formulár) */
     /* pridať, že keď klikneme na logo tak nás to presmeruje na dashboard */
@@ -25,7 +32,7 @@ const Navbar = () => {
     <div className='navbar'>
         
         {/* {test2()} */}
-        <img className='left-navbar' src={logo} alt="Logo" />
+        <img className='left-navbar' src={logo} alt="Logo" onClick={redirectToMain} />
         <div className="mid-navbar">
             <FaUser className='profilPhoto'/>
 

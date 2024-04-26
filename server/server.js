@@ -1,13 +1,18 @@
 const express = require('express')
 const app = express()
+const cors = require("cors")
 const port = 3001
 
 app.get('/', (req, res) => {
     res.send('Hello WORLD!')
 })
 
-app.use(express.json()); // podpora pro application/json
-app.use(express.urlencoded({ extended: true })); // podpora pro application/x-www-form-urlencoded
+
+app.use(express.json()) // podpora pro application/json
+app.use(express.urlencoded({ extended: true })) // podpora pro application/x-www-form-urlencoded
+
+app.use(cors())
+
 
 
 const userController = require('./Controllers/user.js')

@@ -1,8 +1,9 @@
 import './EventWeb.css'
 import party from '../images/party.jpeg'
 import EventWebDiv from './EventWebDiv'
+import { useParams, useLocation } from 'react-router-dom'
 
-const EventWeb = () => {
+const EventWeb = ({params}) => {
     const Event = {
         id:                     2,
         name:                   'Epic techno',
@@ -42,6 +43,13 @@ const EventWeb = () => {
             groupCreator: 3
         }
     ]
+        
+    // const a = useParams()
+    // console.log(a.eventId)
+
+    // const location = useLocation();
+    // console.log(location.pathname); // Current path
+    // console.log(location.search); // Query parameters
 
   return (
     <div>
@@ -61,6 +69,7 @@ const EventWeb = () => {
                 }
             })
             )}
+        
         
     </div>
   )

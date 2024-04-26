@@ -1,15 +1,16 @@
 import React from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 
+import { AllInfoProvider } from "./Technician/Contexts/AllContext.js"
 
-import { AllInfoProvider } from "./forApplication/Contexts/AllContext.js"
-
-import Event from "./forApplication/Dashboard/Events.js"
+import Events from "./forApplication/Dashboard/Events.js"
 import Navbar from "./forApplication/NavbarF/Navbar.js"
 import EventWeb from "./forApplication/EventWebF/EventWeb.js"
-import AddEvent from "./forApplication/AddEventWebF/AddEvent.js"
-import ModalCreateEvent from "./forApplication/AddEventWebF/ModalCreateEvent.js";
+
+import EventListProvider from "./Technician/Providers/EventProvider.js";
+import GroupListProvider from "./Technician/Providers/GroupListProvider.js";
 
 
 /*
@@ -174,15 +175,27 @@ const App = () => {
 
   return (
     <div className="main-div">
-      <AllInfoProvider>
-        <Navbar/>
-        <ModalCreateEvent/>
-                
-        
-        <Event/>
-        <EventWeb/>
 
-      </AllInfoProvider>
+        <AllInfoProvider value={allInfo}>
+
+          <BrowserRouter>
+           <Navbar/>
+
+            <Routes>
+              <Route path="/" index element={
+                <EventListProvider>
+                    <Events />
+                    {/* <GroupListProvider> */}
+                  {/* </GroupListProvider> */}
+                </EventListProvider>
+
+              } />
+
+              <Route path="event/:eventId" element={<EventWeb />} />
+            </Routes>
+        </BrowserRouter>
+        </AllInfoProvider>
+                
     </div>
     
   )
