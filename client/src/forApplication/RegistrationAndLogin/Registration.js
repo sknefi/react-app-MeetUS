@@ -38,7 +38,6 @@ function Registration() {
     navigate('/login')
   }
 
-  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault()
     const errors = {}
@@ -48,15 +47,14 @@ function Registration() {
       }
     }
 
-    // Check if profileImage is selected and its type is valid
     if (!formData.profileImage || !['image/jpeg', 'image/jpg', 'image/png'].includes(formData.profileImage.type)) {
       errors.profileImage = 'Please select a valid image file (JPEG, JPG, or PNG)'
     }
 
     if (Object.keys(errors).length === 0) {
-      console.log(formData) // Log form data to console
+      console.log(formData) 
       redirectToLogin()
-      // Here you can perform further actions, like sending the data to a server
+
     } else {
       setFormErrors(errors)
     }
