@@ -29,6 +29,14 @@ const Navbar = () => {
         navigate(`/user-groups/${userId}`)
     }
 
+    const redirectToLogin = () => {
+        navigate('/login')
+    }
+
+    const redirectToRegistration = () => {
+        navigate('/registration')
+    }
+
     const loggedInUser = {
         id: '034b8f67ceb463dd032731ead323b5b9',
         streak: 10,
@@ -57,7 +65,15 @@ const Navbar = () => {
             <FaUserGroup className='group-icon' onClick={() => redirectToUserGroups(loggedInUser.id)}/>
         </div>
         
-        <h3 className='right-navbar'>Log out</h3>
+        { loggedInUser && 
+            <h3 className='right-navbar' onClick={redirectToLogin}>Log out</h3>
+        }
+        { loggedInUser && 
+            <h3 className='right-navbar' onClick={redirectToLogin}>Login</h3>
+        }
+
+        <h3 className='right-navbar' onClick={redirectToRegistration}>Registration</h3>
+
 
 
     </div>
