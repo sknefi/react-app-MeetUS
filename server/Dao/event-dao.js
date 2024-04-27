@@ -3,7 +3,6 @@ const fs = require('fs')
 const crypto = require('crypto')
 
 const pathToDao = path.join(__dirname) // .../Dao
-const groupDao = require('./group-dao.js')
 
 // HELPERS
 

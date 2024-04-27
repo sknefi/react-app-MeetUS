@@ -13,7 +13,7 @@ const schema = {
             type: 'object',
             properties: {
                 name: {type: 'string' },
-                maxMembers: { type: 'integer' },
+                maxMembers: { oneOf: [{ type: 'integer' }, { type: 'string', const: 'Infinity' }] },
                 info: { type: 'string' }
             },
             required: ['name', 'maxMembers', 'info'],

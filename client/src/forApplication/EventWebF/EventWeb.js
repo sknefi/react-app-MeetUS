@@ -1,25 +1,30 @@
-import React, { useContext, useEffect } from 'react'; // Import useEffect
+import React, { useContext, useEffect, useState } from 'react'; // Import useEffect
+
 import './EventWeb.css';
 import party from '../images/party.jpeg';
+
 import EventWebDiv from './EventWebDiv';
+import ModalCreateNewGroup from '../CreateNewGroup/ModalCreateNewGroup';
+
 import { EventContext } from '../../Technician/Contexts/EventContext';
 
 const EventWeb = () => {
     const { event, getEventGroups } = useContext(EventContext)
+    const [eventGroups, setEventGroups] = useState([])
+    //console.log(event)
 
     // useEffect(() => {
-    //     const groups = getEventGroups(event.listOfGroups)
+    //     getEventGroups(event.listOfGroups);
     // }, [])
-
 
     if (!event) {
         return <div>Loading...</div>
     }
     
-    // const a = getEventGroups(event.listOfGroups)
+    //const a = getEventGroups(event.listOfGroups)
 
-    console.log(event)
-    console.log(event.listOfGroups)
+    // console.log(event)
+    //console.log(event.listOfGroups)
 
     const Event = {
         id: 2,
@@ -66,6 +71,8 @@ const EventWeb = () => {
             <h2 className='event-name'>{event.name}</h2>
             <img className='event-image' src={party} alt={event.name} />
             <p className="event-info">{event.info}</p>
+
+            <ModalCreateNewGroup />
             {Event.listOfGroups.map(eGroupId =>
                 Groups.map(group => {
                     if (group.id === eGroupId) {

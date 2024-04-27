@@ -175,15 +175,13 @@ const App = () => {
   return (
     <div className="main-div">
 
-        <AllInfoProvider value={allInfo}>
-
           <BrowserRouter>
            <Navbar/>
 
             <Routes>
               <Route path="/" index element={
                 <EventListProvider>
-                      <Events />
+                    <Events />
                 </EventListProvider>
 
               } />
@@ -195,7 +193,9 @@ const App = () => {
               } />
             </Routes>
         </BrowserRouter>
-        </AllInfoProvider>
+
+        {/* <AllInfoProvider value={allInfo}>
+        </AllInfoProvider> */}
                 
     </div>
     

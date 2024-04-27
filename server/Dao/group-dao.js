@@ -35,6 +35,8 @@ function addGroupToEvent(eventID, groupID) {
     try {
         console.log('first')
         const event = eventDao.get(eventID)
+        console.log(event)
+
         if (!event) {
             throw { code: 'eventNotFound', message: 'Event not found.' };
         }
@@ -98,7 +100,7 @@ function create(group, eventID, userID) {
         addGroupToEvent(eventID, groupID)
     
         
-        //console.log(group);
+        console.log(group);
         return group
     }
     catch (error) {
@@ -177,6 +179,13 @@ function adduserToGroup(userID, groupID) {
         throw { code: 'failedToAddUserToGroup', message: error.message }
     }
 }
+
+
+// create({
+//      name: "Jednorozci",
+//      maxMembers: 5, 
+//      info: "LOREM?asklndlksandjk nasjknd jknsaj k;dn;asn dasjkn ;djkans jkdnajk;s ndnqwio nqiodnasjknd jasnkld nqwin dlkajsnd nwqipn asnkln"
+//     }, "a3cd3dbfab81719a8cdb9f783384ff86", "3ba13bee38a82e4fb6904f178b24c746")
 
 // create({
 //     name: "Delfiniky",

@@ -16,13 +16,18 @@ import { FaUserGroup } from "react-icons/fa6";
 
 
 const Navbar = () => {
-    const data = useAllInfoContext()
-    const loggedInUser = data.LoggedUser
+    // const data = useAllInfoContext()
+    // const loggedInUser = data.LoggedUser
     
     const navigate = useNavigate()
 
     const redirectToMain = () => {
         navigate('/')
+    }
+
+    const loggedInUser = {
+        streak: 10,
+        rating: 33
     }
 
     /* Nastaviť user.photo namiesto ikonky profilPhoto */

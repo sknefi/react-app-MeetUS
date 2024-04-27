@@ -10,6 +10,18 @@ import ModalCreateEvent from "../AddEventWebF/ModalCreateEvent.js"
 const Events = () => {
     const { eventList, eHandlerMap, eState } = useContext(EventListContext)
     
+    const navigate = useNavigate()
+
+    const redirectToEvent = (eventId) => {
+        navigate(`/event/${eventId}`);
+    }
+
+    if (!eventList) {
+        return <div>Loading...</div>
+    }
+
+    console.log(eventList)
+
 
     //eventList.map( (x) => console.log(x))  // error: 'eventList.map is not a function'
 
@@ -89,11 +101,7 @@ const Events = () => {
         }
     ]
 
-    const navigate = useNavigate()
 
-    const redirectToEvent = (eventId) => {
-        navigate(`/event/${eventId}`);
-    }
 
     function eventGroups(event) {
         return event.listOfGroups.map( eGroupId => 
@@ -165,7 +173,7 @@ const Events = () => {
             </div>
 
         
-            ))}
+        ))}
         
     
     </div>

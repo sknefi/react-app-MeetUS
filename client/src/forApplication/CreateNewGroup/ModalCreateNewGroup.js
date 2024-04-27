@@ -16,7 +16,7 @@ const style = {
     p: 4,
 };
 
-export default function BasicModal() {
+export default function ModalCreateNewGroup() {
     const [open, setOpen] = React.useState(false);
 
     const handleOpen = () => setOpen(true);
@@ -32,7 +32,7 @@ export default function BasicModal() {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <AddGroup/>
+                    <AddGroup handleClose={handleClose}/>
                 </Box>
             </Modal>
         </div>
