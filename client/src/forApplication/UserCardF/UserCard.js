@@ -5,7 +5,7 @@ import ohnik from '../images/ohnik.png';
 import top from '../images/top.png'
 
 function UserCard(props) {
-    const { streak, rating, photo} = props
+    const { streak, rating, photo } = props
 
     return (
         <Card style={{ width: '18rem' }} className='user-card'>

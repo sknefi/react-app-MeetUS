@@ -58,6 +58,7 @@ p {
 .date-time {
     margin: 0 4%;
     font-size: 1.4rem;
+    white-space: nowrap;
 
 }
 

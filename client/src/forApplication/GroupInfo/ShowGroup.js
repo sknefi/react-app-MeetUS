@@ -1,4 +1,4 @@
-import UserCard from './UserCard'
+import UserCard from '../UserCardF/UserCard'
 import david from '../images/userPhotos/david.jpg'
 import filip from '../images/userPhotos/filip.jpg'
 import klausik from '../images/userPhotos/klausik.jpg'

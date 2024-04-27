@@ -122,14 +122,14 @@ const Events = () => {
         const month = isoStr.getMonth() + 1; // Adjusting to get 1-based month
         const day = isoStr.getDate();
 
-        return `${year} ${month} ${day}`
+        return `${day}.${month} ${year}`
     }
 
     function convertIsoToTime(isoStr){
         const hours = isoStr.getHours();
         const minutes = isoStr.getMinutes();
 
-        return `${hours} ${minutes}`
+        return `${hours}:${minutes}`
     }
 
     function leftSide(event) {

@@ -33,7 +33,15 @@
 
 .right-navbar {
     cursor: pointer;
+    margin: 0;
+    padding: 0;
+
 }
+
+.right-navbar:hover {
+    opacity: .7;
+}
+
 
 .profilPhoto {
     height: 10vh;
@@ -79,8 +87,4 @@
     width: auto;
     cursor: pointer;
 }
-
-
-
-
 

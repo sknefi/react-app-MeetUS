@@ -25,7 +25,12 @@ const Navbar = () => {
         navigate('/')
     }
 
+    const redirectToUserGroups = (userId) => {
+        navigate(`/user-groups/${userId}`)
+    }
+
     const loggedInUser = {
+        id: '034b8f67ceb463dd032731ead323b5b9',
         streak: 10,
         rating: 33
     }
@@ -49,7 +54,7 @@ const Navbar = () => {
                 <img className='top-icon' src={top} alt="top" />
                 <p className="top-text">{loggedInUser.rating}</p>
             </div>
-            <FaUserGroup className='group-icon'/>
+            <FaUserGroup className='group-icon' onClick={() => redirectToUserGroups(loggedInUser.id)}/>
         </div>
         
         <h3 className='right-navbar'>Log out</h3>

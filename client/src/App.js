@@ -8,6 +8,7 @@ import { AllInfoProvider } from "./Technician/Contexts/AllContext.js"
 import Events from "./forApplication/Dashboard/Events.js"
 import Navbar from "./forApplication/NavbarF/Navbar.js"
 import EventWeb from "./forApplication/EventWebF/EventWeb.js"
+import UserGroups from "./forApplication/UserGroupsF/UserGroups.js";
 
 import EventListProvider from "./Technician/Providers/EventListProvider.js";
 import GroupListProvider from "./Technician/Providers/GroupListProvider.js";
@@ -191,6 +192,12 @@ const App = () => {
                   <EventWeb/>
                 </EventProvider>
               } />
+
+              <Route path="user-groups/:id" element={
+                // id usera
+                  <UserGroups/>
+              } />
+
             </Routes>
         </BrowserRouter>
 
