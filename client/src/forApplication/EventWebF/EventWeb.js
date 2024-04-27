@@ -43,7 +43,7 @@ const EventWeb = () => {
         {
             id: 1,
             name: 'Crocodiles',
-            members: [1, 3, 4],
+            members: [1, 3, 4, 2],
             maxMembers: 5,
             info: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi ea a, aliquam ratione quo voluptate.',
             groupCreator: 1
@@ -58,7 +58,7 @@ const EventWeb = () => {
         },
         {
             id: 3,
-            name: 'Lions',
+            name: 'Šmolkovia',
             members: [1, 2, 3],
             maxMembers: 4,
             info: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi ea a, aliquam ratione quo voluptate.',
@@ -73,7 +73,7 @@ const EventWeb = () => {
             <p className="event-info">{event.info}</p>
 
             <ModalCreateNewGroup />
-            {Event.listOfGroups.map(eGroupId =>
+            { Event.listOfGroups.map(eGroupId =>
                 Groups.map(group => {
                     if (group.id === eGroupId) {
                         return <EventWebDiv
@@ -84,7 +84,7 @@ const EventWeb = () => {
                             groupMembers={group.members} />
                     }
                 })
-            )}
+            ) }
         </div>
     );
 }

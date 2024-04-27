@@ -1,81 +1,61 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './EventWebDiv.css'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
+import ShowGroup from '../GroupInfo/ShowGroup'
 
 const EventWebDiv = (props) => {
-    /* Users potrebujeme na user.photo
-    dostaneme user.id, najdeme jeho object v poli Users
-    a podla toho pridame user.photo
-     */
-    const Users = [
-        {
-            id: '1',
-            name: 'Alfred',
-            surname: 'Topkof',
-            role: 1,
-            email: 'at@gmail.com',
-            password: 'asdw123',
-            streak: 21,
-            rating: 40,
-            ratedUsers: [2, 3, 4],
-            igName: 'a_topkof',
-            photo: null,
-        },
-        {
-            id: '2',
-            name: 'Jane',
-            surname: 'Doe',
-            role: 2,
-            email: 'jane@example.com',
-            password: 'password123',
-            streak: 15,
-            rating: 35,
-            ratedUsers: [1, 3],
-            igName: 'jane_doe',
-            photo: null,
-        },
-        {
-            id: '3',
-            name: 'John',
-            surname: 'Smith',
-            role: 2,
-            email: 'john@example.com',
-            password: 'password456',
-            streak: 10,
-            rating: 25,
-            ratedUsers: [1],
-            igName: 'john_smith',
-            photo: null,
-        },
-        {
-            id: '4',
-            name: 'Alice',
-            surname: 'Johnson',
-            role: 2,
-            email: 'alice@example.com',
-            password: 'password789',
-            streak: 5,
-            rating: 20,
-            ratedUsers: [],
-            igName: 'alice_johnson',
-            photo: null,
-        }
-      ]
+    const [modalOpen, setModalOpen] = useState(false)
 
-  return (
-    <div className='all-event-web-div'>
-        <div className="left-event-name">
-            {props.groupName}
-        </div>
-        <div className="mid-event-count-members">
-            {props.groupLenMembers} / {props.groupMaxMembers}
-        </div>
+    const handleDivClick = () => {
+        setModalOpen(true)
+    }
 
-        <div className="right-event-members">
-            {/*potrebujeme zmapovat array a pridat user.photo pre hodnotu (user.id) */}
-            {props.groupMembers}
-        </div>
-    </div>
-  )
+    const closeModal = () => {
+        setModalOpen(false)
+    }
+
+    const handleJoinGroup = () => {
+        setModalOpen(false)
+
+    }
+
+    return (
+        <>
+            <div className='clickable-event-web-div' onClick={handleDivClick}>
+                <div className='all-event-web-div'>
+                    <div className="left-event-name">
+                        {props.groupName}
+                    </div>
+                    <div className="mid-event-count-members">
+                        {props.groupLenMembers} / {props.groupMaxMembers}
+                    </div>
+                    <div className="right-event-members">
+                        {/*potrebujeme zmapovat array a pridat user.photo pre hodnotu (user.id) */}
+                        {props.groupMembers}
+                    </div>
+                </div>
+            </div>
+            
+            <Modal show={modalOpen} onHide={closeModal} size="xl">
+                <Modal.Header closeButton >
+                    <Modal.Title style={ {fontSize: '3rem'}}>{props.groupName}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <ShowGroup/>
+                </Modal.Body>
+                <Modal.Footer>
+                    { (props.groupMaxMembers > props.groupLenMembers) &&
+                        <Button variant="primary" onClick={handleJoinGroup}>
+                            PRIDAŤ SA
+                        </Button>
+                        
+                    }
+                    
+                </Modal.Footer>
+            </Modal>
+        </>
+    )
 }
 
 export default EventWebDiv

@@ -58,3 +58,8 @@ p {
     padding: 0 10px;
 
 }
+
+.group-custom-modal {
+    width: 90%;
+    margin: auto;
+}
