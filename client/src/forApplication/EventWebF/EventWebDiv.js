@@ -6,6 +6,7 @@ import ShowGroup from '../GroupInfo/ShowGroup'
 
 const EventWebDiv = (props) => {
     const [modalOpen, setModalOpen] = useState(false)
+    //console.log(props)
 
     const handleDivClick = () => {
         setModalOpen(true)
@@ -42,7 +43,7 @@ const EventWebDiv = (props) => {
                     <Modal.Title style={ {fontSize: '3rem'}}>{props.groupName}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <ShowGroup/>
+                    <ShowGroup groupMembers={props.groupMembers}/>
                 </Modal.Body>
                 <Modal.Footer>
                     { (props.groupMaxMembers > props.groupLenMembers) &&
