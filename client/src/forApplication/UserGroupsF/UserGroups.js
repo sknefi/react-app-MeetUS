@@ -59,7 +59,7 @@ const UserGroups = () => {
         
         {
             userevoSkupinyVKtorychJe.map( (skupina) => {
-                return <UserGroupDiv group={skupina}  />
+                return <UserGroupDiv group={skupina} key={skupina.id}/>
             })
         }
 

@@ -8,10 +8,24 @@
     height: 10vh;
 }
 
+.user-profile-photo {
+    width: 6vw;
+    height: 10vh;
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+.profilPhoto {
+    height: 8vh;
+    width: auto;
+}
+
 .navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin: 2vh 0;
     padding: 1% 3%;
 
@@ -19,7 +33,7 @@
 }
 
 .left-navbar {
-    height: 10vh;
+    height: 7vh;
     width: auto;
     cursor: pointer;
 
@@ -28,6 +42,7 @@
 .mid-navbar {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 3rem;
 }
 
@@ -38,14 +53,9 @@
 
 }
 
+
 .right-navbar:hover {
     opacity: .7;
-}
-
-
-.profilPhoto {
-    height: 10vh;
-    width: auto;
 }
 
 .icon-and-text {
@@ -71,7 +81,7 @@
 }
 
 .top-icon, .ohnik-icon {
-    height: 7vh;
+    height: 5vh;
     width: auto;
 }
 
@@ -83,8 +93,13 @@
 }
 
 .group-icon {
-    height: 10vh;
+    height: 7vh;
     width: auto;
     cursor: pointer;
 }
 
+.login-or-registration {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { GroupListProvider } from "../Contexts/GroupListProvider"
+import { GroupListProvider } from "../Contexts/GroupListContext"
 import InfoAboutServer from "../InfoAboutServer"
 
 const GroupProvider = ( {children} ) => {

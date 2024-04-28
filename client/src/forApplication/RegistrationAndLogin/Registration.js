@@ -12,7 +12,7 @@ function Registration() {
     email: '',
     password: '',
     instagram: '',
-    profileImage: null 
+    photo: null 
   })
 
   const [formErrors, setFormErrors] = useState({})
@@ -47,8 +47,8 @@ function Registration() {
       }
     }
 
-    if (!formData.profileImage || !['image/jpeg', 'image/jpg', 'image/png'].includes(formData.profileImage.type)) {
-      errors.profileImage = 'Please select a valid image file (JPEG, JPG, or PNG)'
+    if (!formData.photo || !['image/jpeg', 'image/jpg', 'image/png'].includes(formData.photo.type)) {
+      errors.photo = 'Please select a valid image file (JPEG, JPG, or PNG)'
     }
 
     if (Object.keys(errors).length === 0) {
@@ -127,15 +127,15 @@ function Registration() {
         <Form.Control.Feedback type="invalid">{formErrors.instagram}</Form.Control.Feedback>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicProfileImage">
+      <Form.Group className="mb-3" controlId="formBasicPhoto">
         <Form.Label>Profilová fotka</Form.Label>
         <Form.Control
           type="file"
-          name="profileImage"
+          name="photo"
           onChange={handleChange}
-          isInvalid={!!formErrors.profileImage}
+          isInvalid={!!formErrors.photo}
         />
-        <Form.Control.Feedback type="invalid">{formErrors.profileImage}</Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">{formErrors.photo}</Form.Control.Feedback>
       </Form.Group>
 
       <Button variant="primary" type="submit">

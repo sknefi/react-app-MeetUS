@@ -1,24 +1,29 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import './Navbar.css'
-import { useAllInfoContext } from '../../Technician/Contexts/AllContext'
-import { useNavigate } from 'react-router-dom'
- 
+import LogoutModal from '../RegistrationAndLogin/LogoutModal' 
+
 import profilPhoto from '../images/profilPhoto.png'
 import ohnik from '../images/ohnik.png'
 import top from '../images/top.png'
 import group from '../images/group.png'
 import logo from '../images/logo.png'
-import { FaUser } from "react-icons/fa";
-import { FaFire } from "react-icons/fa";
-import { FaUserGroup } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa"
+import { FaFire } from "react-icons/fa"
+import { FaUserGroup } from "react-icons/fa6"
 
+import { LoggedUserContext } from '../../Technician/Contexts/LoggedUserContext'
 
 
 const Navbar = () => {
-    // const data = useAllInfoContext()
-    // const loggedInUser = data.LoggedUser
-    
+    const { loggedUser, logout } = useContext(LoggedUserContext)
+    const isUserLoggedIn = Object.keys(loggedUser).length > 0
+    const [showLogoutModal, setShowLogoutModal] = useState(false)
+
+    //console.log(loggedUser)
+    //console.log(isUserLoggedIn)
+
     const navigate = useNavigate()
 
     const redirectToMain = () => {
@@ -37,42 +42,54 @@ const Navbar = () => {
         navigate('/registration')
     }
 
-    const loggedInUser = {
-        id: '034b8f67ceb463dd032731ead323b5b9',
-        streak: 10,
-        rating: 33
+    const handleLogout = () => {
+        setShowLogoutModal(false)
+        logout()
+        redirectToMain()
     }
 
-    /* Nastaviť user.photo namiesto ikonky profilPhoto */
-    /* pridať Log out funkcionalitu (presmerovanie na prihlasovací formulár) */
-    /* pridať, že keď klikneme na logo tak nás to presmeruje na dashboard */
+    const handleShow = () => {
+        setShowLogoutModal(true)
+    }
+
+    const handleClose = () => {
+        setShowLogoutModal(false)
+    }
+
+
     return (
     <div className='navbar'>
         
-        {/* {test2()} */}
         <img className='left-navbar' src={logo} alt="Logo" onClick={redirectToMain} />
         <div className="mid-navbar">
-            <FaUser className='profilPhoto'/>
+            <img src={isUserLoggedIn ? loggedUser.photo : profilPhoto} alt="" className={ isUserLoggedIn ? 'user-profile-photo': 'profilPhoto' }/>
 
             <div className='icon-and-text'>
                 <FaFire className='ohnik-icon'/>
-                <p className='ohnik-text'> {loggedInUser.streak}</p>
+                <p className='ohnik-text'> {isUserLoggedIn ? loggedUser.streak : 'x'}</p>
             </div>
             <div className="icon-and-text">
                 <img className='top-icon' src={top} alt="top" />
-                <p className="top-text">{loggedInUser.rating}</p>
+                <p className="top-text">{isUserLoggedIn ? loggedUser.rating : 'x'}</p>
             </div>
-            <FaUserGroup className='group-icon' onClick={() => redirectToUserGroups(loggedInUser.id)}/>
+            <FaUserGroup className='group-icon' onClick={() => redirectToUserGroups(loggedUser.id)}/>
         </div>
         
-        { loggedInUser && 
-            <h3 className='right-navbar' onClick={redirectToLogin}>Log out</h3>
-        }
-        { loggedInUser && 
-            <h3 className='right-navbar' onClick={redirectToLogin}>Login</h3>
+        { isUserLoggedIn && 
+                <h3 className='right-navbar' onClick={handleShow}>Log out</h3> // Modified
         }
 
-        <h3 className='right-navbar' onClick={redirectToRegistration}>Registration</h3>
+        {! isUserLoggedIn && <div className='login-or-registration'>
+            <h3 className='right-navbar login-btn' onClick={redirectToLogin}>Login</h3>
+            <h3>/</h3>
+            <h3 className='right-navbar registration-btn' onClick={redirectToRegistration}>Registration</h3>
+ 
+        </div>
+        
+        }
+
+        <LogoutModal show={showLogoutModal} handleClose={handleClose} handleLogout={handleLogout} />
+
 
 
 

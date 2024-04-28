@@ -20,7 +20,7 @@ const Events = () => {
         return <div>Loading...</div>
     }
 
-    console.log(eventList)
+    //console.log(eventList)
 
 
     //eventList.map( (x) => console.log(x))  // error: 'eventList.map is not a function'
