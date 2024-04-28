@@ -87,7 +87,7 @@ const AddEvent = ({ onClose }) => {
                     <div className="btn-and-date-time">
                         <p className='label-add-event date-time-text'>Zadajte dátum a čas eventu</p>
                         <Datetime onChange={handleDatetimeChange}/>
-                        <label htmlFor="photoUpload" className="label-add-event">Upload a photo (JPG, JPEG, PNG)</label>
+                        <label htmlFor="photoUpload" className="label-add-event smaller-text">Upload a photo (JPG, JPEG, PNG)</label>
                         <input
                             type="file"
                             id="photoUpload"
