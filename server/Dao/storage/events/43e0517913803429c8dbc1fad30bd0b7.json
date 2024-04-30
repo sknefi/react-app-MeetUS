@@ -1,12 +1,14 @@
 {
     "name": "Jazz Night",
-    
     "location": "Blue Note Jazz Club, New York",
     "expectedCountOfMembers": 500,
-    "price": 301,
+    "price": 300,
     "info": "Experience an enchanting evening of jazz music at the iconic Blue Note Jazz Club. Join us for a night filled with soulful melodies and captivating performances!",
     "photo": "jazz-night.jpg",
     "dateTime": "2024-04-12T13:45:30.000Z",
-    "id": "2db13c923776be7d80993fbd4455dc4f",
-    "listOfGroups": []
+    "id": "43e0517913803429c8dbc1fad30bd0b7",
+    "listOfGroups": [
+        "42e03c7488dfea18f3b0da6f413ef72d",
+        "ea4ca5252b17261fdba9155fc6ff8e43"
+    ]
 }

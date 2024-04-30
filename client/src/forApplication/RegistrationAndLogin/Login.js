@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useNavigate } from 'react-router-dom'
 
+import david from '../images/userPhotos/david.jpg'
+
+import { LoggedUserContext } from '../../Technician/Contexts/LoggedUserContext'
+
 
 const Login = () => {
     const navigate = useNavigate()
-
-
+    const { handlerMapForLogin  } = useContext(LoggedUserContext)
 
   const [formData, setFormData] = useState({
     email: '',
@@ -28,20 +31,29 @@ const Login = () => {
     navigate('/')
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // user-dao/isUserInDatabase(email, password)
-    const isUserInDatabase = false
-    const isUserInDatabase1 = true
+    try {
+        const isEmailAndPasswordInDatabase = await handlerMapForLogin.findUserInDatabase(formData.email, formData.password)
+        
+        if (Object.keys(isEmailAndPasswordInDatabase).length === 0) {
+          // returned {}
+          // users email and password dont match with any user in database
+          setLoginError('Zadali ste nesprávne prihlasovacie údaje')
+            
+        } else {
+          // returned {id: '...'. ...}
+          // user wrote correct email and password, we will log him in
+          handlerMapForLogin.userIsLoggingIn(isEmailAndPasswordInDatabase)
+          redirectToMainPage()
+        }
 
-    if (isUserInDatabase1) {
-        redirectToMainPage()
-    } else {
-        setLoginError('Zadali ste neplatný email alebo heslo')
+    } catch (error) {
+        setLoginError('Invalid email or password')
+        console.error('Error logging in:', error.message)
     }
-    console.log(formData)  
-  }
+}
 
   return (
     <div className="login-container">

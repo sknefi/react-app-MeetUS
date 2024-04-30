@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
-import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+
+import { LoggedUserContext } from '../../Technician/Contexts/LoggedUserContext'
+
+
 function Registration() {
-    const navigate = useNavigate()
+  const { handlerMapForRegistration } = useContext(LoggedUserContext)
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     name: '',
@@ -27,7 +32,6 @@ function Registration() {
       [name]: newValue
     })
 
-    // Clear error message if user starts typing
     setFormErrors({
       ...formErrors,
       [name]: ''
@@ -52,7 +56,11 @@ function Registration() {
     }
 
     if (Object.keys(errors).length === 0) {
-      console.log(formData) 
+      delete formData.photo
+  
+      console.log(formData)
+      handlerMapForRegistration.userRegistration(formData)
+      // vytvoriť modal na 'USPEŠNÁ REGISTRÁCIA'
       redirectToLogin()
 
     } else {

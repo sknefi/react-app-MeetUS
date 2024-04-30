@@ -1,55 +1,53 @@
-import { useEffect, useState } from "react"
-import { EventListContext } from "../Contexts/EventListContext"
-import InfoAboutServer from "../InfoAboutServer"
+import { useEffect, useState } from "react";
+import { EventListContext } from "../Contexts/EventListContext";
+import InfoAboutServer from "../InfoAboutServer";
 
-const EventProvider = ( {children} ) => {
-    const serverInfo = InfoAboutServer()
-    const gateway = serverInfo.gateway
+const EventProvider = ({ children }) => {
+  const serverInfo = InfoAboutServer();
+  const gateway = serverInfo.gateway;
 
-    const [eventLoadObject, setEventLoadObject] = useState(
-        {
-            state: 'ready',
-            error: 'null',
-            data:  'null',
-        })
-
-    useEffect(() => {
-        setEventLoadObject((current) => ({ ...current, state: 'pending' }))
+  const [loadObject, setLoadObject] = useState({
+    state: "-",
+    events: [],
     
-        fetch(`${gateway}/event/list`, {
-            method: 'GET'
-        }).then((response) => {
-            if (response.status < 400) {
-                response.json().then((responseJson) => {
-                    setEventLoadObject({ state: 'ready', data: responseJson })
-                })
-            } else {
-                response.json().then((errorResponse) => {
-                    setEventLoadObject((current) => ({
-                        state: 'error',
-                        data: current.data,
-                        error: errorResponse.error
-                    }));
-                    throw new Error(JSON.stringify(errorResponse, null, 2))
-                })
-            }
-        }).catch((error) => {
-            console.error('Error fetching event list:', error)
-        })
-    }, [gateway])
+  })
+
+  useEffect( () => {
+    getEventList()
+}, [])
+
+  async function getEventList() {
+    try {
+      setLoadObject((current) => ({ ...current, state: 'pending' }));
+      const response = await fetch(`${serverInfo.gateway}/event/list`, {
+        method: "GET"
+      });
+
+      if (response.status < 400) {
+        const eventList = await response.json();
+        setLoadObject((current) => ({ ...current, state: 'ready', events: eventList }));
         
-
-    const value = {
-        eState: eventLoadObject.state,
-        eventList: eventLoadObject.data || [],
-        eHandlerMap: {},
+        return eventList
+      } else {
+        setLoadObject((current) => ({ ...current, state: 'error' }));
+        throw new Error("Invalid email or password");
+      }
+    } catch (error) {
+      setLoadObject((current) => ({ ...current, state: 'error' }));
+      console.error("Error logging in:", error.message);
     }
+  }
 
-    return ( 
-        <EventListContext.Provider value={value}>
-            {children}
-        </EventListContext.Provider>
-    );
+  const value = {
+    state: loadObject.state,
+    allEventss: loadObject.events
+  }
+
+  return (
+    <EventListContext.Provider value={value}>
+      {children}
+    </EventListContext.Provider>
+  );
 };
 
 export default EventProvider;

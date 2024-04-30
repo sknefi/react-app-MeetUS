@@ -17,7 +17,7 @@ import { LoggedUserContext } from '../../Technician/Contexts/LoggedUserContext'
 
 
 const Navbar = () => {
-    const { loggedUser, logout } = useContext(LoggedUserContext)
+    const { loggedUser, handlerMapForLogin } = useContext(LoggedUserContext)
     const isUserLoggedIn = Object.keys(loggedUser).length > 0
     const [showLogoutModal, setShowLogoutModal] = useState(false)
 
@@ -44,7 +44,7 @@ const Navbar = () => {
 
     const handleLogout = () => {
         setShowLogoutModal(false)
-        logout()
+        handlerMapForLogin.logout()
         redirectToMain()
     }
 
@@ -84,8 +84,7 @@ const Navbar = () => {
             <h3>/</h3>
             <h3 className='right-navbar registration-btn' onClick={redirectToRegistration}>Registration</h3>
  
-        </div>
-        
+        </div>        
         }
 
         <LogoutModal show={showLogoutModal} handleClose={handleClose} handleLogout={handleLogout} />

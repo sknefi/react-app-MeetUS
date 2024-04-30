@@ -36,10 +36,9 @@ const App = () => {
 
             <Route
               path="event/:id"
+              // id eventu
               element={
                 <EventProvider>
-                  {" "}
-                  {/* Use EventProvider here */}
                   <EventWeb />
                 </EventProvider>
               }

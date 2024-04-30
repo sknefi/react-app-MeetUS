@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import { EventListContext } from '../../Technician/Contexts/EventListContext'
 
@@ -8,22 +8,18 @@ import ModalCreateEvent from "../AddEventWebF/ModalCreateEvent.js"
 
 
 const Events = () => {
-    const { eventList, eHandlerMap, eState } = useContext(EventListContext)
-    
+    const { allEventss, } = useContext(EventListContext)
+    const [events, setEvents] = useState()
     const navigate = useNavigate()
+
+
+
+    console.log(allEventss)
 
     const redirectToEvent = (eventId) => {
         navigate(`/event/${eventId}`);
     }
 
-    if (!eventList) {
-        return <div>Loading...</div>
-    }
-
-    //console.log(eventList)
-
-
-    //eventList.map( (x) => console.log(x))  // error: 'eventList.map is not a function'
 
     const allEvents = [
         {
@@ -118,18 +114,23 @@ const Events = () => {
     }
 
     function convertIsoToDate(isoStr){
-        const year = isoStr.getFullYear();
-        const month = isoStr.getMonth() + 1; // Adjusting to get 1-based month
-        const day = isoStr.getDate();
-
+        const date = new Date(isoStr)
+        const year = date.getFullYear()
+        const month = date.getMonth() + 1
+        const day = date.getDate()
+    
         return `${day}.${month} ${year}`
     }
 
     function convertIsoToTime(isoStr){
-        const hours = isoStr.getHours();
-        const minutes = isoStr.getMinutes();
-
-        return `${hours}:${minutes}`
+        const date = new Date(isoStr)
+        const hours = date.getHours()
+        const minutes = date.getMinutes()
+    
+        // Ensure minutes are formatted with leading zero if less than 10
+        const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes
+    
+        return `${hours}:${formattedMinutes}`
     }
 
     function leftSide(event) {
@@ -156,24 +157,23 @@ const Events = () => {
                 <p>Počet ľudí</p>
                 <p>{event.expectedCountOfMembers}</p>
             </div>
-            <p>{event.price}</p>
+            <p>{event.price} €</p>
         </div>
     }
 
   return (
     <div className='all-event-dashboard'>
         <ModalCreateEvent/>
-        {/* <div>{eventList}</div> */}
 
-
-        {(allEvents.map(event =>
+        { (allEventss.map(event =>
             <div className='event' key={event.id} onClick={() => redirectToEvent(event.id)}>
+                
                 {leftSide(event)}
                 {rightSide(event)}
             </div>
 
         
-        ))}
+        )) }
         
     
     </div>

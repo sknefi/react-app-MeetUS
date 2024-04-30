@@ -1,6 +1,6 @@
-import React from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import React from 'react'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 const LogoutModal = ({ show, handleClose, handleLogout }) => {
     return (
@@ -18,7 +18,7 @@ const LogoutModal = ({ show, handleClose, handleLogout }) => {
                 </Button>
             </Modal.Footer>
         </Modal>
-    );
+    )
 }
 
-export default LogoutModal;
+export default LogoutModal

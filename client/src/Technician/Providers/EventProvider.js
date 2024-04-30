@@ -1,100 +1,98 @@
-import { useEffect, useState } from "react";
-import { useLocation, useSearchParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { useLocation, useSearchParams, useNavigate } from "react-router-dom"
 import InfoAboutServer from "../InfoAboutServer"
 
-
-import { EventContext } from "../Contexts/EventContext";
+import { EventContext } from "../Contexts/EventContext"
 
 function EventProvider({ children }) {
-    const serverInfo = InfoAboutServer()
-    const gateway = serverInfo.gateway
+  const serverInfo = InfoAboutServer()
+  const gateway = serverInfo.gateway
 
-    const [eventLoadObject, setEventLoadObject] = useState({
-        state: "ready",
-        error: null,
-        data: null,
+  const [event, setEvent] = useState({})
+  const [eventGroups, setEventGroups] = useState([])
+
+  const [eventLoadObject, setEventLoadObject] = useState({
+    state: "ready",
+    error: null,
+  })
+
+  const location = useLocation()
+  //console.log(location)
+
+  //console.log(searchParams.get("id"))
+
+  async function handleGetEvent() {
+    setEventLoadObject((current) => ({ ...current, state: "pending" }))
+
+    const eventId = location.pathname.split("/").pop()
+
+    const response = await fetch(`${gateway}/event/get?id=${eventId}`, {
+      method: "GET",
     })
-
-    const [eventGroupsLoadObject, setEventGroupsLoadObject] = useState({
-        state: "ready",
-        error: null,
-        data: null,
-    })
-
-
-
-    const location = useLocation();
-    //console.log(location);
-
-
-    //console.log(searchParams.get("id"));
-
-    useEffect(() => {
-        handleLoad();
-    }, [location.pathname]);
-
-    async function handleLoad() {
-        setEventLoadObject((current) => ({ ...current, state: "pending" }));
-
-        const eventId = location.pathname.split("/").pop()
-
-        const response = await fetch(
-            `${gateway}/event/get?id=${eventId}`, // Append eventId to the URL
-            {
-                method: "GET",
-            }
-    )
     const responseJson = await response.json()
     if (response.status < 400) {
-        setEventLoadObject({ state: "ready", data: responseJson });
-        return responseJson;
+      setEventLoadObject((current) => ({ ...current, state: "ready" }))
+      setEvent(responseJson)
+      handleGetEventGroups({
+        listOfGroups: responseJson.listOfGroups
+      })
+      console.log(responseJson)
+
+      return responseJson
     } else {
-        setEventLoadObject((current) => ({
-            state: "error",
-            data: current.data,
-            error: responseJson.error,
-        }));
-        throw new Error(JSON.stringify(responseJson, null, 2));
+      setEventLoadObject((current) => ({
+        state: "error",
+        data: current.data,
+        error: responseJson.error,
+      }))
+      throw new Error(JSON.stringify(responseJson, null, 2))
     }
   }
 
-    async function handleGetEventGroups(dtoIn) {
-        setEventGroupsLoadObject( (current) => ( {...current, state: 'pending'} ))
+  async function handleGetEventGroups(dtoIn) {
+    setEventLoadObject((current) => ({ ...current, state: "pending" }))
+    console.log(dtoIn)
 
-        // console.log('fetching')
-        const response = await fetch(`${gateway}/event/getEventGroups`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-              },
-            body: JSON.stringify(dtoIn),
-        })
-        // console.log('fetched')
-        const responseJson = await response.json()
+    const response = await fetch(`${gateway}/event/getEventGroups`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dtoIn),
+    })
 
-        if (response.status < 400) {
-            setEventGroupsLoadObject( {state: 'ready', data: responseJson} )
-            return responseJson
-        } else {
-            setEventGroupsLoadObject( (current) => ( 
-                {
-                    state: 'error',
-                    data: current.data,
-                    error: responseJson.error
-                }))
-            throw new Error(JSON.stringify(responseJson, null, 2))
-        }
+    const responseJson = await response.json()
+
+    if (response.status < 400) {
+      setEventLoadObject((current) => ({
+        ...current,
+        state: "ready",
+        data: responseJson,
+      }))
+
+      setEventGroups(responseJson)
+
+      return responseJson
+    } else {
+      setEventLoadObject((current) => ({
+        ...current,
+        state: "error",
+        error: responseJson.error,
+      }))
+      throw new Error(JSON.stringify(responseJson, null, 2))
     }
+  }
+
   const value = {
-    event: eventLoadObject.data,
-    getEventGroups: handleGetEventGroups
+    event: event,
+    eventGroups: eventGroups,
+    state: eventLoadObject.state,
+    handlerMap: { handleGetEvent, handleGetEventGroups },
   }
 
   return (
-    <EventContext.Provider value={value}>
-        {children}
-    </EventContext.Provider>
+    <EventContext.Provider value={value}>{children}</EventContext.Provider>
   )
 }
 
-export default EventProvider;
+export default EventProvider

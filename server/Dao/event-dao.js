@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const crypto = require('crypto')
+const groupDao = require('./group-dao');
 
 const pathToDao = path.join(__dirname) // .../Dao
 

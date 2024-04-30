@@ -7,10 +7,6 @@
     "password": "david123",
     "streak": 2,
     "rating": 5,
-    "ratedUsers": [
-        "1",
-        "2"
-    ],
     "igName": "david_brown",
     "photo": "david.jpg"
 }

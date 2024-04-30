@@ -77,7 +77,7 @@ function isUserInDatabase(email, password) {
             }
         })
 
-    return findUser
+    return findUser ? findUser : {}
 }
 
 

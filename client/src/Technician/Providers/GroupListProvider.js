@@ -41,7 +41,6 @@ const GroupProvider = ( {children} ) => {
                 }))
             throw new Error(JSON.stringify(responseJson, null, 2))
         }
-
     }
 
     async function REWRITEMEBITCH(dtoIn) {

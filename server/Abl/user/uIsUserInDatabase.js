@@ -17,8 +17,8 @@ async function uIsUserInDatabase(req, res) {
       // http://localhost:3000/user/exists?email=emily%40example.com&password=emily789
       
       // FUNGUJE
-      const reqParams = req.body; // nefunguje (ani keď použijem POST)
-      //const reqParams = req.query?.email ? req.query : req.body // funguje ale iba keď použijem parameter
+      //const reqParams = req.body; // nefunguje (ani keď použijem POST)
+      const reqParams = req.query?.email ? req.query : req.body // funguje ale iba keď použijem parameter
 
       // console.log(reqParams) // vždy mi to vypisuje undefined
 

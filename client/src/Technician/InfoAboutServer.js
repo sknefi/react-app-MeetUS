@@ -1,5 +1,3 @@
-import React from 'react';
-
 const InfoAboutServer = () => {
     const portVal = 3001;
     const gatewayUrl = `http://localhost:${portVal}`;
