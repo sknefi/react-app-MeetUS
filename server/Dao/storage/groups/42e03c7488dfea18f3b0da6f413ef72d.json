@@ -1,1 +1,10 @@
-{"name":"Foodies United","maxMembers":10,"info":"A group of food enthusiasts on a mission to explore the culinary delights of the world!","id":"42e03c7488dfea18f3b0da6f413ef72d","groupCreator":"c13b6c6e17b749735950c09e41bd8449","members":["c13b6c6e17b749735950c09e41bd8449"]}
+{
+    "name": "Foodies United",
+    "maxMembers": 10,
+    "info": "A group of food enthusiasts on a mission to explore the culinary delights of the world!",
+    "id": "42e03c7488dfea18f3b0da6f413ef72d",
+    "groupCreator": "c13b6c6e17b749735950c09e41bd8449",
+    "members": [
+        "c13b6c6e17b749735950c09e41bd8449"
+    ]
+}

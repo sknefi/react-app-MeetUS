@@ -53,8 +53,8 @@ const AddEvent = ({ onClose }) => {
         //photo:
       }
       setFormData(formDataObject)
-      console.log(inName)
-      console.log(formDataObject)
+      //console.log(inName)
+      //console.log(formDataObject)
 
       handleCreateEvent(formDataObject)
       onClose()

@@ -10,8 +10,9 @@ function EventProvider({ children }) {
 
   const [event, setEvent] = useState({})
   const [eventGroups, setEventGroups] = useState([])
+  const [groupUsers, setGroupUsers] = useState([])
 
-  const [eventLoadObject, setEventLoadObject] = useState({
+  const [loadObject, setLoadObject] = useState({
     state: "ready",
     error: null,
   })
@@ -22,7 +23,7 @@ function EventProvider({ children }) {
   //console.log(searchParams.get("id"))
 
   async function handleGetEvent() {
-    setEventLoadObject((current) => ({ ...current, state: "pending" }))
+    setLoadObject((current) => ({ ...current, state: "pending" }))
 
     const eventId = location.pathname.split("/").pop()
 
@@ -31,16 +32,16 @@ function EventProvider({ children }) {
     })
     const responseJson = await response.json()
     if (response.status < 400) {
-      setEventLoadObject((current) => ({ ...current, state: "ready" }))
+      setLoadObject((current) => ({ ...current, state: "ready" }))
       setEvent(responseJson)
       handleGetEventGroups({
         listOfGroups: responseJson.listOfGroups
       })
-      console.log(responseJson)
+      //console.log(responseJson)
 
       return responseJson
     } else {
-      setEventLoadObject((current) => ({
+      setLoadObject((current) => ({
         state: "error",
         data: current.data,
         error: responseJson.error,
@@ -50,8 +51,8 @@ function EventProvider({ children }) {
   }
 
   async function handleGetEventGroups(dtoIn) {
-    setEventLoadObject((current) => ({ ...current, state: "pending" }))
-    console.log(dtoIn)
+    setLoadObject((current) => ({ ...current, state: "pending" }))
+    //console.log(dtoIn)
 
     const response = await fetch(`${gateway}/event/getEventGroups`, {
       method: "POST",
@@ -64,7 +65,7 @@ function EventProvider({ children }) {
     const responseJson = await response.json()
 
     if (response.status < 400) {
-      setEventLoadObject((current) => ({
+      setLoadObject((current) => ({
         ...current,
         state: "ready",
         data: responseJson,
@@ -74,7 +75,7 @@ function EventProvider({ children }) {
 
       return responseJson
     } else {
-      setEventLoadObject((current) => ({
+      setLoadObject((current) => ({
         ...current,
         state: "error",
         error: responseJson.error,
@@ -83,11 +84,84 @@ function EventProvider({ children }) {
     }
   }
 
+  async function handleGetGroupUsers(eventMembers) {
+    setLoadObject((current) => ({ ...current, state: "pending" }))
+    //console.log(dtoIn)
+
+    const response = await fetch(`${gateway}/group/getGroupUsers`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(eventMembers),
+    })
+
+    const responseJson = await response.json()
+
+    if (response.status < 400) {
+      setLoadObject((current) => ({
+        ...current,
+        state: "ready",
+      }))
+
+      setGroupUsers(responseJson)
+
+      return responseJson
+    } else {
+      setLoadObject((current) => ({
+        ...current,
+        state: "error",
+        error: responseJson.error,
+      }))
+      throw new Error(JSON.stringify(responseJson, null, 2))
+    }
+  }
+
+  async function createGroup(group, eventId, userId) {
+    try {
+      setLoadObject((current) => ({ ...current, state: "pending" }))
+
+      const groupDesc = {
+        group: group,
+        eventID: eventId,
+        userID: userId
+      }
+      //console.log(JSON.stringify(groupDesc))
+
+      const response = await fetch(`${serverInfo.gateway}/group/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(groupDesc),
+      })
+
+      if (response.status < 400) {
+        const createdGroup = await response.json()
+        setLoadObject((current) => ({
+          state: "ready",
+          error:  null
+        }))
+
+        setEventGroups((current) => [...current, group]) 
+
+        return createdGroup
+      } else {
+        setLoadObject((current) => ({ ...current, state: "error" }))
+      }
+    } catch (error) {
+      setLoadObject((current) => ({ ...current, state: "error" }))
+      console.error("Error creating event:", error.message)
+    }
+  }
+
+  
+
   const value = {
     event: event,
     eventGroups: eventGroups,
-    state: eventLoadObject.state,
-    handlerMap: { handleGetEvent, handleGetEventGroups },
+    state: loadObject.state,
+    handlerMap: { handleGetEvent, handleGetEventGroups, createGroup, handleGetGroupUsers },
   }
 
   return (

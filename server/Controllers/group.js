@@ -41,7 +41,7 @@ router.post('/addUserToGroup', (req, res) => {
 
 
 // DONE
-router.get('/getGroupUsers', (req, res) => {
+router.post('/getGroupUsers', (req, res) => {
     gGetGroupUsersAbl(req, res)
 })
 

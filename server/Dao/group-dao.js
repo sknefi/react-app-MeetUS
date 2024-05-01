@@ -33,9 +33,9 @@ function update(group) {
 
 function addGroupToEvent(eventID, groupID) {
     try {
-        console.log('first')
+        //console.log('first')
         const event = eventDao.get(eventID)
-        console.log(event)
+        //console.log(event)
 
         if (!event) {
             throw { code: 'eventNotFound', message: 'Event not found.' };
@@ -100,7 +100,7 @@ function create(group, eventID, userID) {
         addGroupToEvent(eventID, groupID)
     
         
-        console.log(group);
+        //console.log(group);
         return group
     }
     catch (error) {

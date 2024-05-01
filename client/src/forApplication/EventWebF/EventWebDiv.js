@@ -4,6 +4,8 @@ import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
 import ShowGroup from "../GroupInfo/ShowGroup"
 
+import vlada from '../images/userPhotos/vlada.jpg'
+
 const EventWebDiv = (props) => {
   const [modalOpen, setModalOpen] = useState(false)
   //console.log(props)
@@ -20,6 +22,7 @@ const EventWebDiv = (props) => {
     setModalOpen(false)
   }
 
+
   return (
     <>
       <div className="clickable-event-web-div" onClick={handleDivClick}>
@@ -30,7 +33,9 @@ const EventWebDiv = (props) => {
           </div>
           <div className="right-event-members">
             {/*potrebujeme zmapovat array a pridat user.photo pre hodnotu (user.id) */}
-            {props.groupMembers}
+            {props.groupMembers.map( () => {
+              return <img src={vlada} alt="" className="user-photo-in-div"/>
+            }) }
           </div>
         </div>
       </div>
@@ -42,7 +47,9 @@ const EventWebDiv = (props) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {/*  */}
           <ShowGroup groupMembers={props.groupMembers} />
+
         </Modal.Body>
         <Modal.Footer>
           {props.groupMaxMembers > props.groupLenMembers && (

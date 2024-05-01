@@ -72,11 +72,11 @@ const Navbar = () => {
                 <img className='top-icon' src={top} alt="top" />
                 <p className="top-text">{isUserLoggedIn ? loggedUser.rating : 'x'}</p>
             </div>
-            <FaUserGroup className='group-icon' onClick={() => redirectToUserGroups(loggedUser.id)}/>
+            <FaUserGroup className='group-icon' onClick={() => isUserLoggedIn ? redirectToUserGroups(loggedUser.id) : redirectToLogin()}/>
         </div>
         
         { isUserLoggedIn && 
-                <h3 className='right-navbar' onClick={handleShow}>Log out</h3> // Modified
+                <h3 className='right-navbar' onClick={handleShow}>Log out</h3>
         }
 
         {! isUserLoggedIn && <div className='login-or-registration'>

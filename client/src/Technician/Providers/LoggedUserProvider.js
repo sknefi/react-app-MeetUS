@@ -12,6 +12,17 @@ const LoggedUserProvider = ({ children }) => {
   })
 
   const [loggedUser, setLoggedUser] = useState({
+    id: '034b8f67ceb463dd032731ead323b5b9',
+    name: 'Emily',
+    surname: 'Williams',
+    rola: '2',
+    email: 'emily@example.com',
+    password: '123',
+    streak: 5,
+    rating: 9,
+    ratedUsers: [ '1', '2', '3' ],
+    igName: 'emily_williams',
+    photo: 'emily.jpg'
   })
 
   const logout = () => {
@@ -41,7 +52,7 @@ const LoggedUserProvider = ({ children }) => {
       if (response.status < 400) {
         const user = await response.json()
         setLoadObject((current) => ({ ...current, state: 'ready' }))
-        console.log(user)
+        //console.log(user)
 
         return user
       } else {

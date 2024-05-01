@@ -5,7 +5,7 @@ import ohnik from '../images/ohnik.png';
 import top from '../images/top.png'
 
 function UserCard(props) {
-    const { streak, rating, photo } = props
+    const { streak, rating, photo, igName } = props
 
     return (
         <Card style={{ width: '18rem' }} className='user-card'>
@@ -13,18 +13,18 @@ function UserCard(props) {
             <Card.Body>
                 <div className="user-card-body">
 
-                    {/* Streak */}
                     <div className="me-3">
                         <img src={ohnik} alt="Streak Icon" style={{ width: '32px', height: '32px' }} />
                         <span className="ms-2">{streak}</span>
                     </div>
-                    {/* Rating */}
                     <div>
                         <img src={top} alt="Rating Icon" style={{ width: '32px', height: '32px' }} />
                         <span className="ms-2">{rating}</span>
                     </div>
+
                 </div>
-                {/* Additional card content here */}
+                <p className='user-ig-name'>{ props.igName }jjk</p>
+
             </Card.Body>
         </Card>
     );

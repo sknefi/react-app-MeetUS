@@ -9,7 +9,7 @@ p {
 }
 
 .all-event-web-div {
-    height: 7vh;
+    height: 20vh;
 
     display: flex;
     flex-direction: row;
@@ -23,9 +23,19 @@ p {
     margin-bottom: 2rem;
 }
 
+.user-photo-in-div {
+    height: 19vh;
+    width: 15%;
+    object-fit: cover;
+    object-position: top;
+    margin: 0 1%;
+    overflow: hidden;
+
+}
+
 .left-event-name {
     flex: 2;
-    height: 7vh;
+    height: 100%;
 
     display: flex;
     justify-content: center;
@@ -36,7 +46,7 @@ p {
 
 .mid-event-count-members {
     flex: 1;
-    height: 7vh;
+    height: 100%;
 
     display: flex;
     align-items: center;

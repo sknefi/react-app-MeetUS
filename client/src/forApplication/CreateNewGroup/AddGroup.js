@@ -1,12 +1,36 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 
+import { LoggedUserContext } from '../../Technician/Contexts/LoggedUserContext'
+import { EventContext } from '../../Technician/Contexts/EventContext'
+
 function AddGroup({ handleClose }) {
+  const { loggedUser } = useContext(LoggedUserContext)
+  const { handlerMap } = useContext(EventContext)
+  
+  //console.log(loggedUser)
+  //console.log(window.location.href)
+  
+
   const [groupName, setGroupName] = useState('')
   const [groupInfo, setGroupInfo] = useState('')
   const [maxMembers, setMaxMembers] = useState(5)
   const [unlimited, setUnlimited] = useState(false)
   const [error, setError] = useState('')
+
+
+  const getEventFromUrl = () => {
+    const currentUrl = window.location.href;
+  
+    const url = new URL(currentUrl);
+  
+    const pathname = url.pathname;
+  
+    const parts = pathname.split('/');
+    const eventId = parts[parts.length - 1];
+  
+    return eventId;
+  }
 
   const incrementMaxMembers = () => {
     if (!unlimited) {
@@ -35,21 +59,22 @@ function AddGroup({ handleClose }) {
     }
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
+  const handleSubmit = (group) => {
+    group.preventDefault()
     if (!groupName || !groupInfo) {
       setError('Pre vytvorenie skupiny musíte zadať požadované údaje')
       return
     }
 
-    const formData = {
-      groupName,
-      groupInfo,
+    const groupData = {
+      name: groupName,
+      info: groupInfo,
       maxMembers: unlimited ? 'Infinity' : maxMembers,
     }
 
-    // Send formData to backend
-    console.log(formData)
+    const eventId = getEventFromUrl()
+
+    handlerMap.createGroup(groupData, eventId, loggedUser.id)
     handleClose()
   }
 

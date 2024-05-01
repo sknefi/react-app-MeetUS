@@ -23,8 +23,8 @@ const EventWeb = () => {
       })
   }, [])
 
-  console.log(event)
-  console.log(eventGroups)
+  //console.log(event)
+  //console.log(eventGroups)
   return (
     <div className="all-event-web">
       <h2 className="event-name">{event ? event.name : ""}</h2>
@@ -32,12 +32,15 @@ const EventWeb = () => {
       <p className="event-info">{event ? event.info : ""}</p>
 
       <ModalCreateNewGroup />
+
       {event && eventGroups &&
             eventGroups.map( (group) => {
+              //console.log(group)
                 return <EventWebDiv
-                          key={group.id}
+                          // v tomto momente ešte server nevytvoril ID pre skupinu
+                          key={group.name + group.info}
                           groupName={group.name}
-                          groupLenMembers={group.members.length}
+                          groupLenMembers={group.members ? group.members.length : 1}
                           groupMaxMembers={group.maxMembers}
                           groupMembers={group.members}
                         />

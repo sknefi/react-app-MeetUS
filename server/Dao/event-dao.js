@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const crypto = require('crypto')
-const groupDao = require('./group-dao');
+
 
 const pathToDao = path.join(__dirname) // .../Dao
 
@@ -28,24 +28,24 @@ function update(event) {
 
 // used in Creating group in event 
 // used in group-dao.js as helper function
-function addGroupToEvent(eventID, groupID) {
-    try {
-        console.log('first')
-        const event = get(eventID)
-        if (!event) {
-            throw { code: 'eventNotFound', message: 'Event not found.' };
-        }
+// function addGroupToEvent(eventID, groupID) {
+//     try {
+//         console.log('first')
+//         const event = get(eventID)
+//         if (!event) {
+//             throw { code: 'eventNotFound', message: 'Event not found.' };
+//         }
         
-        event.listOfGroups.push(groupID)
+//         event.listOfGroups.push(groupID)
     
-        update(event)
+//         update(event)
     
-        return event
-    }
-    catch (error) { 
-        throw { code: "failedToAddGroupToEvent", message: error.message }
-    }
-}
+//         return event
+//     }
+//     catch (error) { 
+//         throw { code: "failedToAddGroupToEvent", message: error.message }
+//     }
+// }
 
 
 // MAIN FUNCTIONS
@@ -53,8 +53,10 @@ function addGroupToEvent(eventID, groupID) {
 // used - Event website
 function get(eventID) {
     try{
+        //console.log('sme na gete v evente')
         const pathToEvent = path.join(pathToDao, 'storage', 'events', `${eventID}.json`)
         const fileData = fs.readFileSync(pathToEvent, "utf8")
+        //console.log(fileData)
 
         // returns parsed data, (not in string)
         return JSON.parse(fileData)
@@ -107,6 +109,8 @@ function list() {
 
 // used - Event website 
 function getEventGroups(listGroupIDs) {
+    const groupDao = require('./group-dao');
+
     // event.listOfGroups
     // vráti všetky skupiny, ktoré sú v evente
 
@@ -156,7 +160,7 @@ module.exports = {
     get,
     create,
     list,
-    addGroupToEvent, 
+   // addGroupToEvent, 
     getEventGroups,
     update
 }

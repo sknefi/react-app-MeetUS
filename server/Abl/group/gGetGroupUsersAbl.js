@@ -21,6 +21,7 @@ async function gGetGroupUsers(req, res) {
     const reqParams = req.body
     //console.log(reqParams)
     
+    //console.log('we are in abl')
     const valid = ajv.validate(schema, reqParams);
     if (!valid) {
       res.status(400).json({

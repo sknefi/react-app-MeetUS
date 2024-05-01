@@ -10,6 +10,7 @@ import ModalCreateEvent from "../AddEventWebF/ModalCreateEvent.js"
 const Events = () => {
     const { allEvents, } = useContext(EventListContext)
     const [events, setEvents] = useState()
+    
     const navigate = useNavigate()
 
 
