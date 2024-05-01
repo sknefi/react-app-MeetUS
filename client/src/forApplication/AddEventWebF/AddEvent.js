@@ -1,24 +1,27 @@
-import React, { useState } from 'react'
-import Modal from 'react-modal'
-import './AddEvent.css'
-import Calendar from './Calendar.js'
-import Datetime from 'react-datetime'
-import "react-datetime/css/react-datetime.css"
-import SuccessfullyCreatedEvent from './SuccessfullyCreatedEvent'
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+import './AddEvent.css';
+import Calendar from './Calendar.js';
+import Datetime from 'react-datetime';
+import "react-datetime/css/react-datetime.css";
+import SuccessfullyCreatedEvent from './SuccessfullyCreatedEvent';
 
-const AddEvent = ({ onClose }) => { 
-    const [inName, setInName] = useState("")
-    const [inLocation, setInLocation] = useState("")
-    const [inExpectedCountOfMembers, setInExpectedCountOfMembers] = useState("")
-    const [inPrice, setInPrice] = useState("")
-    const [inInfo, setInInfo] = useState("")
-    const [eventDateTime, setEventDateTime] = useState(null)
-    const [validDateTime, setValidDateTime] = useState(false)
-    const [submitted, setSubmitted] = useState(false)
-    const [selectedFile, setSelectedFile] = useState(null)
+const AddEvent = ({ onClose }) => {
+    const [inName, setInName] = useState("");
+    const [inLocation, setInLocation] = useState("");
+    const [inExpectedCountOfMembers, setInExpectedCountOfMembers] = useState("");
+    const [inPrice, setInPrice] = useState("");
+    const [inInfo, setInInfo] = useState("");
+    const [eventDateTime, setEventDateTime] = useState(null);
+    const [validDateTime, setValidDateTime] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [formData, setFormData] = useState({})
+
+    const [notEverythingIsFilled, setNotEverythingIsFilled] = useState()
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         if (
             inName.trim() !== "" &&
@@ -29,36 +32,48 @@ const AddEvent = ({ onClose }) => {
             validDateTime
         ) {
             setSubmitted(true)
-    
-            console.log(inName, inLocation, inExpectedCountOfMembers, inPrice, inInfo, eventDateTime, selectedFile)
-            onClose()
+            setFormData({
+                name: inName,
+                location: inLocation,
+                expectedCountOfMembers: inExpectedCountOfMembers,
+                price: inPrice,
+                info: inInfo,
+                dateTime: eventDateTime,
+                //photo: 
+            })
+            
+
+            console.log(formData);
+            onClose();
+        } else {
+            setNotEverythingIsFilled('Prosím vyplňte všetky požadované údaje')
         }
-    }
+    };
 
     const handleDatetimeChange = (selectedDate) => {
         try {
-            const isoDateString = selectedDate.toISOString()
-            setEventDateTime(isoDateString)
-            setValidDateTime(true)
+            const isoDateString = selectedDate.toISOString();
+            setEventDateTime(isoDateString);
+            setValidDateTime(true);
         }
-        catch (error){
-            setValidDateTime(false)
-            console.log('invalid datetime')
+        catch (error) {
+            setValidDateTime(false);
+            console.log('invalid datetime');
         }
-    }
+    };
 
     const handleFileChange = (e) => {
-        const file = e.target.files[0]
+        const file = e.target.files[0];
         if (file) {
-            const extension = file.name.split('.').pop().toLowerCase()
+            const extension = file.name.split('.').pop().toLowerCase();
             if (extension === 'jpg' || extension === 'jpeg' || extension === 'png') {
-                setSelectedFile(file) 
+                setSelectedFile(file);
             } else {
-                setSelectedFile(null) 
-                alert("Only JPG, JPEG, or PNG files are allowed.")
+                setSelectedFile(null);
+                alert("Only JPG, JPEG, or PNG files are allowed.");
             }
         }
-    }
+    };
 
     return (
         <>
@@ -97,12 +112,20 @@ const AddEvent = ({ onClose }) => {
                         />
                         <button type="button" className="btn-upload-photo" onClick={() => document.getElementById('photoUpload').click()}>Upload Photo</button>
                         {selectedFile && <p>Selected File: {selectedFile.name}</p>}
+                        {submitted && (
+                            <>
+                                {(inName.trim() === "" || inLocation.trim() === "" || inExpectedCountOfMembers.trim() === "" || inPrice.trim() === "" || inInfo.trim() === "" || !validDateTime) && (
+                                    <p className="error-message">Vyplnte všetky požadované políčka</p>
+                                )}
+                            </>
+                        )}
+                        <p style={ {color: 'red', textAlign: 'center'}}>{notEverythingIsFilled}</p>
                         <button type="submit" className='submit-btn-create-event'>Submit</button>
                     </div>
                 </div>
             </form>
         </>
-    )
-}
+    );
+};
 
-export default AddEvent
+export default AddEvent;

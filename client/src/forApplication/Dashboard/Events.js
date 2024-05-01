@@ -14,7 +14,7 @@ const Events = () => {
 
 
 
-    console.log(allEventss)
+    //console.log(allEventss)
 
     const redirectToEvent = (eventId) => {
         navigate(`/event/${eventId}`);
@@ -62,40 +62,7 @@ const Events = () => {
 
     ]
     
-    const Groups = [
-        {
-            id: 1,
-            name: 'Crocodiles',
-            members: [1, 3, 4],
-            maxMembers: 5,
-            info: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi ea a, aliquam ratione quo voluptate.',
-            groupCreator: 1
-        },
-        {
-            id: 2,
-            name: 'Tigers',
-            members: [2, 4],
-            maxMembers: 6,
-            info: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi ea a, aliquam ratione quo voluptate.',
-            groupCreator: 2
-        },
-        {
-            id: 3,
-            name: 'Lions',
-            members: [1, 2, 3],
-            maxMembers: 4,
-            info: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi ea a, aliquam ratione quo voluptate.',
-            groupCreator: 3
-        },
-        {
-            id: 4,
-            name: 'Elephants',
-            members: [4, 5, 6],
-            maxMembers: 6,
-            info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac sagittis urna. Fusce euismod magna non dolor aliquet, nec hendrerit augue aliquet.',
-            groupCreator: 5
-        }
-    ]
+    const Groups = [] // toto tam nebudem dávať, bez toho to vyzerá lepšie
 
 
 

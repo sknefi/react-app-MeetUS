@@ -9,39 +9,68 @@ const EventProvider = ({ children }) => {
   const [loadObject, setLoadObject] = useState({
     state: "-",
     events: [],
-    
-  })
+  });
 
-  useEffect( () => {
-    getEventList()
-}, [])
+  useEffect(() => {
+    getEventList();
+  }, []);
 
   async function getEventList() {
     try {
-      setLoadObject((current) => ({ ...current, state: 'pending' }));
+      setLoadObject((current) => ({ ...current, state: "pending" }));
       const response = await fetch(`${serverInfo.gateway}/event/list`, {
-        method: "GET"
+        method: "GET",
       });
 
       if (response.status < 400) {
         const eventList = await response.json();
-        setLoadObject((current) => ({ ...current, state: 'ready', events: eventList }));
-        
-        return eventList
+        setLoadObject((current) => ({
+          ...current,
+          state: "ready",
+          events: eventList,
+        }));
+
+        return eventList;
       } else {
-        setLoadObject((current) => ({ ...current, state: 'error' }));
+        setLoadObject((current) => ({ ...current, state: "error" }));
         throw new Error("Invalid email or password");
       }
     } catch (error) {
-      setLoadObject((current) => ({ ...current, state: 'error' }));
+      setLoadObject((current) => ({ ...current, state: "error" }));
       console.error("Error logging in:", error.message);
     }
   }
 
+  async function createEvent(event) {
+    try {
+        setLoadObject((current) => ({ ...current, state: "pending" }));
+        const response = await fetch(`${serverInfo.gateway}/event/list`, {
+          method: "GET",
+        });
+  
+        if (response.status < 400) {
+          const eventList = await response.json();
+          setLoadObject((current) => ({
+            ...current,
+            state: "ready",
+            events: eventList,
+          }));
+  
+          return eventList;
+        } else {
+          setLoadObject((current) => ({ ...current, state: "error" }));
+          throw new Error("Invalid email or password");
+        }
+      } catch (error) {
+        setLoadObject((current) => ({ ...current, state: "error" }));
+        console.error("Error logging in:", error.message);
+      }
+  }
+
   const value = {
     state: loadObject.state,
-    allEventss: loadObject.events
-  }
+    allEventss: loadObject.events,
+  };
 
   return (
     <EventListContext.Provider value={value}>

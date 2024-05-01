@@ -9,6 +9,7 @@ import { LoggedUserContext } from '../../Technician/Contexts/LoggedUserContext'
 
 
 const Login = () => {
+
     const navigate = useNavigate()
     const { handlerMapForLogin  } = useContext(LoggedUserContext)
 
@@ -88,6 +89,7 @@ const Login = () => {
         </Button>
 
       </Form>
+
     </div>
   )
 }
