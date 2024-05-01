@@ -1,1 +1,11 @@
-{"name":"Art Exhibition","location":"Metropolitan Museum of Art, New York","expectedCountOfMembers":300,"price":10,"info":"Explore exquisite artworks at the renowned Metropolitan Museum of Art. Immerse yourself in the beauty of paintings, sculptures, and installations from around the world.","photo":"art-exhibition.jpg","dateTime":"2024-04-18T12:30:00.000Z","id":"244742865d7df6fdb2b2905c645ac142","listOfGroups":[]}
+{
+    "name": "Art Exhibition",
+    "location": "Metropolitan Museum of Art, New York",
+    "expectedCountOfMembers": 300,
+    "price": 10,
+    "info": "Explore exquisite artworks at the renowned Metropolitan Museum of Art. Immerse yourself in the beauty of paintings, sculptures, and installations from around the world.",
+    "photo": "art-exhibition.jpg",
+    "dateTime": "2024-04-18T12:30:00.000Z",
+    "id": "244742865d7df6fdb2b2905c645ac142",
+    "listOfGroups": []
+}

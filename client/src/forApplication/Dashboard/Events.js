@@ -8,7 +8,7 @@ import ModalCreateEvent from "../AddEventWebF/ModalCreateEvent.js"
 
 
 const Events = () => {
-    const { allEventss, } = useContext(EventListContext)
+    const { allEvents, } = useContext(EventListContext)
     const [events, setEvents] = useState()
     const navigate = useNavigate()
 
@@ -19,48 +19,6 @@ const Events = () => {
     const redirectToEvent = (eventId) => {
         navigate(`/event/${eventId}`);
     }
-
-
-    const allEvents = [
-        {
-            id:                     'a3cd3dbfab81719a8cdb9f783384ff86',
-            name:                   'Art Exhibiton',
-            listOfGroups:           [1, 2, 3],
-            dateTime:               new Date("2024-04-18T12:30:00Z"),
-            location:               "Praha 2",
-            price:                  '200 KČ',
-            info:                   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, reprehenderit ipsum aperiam sapiente voluptates dolores!',
-            expectedCountOfMembers: 300,
-            photo:                  null,
-
-        },
-
-        {
-            id:                     '2db13c923776be7d80993fbd4455dc4f',
-            name:                   'Jazz Night',
-            listOfGroups:           [3, 4],
-            dateTime:               new Date("2026-04-18T12:30:00Z"),
-            location:               "Praha 1",
-            price:                  '250 KČ',
-            info:                   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, reprehenderit ipsum aperiam sapiente voluptates dolores!',
-            expectedCountOfMembers: 500,
-            photo:                  null,
-
-        },
-
-        {
-            id:                     'fe7dfbdd8f5b2604708c09b36302949d',
-            name:                   'Summer Festival',
-            listOfGroups:           [1, 2, 3, 4],
-            dateTime:               new Date("2025-04-18T12:30:00Z"),
-            location:               "Šumava",
-            price:                  'FREE',
-            info:                   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, reprehenderit ipsum aperiam sapiente voluptates dolores!',
-            expectedCountOfMembers: 1000,
-            photo:                  null,
-        },
-
-    ]
     
     const Groups = [] // toto tam nebudem dávať, bez toho to vyzerá lepšie
 
@@ -132,7 +90,7 @@ const Events = () => {
     <div className='all-event-dashboard'>
         <ModalCreateEvent/>
 
-        { (allEventss.map(event =>
+        { (allEvents.map(event =>
             <div className='event' key={event.id} onClick={() => redirectToEvent(event.id)}>
                 
                 {leftSide(event)}
