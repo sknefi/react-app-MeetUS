@@ -56,29 +56,35 @@ const LoggedUserProvider = ({ children }) => {
 
   async function userRegistration(newUser) {
     try {
-      setLoadObject((current) => ({ ...current, state: 'pending' }))
-      //console.log(JSON.stringify(newUser))
+      setLoadObject((current) => ({ ...current, state: 'pending' }));
       const response = await fetch(`${serverInfo.gateway}/user/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newUser),
-      })
+      });
   
-      const registeredUser = await response.json()
       if (response.status < 400) {
-        setLoadObject((current) => ({ ...current, state: 'ready' }))
-
-        return registeredUser
-
+        const registeredUser = await response.json();
+        setLoadObject((current) => ({ ...current, state: 'ready' }));
+        return registeredUser;
       } else {
-        setLoadObject((current) => ({ ...current, state: 'error' }))
-        throw new Error("Failed to register user")
+        const responseBody = await response.json();
+        if (response.status === 400 && responseBody.code === "emailAlreadyExists") {
+          //console.log('chytil som chybu')
+          throw new Error("Email already exists");
+        } else {
+          setLoadObject((current) => ({ ...current, state: 'error' }));
+          throw new Error("Failed to register user");
+        }
       }
     } catch (error) {
-      setLoadObject((current) => ({ ...current, state: 'error' }))
-      console.error("Error registering user:", error.message)
+      setLoadObject((current) => ({ ...current, state: 'error' }));
+      console.error("Error registering user:", error.message);
     }
   }
+  
+  
+  
 
   const value = {
     loggedUser: loggedUser,
