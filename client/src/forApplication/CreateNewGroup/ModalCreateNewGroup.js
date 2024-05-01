@@ -37,6 +37,7 @@ export default function ModalCreateNewGroup() {
   const handleClose = () => setOpen(false)
 
   return (
+    // ak neexistuje user, alebo jeho ID sa nenachádza v databáze, skupina sa nevytvorí
     <div className="add-event-btn" style={{ marginLeft: "auto" }}>
       <Button onClick={isUserLogged() ? handleOpen : redirectToLogin}>
         Vytvoriť skupinu

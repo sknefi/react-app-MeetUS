@@ -1,1 +1,11 @@
-{"name":"Pokus3","location":"Praha 8","expectedCountOfMembers":250,"price":10,"info":" AKJNsbdjasnljdBAJLDBLJASBDLJsabla dk ajkd JABDjoa jdksajs djasb dja","dateTime":"2024-06-06T13:00:00.000Z","id":"9afeebb8963daa85c35af3baee922d78","listOfGroups":["77e84180b884b31636946af02eec6260","f1a5c10cce4550d94f8fc5e00d5cb7c7"]}
+{
+    "name": "Pokus3",
+    "location": "Praha 8",
+    "expectedCountOfMembers": 250,
+    "price": 10,
+    "info": " AKJNsbdjasnljdBAJLDBLJASBDLJsabla dk ajkd JABDjoa jdksajs djasb dja",
+    "dateTime": "2024-06-06T13:00:00.000Z",
+    "id": "9afeebb8963daa85c35af3baee922d78",
+    "listOfGroups": [
+    ]
+}

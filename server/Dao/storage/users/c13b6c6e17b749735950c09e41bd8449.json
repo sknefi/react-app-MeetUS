@@ -2,7 +2,7 @@
     "name": "John",
     "surname": "Doe",
     "email": "johndoe@example.com",
-    "password": "password123",
+    "password": "a",
     "igName": "johndoe_ig",
     "photo": "https://example.com/johndoe.jpg",
     "id": "c13b6c6e17b749735950c09e41bd8449",

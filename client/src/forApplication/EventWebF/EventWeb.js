@@ -34,15 +34,12 @@ const EventWeb = () => {
       <ModalCreateNewGroup />
 
       {event && eventGroups &&
-            eventGroups.map( (group) => {
+            eventGroups.map( (group, index) => {
               //console.log(group)
                 return <EventWebDiv
                           // v tomto momente ešte server nevytvoril ID pre skupinu
-                          key={group.name + group.info}
-                          groupName={group.name}
-                          groupLenMembers={group.members ? group.members.length : 1}
-                          groupMaxMembers={group.maxMembers}
-                          groupMembers={group.members}
+                          key={index}
+                          groupp={group}
                         />
             })
         }

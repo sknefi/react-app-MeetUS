@@ -1,7 +1,6 @@
 const path = require('path')
 const fs = require('fs')
 const crypto = require('crypto')
-const userDao = require('./user-dao.js')
 const eventDao = require('./event-dao.js');
 
 const pathToGroups = path.join(__dirname, 'storage', 'groups')
@@ -132,6 +131,8 @@ function list() {
 
 // used - Join group modal
 function getGroupUsers(listUsersIDs) {
+    const userDao = require('./user-dao.js')
+
     // group.members
     // [id1, id2, id3, id4, ...]
     

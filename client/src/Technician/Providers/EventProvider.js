@@ -155,13 +155,48 @@ function EventProvider({ children }) {
     }
   }
 
+  async function handleAddUserToGroup(userId, groupId) {
+    setLoadObject((current) => ({ ...current, state: "pending" }))
+    const sendData = {
+      'userID': userId,
+      'groupID': groupId
+    }
+
+    const response = await fetch(`${gateway}/group/addUserToGroup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(sendData),
+    })
+
+    const responseJson = await response.json()
+
+    if (response.status < 400) {
+      setLoadObject((current) => ({
+        ...current,
+        state: "ready",
+      }))
+
+      //setEventGroups((current) => ({...current, responseJson}))
+
+      return responseJson
+    } else {
+      setLoadObject((current) => ({
+        ...current,
+        state: "error",
+        error: responseJson.error,
+      }))
+      throw new Error(JSON.stringify(responseJson, null, 2))
+    }
+  }
   
 
   const value = {
     event: event,
     eventGroups: eventGroups,
     state: loadObject.state,
-    handlerMap: { handleGetEvent, handleGetEventGroups, createGroup, handleGetGroupUsers },
+    handlerMap: { handleGetEvent, handleGetEventGroups, createGroup, handleGetGroupUsers, handleAddUserToGroup },
   }
 
   return (

@@ -29,8 +29,5 @@ router.get('/list', (req, res) => {
     uListAbl(req, res)
 })
 
-router.post('/update', (req, res) => {
-    u
-})
 
 module.exports = router

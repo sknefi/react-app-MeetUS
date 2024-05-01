@@ -26,7 +26,6 @@ function ShowGroup(props) {
       })
   }, [])
 
-  {console.log(groupUsers)}
 
   return (
     <div className="d-flex justify-content-around zes">

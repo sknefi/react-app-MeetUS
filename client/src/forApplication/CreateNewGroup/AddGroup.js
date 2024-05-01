@@ -68,7 +68,7 @@ function AddGroup({ handleClose }) {
 
     const groupData = {
       name: groupName,
-      info: groupInfo,
+      info:groupInfo,
       maxMembers: unlimited ? 'Infinity' : maxMembers,
     }
 

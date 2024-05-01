@@ -23,7 +23,7 @@ function UserCard(props) {
                     </div>
 
                 </div>
-                <p className='user-ig-name'>{ props.igName }jjk</p>
+                <p className='user-ig-name'>@{ props.igName }</p>
 
             </Card.Body>
         </Card>

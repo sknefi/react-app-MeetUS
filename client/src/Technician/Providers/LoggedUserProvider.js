@@ -11,19 +11,45 @@ const LoggedUserProvider = ({ children }) => {
     state: ""
   })
 
-  const [loggedUser, setLoggedUser] = useState({
-    id: '034b8f67ceb463dd032731ead323b5b9',
-    name: 'Emily',
-    surname: 'Williams',
-    rola: '2',
-    email: 'emily@example.com',
-    password: '123',
-    streak: 5,
-    rating: 9,
-    ratedUsers: [ '1', '2', '3' ],
-    igName: 'emily_williams',
-    photo: 'emily.jpg'
-  })
+  const [loggedUser, setLoggedUser] = useState(
+    // {
+  //   name: 'admin',
+  //   surname: 'admin',
+  //   email: 'admin@admin.admin',
+  //   password: 'a',
+  //   igName: 'admin',
+  //   id: '04f0ba2765c2fd8e89d604c0fb7f6bae',
+  //   streak: 89,
+  //   rating: 100,
+  //   rola: 2
+  // }
+
+  // {
+  //   id: '8b2b893648d34fcc16a46abaf5ed3639',
+  //   name: 'David',
+  //   surname: 'Brown',
+  //   rola: '1',
+  //   email: 'david@example.com',
+  //   password: 'david123',
+  //   streak: 2,
+  //   rating: 5,
+  //   igName: 'david_brown',
+  //   photo: 'david.jpg'
+  // }
+
+  {
+    name: 'John',
+    surname: 'Doe',
+    email: 'johndoe@example.com',
+    password: 'a',
+    igName: 'johndoe_ig',
+    photo: 'a',
+    id: 'c13b6c6e17b749735950c09e41bd8449',
+    streak: 0,
+    rating: 0,
+    rola: 1
+  }
+  )
 
   const logout = () => {
     setLoggedUser( {} )

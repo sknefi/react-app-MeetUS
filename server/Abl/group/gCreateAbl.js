@@ -57,6 +57,8 @@ async function eCreateAbl(req, res) {
             return
         }
 
+        console.log('all ok')
+
         const newGroup = groupDao.create(reqParams.group, reqParams.eventID, reqParams.userID)
 
         res.json(newGroup)
