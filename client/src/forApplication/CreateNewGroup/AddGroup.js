@@ -5,7 +5,7 @@ import { LoggedUserContext } from '../../Technician/Contexts/LoggedUserContext'
 import { EventContext } from '../../Technician/Contexts/EventContext'
 
 function AddGroup({ handleClose }) {
-  const { loggedUser } = useContext(LoggedUserContext)
+  const { loggedUser, handlerMapForUserUpdate } = useContext(LoggedUserContext)
   const { handlerMap } = useContext(EventContext)
   
   //console.log(loggedUser)
@@ -75,6 +75,8 @@ function AddGroup({ handleClose }) {
     const eventId = getEventFromUrl()
 
     handlerMap.createGroup(groupData, eventId, loggedUser.id)
+    handlerMapForUserUpdate.handleInkrementUserStreak() 
+
     handleClose()
   }
 

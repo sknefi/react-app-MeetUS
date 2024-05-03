@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { useLocation, useSearchParams, useNavigate } from "react-router-dom"
 import InfoAboutServer from "../InfoAboutServer"
 
 import { EventContext } from "../Contexts/EventContext"
 
 function EventProvider({ children }) {
+
   const serverInfo = InfoAboutServer()
   const gateway = serverInfo.gateway
 
@@ -143,7 +144,7 @@ function EventProvider({ children }) {
           error:  null
         }))
 
-        setEventGroups((current) => [...current, group]) 
+        setEventGroups((current) => [...current, group])
 
         return createdGroup
       } else {

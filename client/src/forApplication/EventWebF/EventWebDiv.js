@@ -16,7 +16,7 @@ const EventWebDiv = (props) => {
   const [group, setGroup] = useState(groupp)
 
   const { handlerMap } = useContext(EventContext)
-  const { loggedUser } = useContext(LoggedUserContext)
+  const { loggedUser, handlerMapForUserUpdate } = useContext(LoggedUserContext)
 
 
   const navigate = useNavigate()
@@ -47,6 +47,8 @@ const EventWebDiv = (props) => {
         ...current,
         members: [...current.members, loggedUser.id],
       }))
+
+      handlerMapForUserUpdate.handleInkrementUserStreak()
       setModalOpen(false)
     } else {
       setModalOpen(false)
