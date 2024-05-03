@@ -1,99 +1,160 @@
-import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import './Navbar.css'
-import LogoutModal from '../RegistrationAndLogin/LogoutModal' 
+import "./Navbar.css";
 
-import profilPhoto from '../images/profilPhoto.png'
-import ohnik from '../images/ohnik.png'
-import top from '../images/top.png'
-import group from '../images/group.png'
-import logo from '../images/logo.png'
-import { FaUser } from "react-icons/fa"
-import { FaFire } from "react-icons/fa"
-import { FaUserGroup } from "react-icons/fa6"
+import LogoutModal from "../RegistrationAndLogin/LogoutModal";
 
-import { LoggedUserContext } from '../../Technician/Contexts/LoggedUserContext'
+import profilPhoto from "../images/profilPhoto.png";
+import ohnik from "../images/ohnik.png";
+import top from "../images/top.png";
+import group from "../images/group.png";
+import logo from "../images/logo.png";
+import { FaUser } from "react-icons/fa";
+import { FaFire } from "react-icons/fa";
+import { FaUserGroup } from "react-icons/fa6";
+import { RiStarSFill } from "react-icons/ri";
+import { IoPersonSharp } from "react-icons/io5";
 
+import { LoggedUserContext } from "../../Technician/Contexts/LoggedUserContext";
+import { ColorPalletContext } from "../../Technician/Contexts/ColorPalletContext";
 
 const Navbar = () => {
-    const { loggedUser, handlerMapForLogin } = useContext(LoggedUserContext)
-    const isUserLoggedIn = Object.keys(loggedUser).length > 0
-    const [showLogoutModal, setShowLogoutModal] = useState(false)
+  const { colorPallet } = useContext(ColorPalletContext);
 
-    //console.log(loggedUser)
-    //console.log(isUserLoggedIn)
+  const { loggedUser, handlerMapForLogin } = useContext(LoggedUserContext);
+  const isUserLoggedIn = Object.keys(loggedUser).length > 0;
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-    const navigate = useNavigate()
+  //console.log(loggedUser)
+  //console.log(isUserLoggedIn)
 
-    const redirectToMain = () => {
-        navigate('/')
-    }
+  const navigate = useNavigate();
 
-    const redirectToUserGroups = (userId) => {
-        navigate(`/user-groups/${userId}`)
-    }
+  const redirectToMain = () => {
+    navigate("/");
+  };
 
-    const redirectToLogin = () => {
-        navigate('/login')
-    }
+  const redirectToUserGroups = (userId) => {
+    navigate(`/user-groups/${userId}`);
+  };
 
-    const redirectToRegistration = () => {
-        navigate('/registration')
-    }
+  const redirectToLogin = () => {
+    navigate("/login");
+  };
 
-    const handleLogout = () => {
-        setShowLogoutModal(false)
-        handlerMapForLogin.logout()
-        redirectToMain()
-    }
+  const redirectToRegistration = () => {
+    navigate("/registration");
+  };
 
-    const handleShow = () => {
-        setShowLogoutModal(true)
-    }
+  const handleLogout = () => {
+    setShowLogoutModal(false);
+    handlerMapForLogin.logout();
+    redirectToMain();
+  };
 
-    const handleClose = () => {
-        setShowLogoutModal(false)
-    }
+  const handleShowLogoutModal = () => {
+    setShowLogoutModal(true);
+  };
 
+  const handleClose = () => {
+    setShowLogoutModal(false);
+  };
 
-    return (
-    <div className='navbar'>
-        
-        <img className='left-navbar' src={logo} alt="Logo" onClick={redirectToMain} />
-        <div className="mid-navbar">
-            <img src={isUserLoggedIn ? loggedUser.photo : profilPhoto} alt="" className={ isUserLoggedIn ? 'user-profile-photo': 'profilPhoto' }/>
+  return (
+    <div
+      className="navbar"
+      style={{
+        borderBottom: `2px solid ${colorPallet.fourthcolor}`,
+        backgroundColor: colorPallet.secondarycolor,
+      }}
+    >
+      <img
+        className="left-navbar"
+        src={logo}
+        alt="Logo"
+        onClick={redirectToMain}
+      />
+      <div className="mid-navbar">
+        {isUserLoggedIn ? (
+          <img
+            src={loggedUser.photo}
+            alt=""
+            className={isUserLoggedIn ? "user-profile-photo" : "profilPhoto"}
+            style={{ border: `1px solid ${colorPallet.fourthcolor}` }}
+          />
+        ) : (
+          <IoPersonSharp
+            style={{ color: colorPallet.fourthcolor, fontSize: "7vh" }}
+          />
+        )}
 
-            <div className='icon-and-text'>
-                <FaFire className='ohnik-icon'/>
-                <p className='ohnik-text'> {isUserLoggedIn ? loggedUser.streak : 'x'}</p>
-            </div>
-            <div className="icon-and-text">
-                <img className='top-icon' src={top} alt="top" />
-                <p className="top-text">{isUserLoggedIn ? loggedUser.rating : 'x'}</p>
-            </div>
-            <FaUserGroup className='group-icon' onClick={() => isUserLoggedIn ? redirectToUserGroups(loggedUser.id) : redirectToLogin()}/>
+        <div className="icon-and-text">
+          <FaFire
+            className="ohnik-icon"
+            style={{ color: colorPallet.thirdcolor }}
+          />
+          <p className="ohnik-text" style={{ color: colorPallet.fourthcolor }}>
+            {isUserLoggedIn ? loggedUser.streak : "x"}
+          </p>
         </div>
-        
-        { isUserLoggedIn && 
-                <h3 className='right-navbar' onClick={handleShow}>Log out</h3>
-        }
+        <div className="icon-and-text">
+          <RiStarSFill
+            className="top-icon"
+            style={{ color: colorPallet.fifthcolor }}
+          />
+          <p className="top-text" style={{ color: colorPallet.fourthcolor }}>
+            {isUserLoggedIn ? loggedUser.rating : "x"}
+          </p>
+        </div>
+        <FaUserGroup
+          className="group-icon"
+          onClick={() =>
+            isUserLoggedIn
+              ? redirectToUserGroups(loggedUser.id)
+              : redirectToLogin()
+          }
+          style={{ color: colorPallet.sixthcolor }}
+        />
+      </div>
 
-        {! isUserLoggedIn && <div className='login-or-registration'>
-            <h3 className='right-navbar login-btn' onClick={redirectToLogin}>Login</h3>
-            <h3>/</h3>
-            <h3 className='right-navbar registration-btn' onClick={redirectToRegistration}>Registration</h3>
- 
-        </div>        
-        }
+      {isUserLoggedIn && (
+        <h3
+          className="right-navbar"
+          onClick={handleShowLogoutModal}
+          style={{ color: colorPallet.fourthcolor }}
+        >
+          Log out
+        </h3>
+      )}
 
-        <LogoutModal show={showLogoutModal} handleClose={handleClose} handleLogout={handleLogout} />
+      {!isUserLoggedIn && (
+        <div className="login-or-registration">
+          <h3
+            className="right-navbar login-btn"
+            onClick={redirectToLogin}
+            style={{ color: colorPallet.fourthcolor }}
+          >
+            Login
+          </h3>
+          <h3>/</h3>
+          <h3
+            className="right-navbar registration-btn"
+            onClick={redirectToRegistration}
+            style={{ color: colorPallet.fourthcolor }}
+          >
+            Registration
+          </h3>
+        </div>
+      )}
 
-
-
-
+      <LogoutModal
+        show={showLogoutModal}
+        handleClose={handleClose}
+        handleLogout={handleLogout}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

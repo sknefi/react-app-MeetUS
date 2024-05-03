@@ -1,24 +1,65 @@
-import React from 'react'
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
+import React, { useContext } from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+
+import { ColorPalletContext } from "../../Technician/Contexts/ColorPalletContext";
 
 const LogoutModal = ({ show, handleClose, handleLogout }) => {
-    return (
-        <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-                <Modal.Title>Potvrďte odhlásenie</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>Chcete sa naozaj odhlásiť?</Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                    Zrušiť
-                </Button>
-                <Button variant="danger" onClick={handleLogout}>
-                    Logout
-                </Button>
-            </Modal.Footer>
-        </Modal>
-    )
-}
+  const { colorPallet } = useContext(ColorPalletContext);
 
-export default LogoutModal
+  return (
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header
+        closeButton
+        style={{
+          backgroundColor: colorPallet.secondarycolor,
+          border: `2px solid ${colorPallet.fourthcolor}`,
+          borderBottom: '0',
+        }}
+      >
+        <Modal.Title style={{ color: colorPallet.fourthcolor }}>
+          Potvrďte odhlásenie
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body
+        style={{
+          color: colorPallet.fourthcolor,
+          backgroundColor: colorPallet.secondarycolor,
+          border: `2px solid ${colorPallet.fourthcolor}`,
+        }}
+      >
+        Chcete sa naozaj odhlásiť?
+      </Modal.Body>
+      <Modal.Footer
+        style={{
+          backgroundColor: colorPallet.secondarycolor,
+          border: `2px solid ${colorPallet.fourthcolor}`,
+          borderTop: 0
+
+        }}
+      >
+        <Button
+          variant="secondary"
+          onClick={handleClose}
+          style={{
+            background: colorPallet.sixthcolor,
+            border: `2px solid ${colorPallet.fourthcolor}`,
+          }}
+        >
+          <p style={{ color: colorPallet.secondarycolor }}>Zrušiť</p>
+        </Button>
+        <Button
+          variant="danger"
+          onClick={handleLogout}
+          style={{
+            border: `2px solid ${colorPallet.fourthcolor}`,
+          }}
+        >
+          <p style={{ color: colorPallet.secondarycolor }}>Logout</p>
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+};
+
+export default LogoutModal;

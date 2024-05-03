@@ -13,9 +13,10 @@ code {
     monospace;
 }
 
-.main-div {
+
+
+.all-components {
   display: flex;
   flex-direction: column;
-  width: 90vw;
-  margin: 0 auto;
+  margin: 0 5vw;
 }
