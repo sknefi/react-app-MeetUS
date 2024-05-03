@@ -18,7 +18,7 @@ router.post('/create', (req, res) => {
 
 
 // DONE
-router.get('/get', (req, res) => {
+router.post('/get', (req, res) => {
     gGetAbl(req, res)
 })
 
@@ -29,7 +29,7 @@ router.get('/list', (req, res) => {
 })
 
 // DONE
-router.get('/getUserGroups', (req, res) => {
+router.post('/getUserGroups', (req, res) => {
     gGetUserGroupsAbl(req, res)
 })
 

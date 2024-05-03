@@ -1,20 +1,20 @@
-import React from "react"
-import "bootstrap/dist/css/bootstrap.min.css"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { AllInfoProvider } from "./Technician/Contexts/AllContext.js"
+import { AllInfoProvider } from "./Technician/Contexts/AllContext.js";
 
-import Events from "./forApplication/Dashboard/Events.js"
-import Navbar from "./forApplication/NavbarF/Navbar.js"
-import EventWeb from "./forApplication/EventWebF/EventWeb.js"
-import UserGroups from "./forApplication/UserGroupsF/UserGroups.js"
-import Registration from "./forApplication/RegistrationAndLogin/Registration.js"
-import Login from "./forApplication/RegistrationAndLogin/Login.js"
+import Events from "./forApplication/Dashboard/Events.js";
+import Navbar from "./forApplication/NavbarF/Navbar.js";
+import EventWeb from "./forApplication/EventWebF/EventWeb.js";
+import UserGroups from "./forApplication/UserGroupsF/UserGroups.js";
+import Registration from "./forApplication/RegistrationAndLogin/Registration.js";
+import Login from "./forApplication/RegistrationAndLogin/Login.js";
 
-import EventListProvider from "./Technician/Providers/EventListProvider.js"
-import GroupListProvider from "./Technician/Providers/GroupListProvider.js"
-import EventProvider from "./Technician/Providers/EventProvider.js"
-import LoggedUserProvider from "./Technician/Providers/LoggedUserProvider.js"
+import EventListProvider from "./Technician/Providers/EventListProvider.js";
+import EventProvider from "./Technician/Providers/EventProvider.js";
+import LoggedUserProvider from "./Technician/Providers/LoggedUserProvider.js";
+import GroupProvider from "./Technician/Providers/GroupProvider.js";
 
 const App = () => {
   return (
@@ -48,7 +48,10 @@ const App = () => {
               path="user-groups/:id"
               element={
                 // id usera
-                <UserGroups />
+
+                <GroupProvider>
+                  <UserGroups />
+                </GroupProvider>
               }
             />
 
@@ -59,7 +62,7 @@ const App = () => {
         </BrowserRouter>
       </LoggedUserProvider>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

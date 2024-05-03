@@ -53,6 +53,8 @@ const LoggedUserProvider = ({ children }) => {
   // {}
   )
 
+  const [userGroups, setUserGroups] = useState([])
+
   const logout = () => {
     setLoggedUser( {} )
   }
@@ -156,15 +158,48 @@ const LoggedUserProvider = ({ children }) => {
     }
   }
   
+  async function getUserGroups() {
+    setLoadObject((current) => ({ ...current, state: "pending" }))
+    
+    console.log(`${serverInfo.gateway}/group/getUserGroups`)
+
+    const bodyToSend = {
+      "id": loggedUser.id
+    }
+
+    const response = await fetch(`${serverInfo.gateway}/group/getUserGroups`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(bodyToSend),
+    })
+
+
+    const responseJson = await response.json()
+    if (response.status < 400) {
+      setLoadObject((current) => ({ ...current, state: "ready" }))
+      setUserGroups(responseJson)
+
+      return responseJson
+    } else {
+      setLoadObject((current) => ({
+        state: "error",
+        data: current.data,
+        error: responseJson.error,
+      }))
+      throw new Error(JSON.stringify(responseJson, null, 2))
+    }
+  }
   
   
 
   const value = {
-    loggedUser: loggedUser,
     state: loadObject.state,
+    loggedUser: loggedUser,
+    //userGroups: userGroups,
     handlerMapForLogin: { logout, userIsLoggingIn, findUserInDatabase },
     handlerMapForRegistration: { userRegistration },
-    handlerMapForUserUpdate: { handleInkrementUserStreak }
+    handlerMapForUserUpdate: { handleInkrementUserStreak },
+    handlerMapForUserGroups: { getUserGroups }
   }
 
   return (
