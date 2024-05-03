@@ -80,10 +80,32 @@ function isUserInDatabase(email, password) {
     return findUser ? findUser : {}
 }
 
+// used - Navbar
+function inkrementUserStreak(userID) {
+    try {
+        const pathToUser = path.join(pathToUsers, `${userID}.json`)
+        const user = get(userID)
+
+        if (!user) { return null }
+
+        user.streak += 1
+        const userData = JSON.stringify(user)
+
+        fs.writeFileSync(pathToUser, userData)
+        return user
+    }
+    catch (error) {
+        throw { code: "failedtoInkrementUserStreak", message: error.message };
+    }
+
+}
+
+//console.log(inkrementUserStreak('e079bfa26dde23b5390ed770143354eb'))
 
 module.exports = {
     get,
     create,
     list,
     isUserInDatabase,
+    inkrementUserStreak,
 }

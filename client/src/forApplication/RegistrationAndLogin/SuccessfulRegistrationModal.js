@@ -8,7 +8,8 @@ function SuccessfulRegistrationModal(props) {
         <Modal.Title>Úspešne vytvorený účet</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>{props.name}, vítaj na našej stránke.</p>
+        <p> <b>{props.name}</b>, vítaj na našej stránke.</p>
+        <br />
         <p>Za pár sekúnd budete presmerovaný na prihlasovaciu stránku</p>
       </Modal.Body>
       <Modal.Footer>

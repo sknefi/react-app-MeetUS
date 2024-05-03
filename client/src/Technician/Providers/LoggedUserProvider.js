@@ -12,17 +12,17 @@ const LoggedUserProvider = ({ children }) => {
   })
 
   const [loggedUser, setLoggedUser] = useState(
-    // {
-  //   name: 'admin',
-  //   surname: 'admin',
-  //   email: 'admin@admin.admin',
-  //   password: 'a',
-  //   igName: 'admin',
-  //   id: '04f0ba2765c2fd8e89d604c0fb7f6bae',
-  //   streak: 89,
-  //   rating: 100,
-  //   rola: 2
-  // }
+    {
+    name: 'admin',
+    surname: 'admin',
+    email: 'admin@admin.admin',
+    password: 'a',
+    igName: 'admin',
+    id: '04f0ba2765c2fd8e89d604c0fb7f6bae',
+    streak: 89,
+    rating: 100,
+    rola: 2
+  }
 
   // {
   //   id: '8b2b893648d34fcc16a46abaf5ed3639',
@@ -37,18 +37,20 @@ const LoggedUserProvider = ({ children }) => {
   //   photo: 'david.jpg'
   // }
 
-  {
-    name: 'John',
-    surname: 'Doe',
-    email: 'johndoe@example.com',
-    password: 'a',
-    igName: 'johndoe_ig',
-    photo: 'a',
-    id: 'c13b6c6e17b749735950c09e41bd8449',
-    streak: 0,
-    rating: 0,
-    rola: 1
-  }
+  // {
+  //   name: 'John',
+  //   surname: 'Doe',
+  //   email: 'johndoe@example.com',
+  //   password: 'a',
+  //   igName: 'johndoe_ig',
+  //   photo: 'a',
+  //   id: 'c13b6c6e17b749735950c09e41bd8449',
+  //   streak: 0,
+  //   rating: 0,
+  //   rola: 1
+  // }
+  
+  // {}
   )
 
   const logout = () => {

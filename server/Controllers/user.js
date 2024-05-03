@@ -5,6 +5,7 @@ const uGetAbl = require('../Abl/user/uGetAbl')
 const uListAbl = require('../Abl/user/uListAbl')
 const uIsUserInDatabase = require('../Abl/user/uIsUserInDatabase')
 const uCreateAbl = require('../Abl/user/uCreateAbl')
+const uInkrementUserStreak = require('../Abl/user/uInkrementUserStreak');
 
 /* /user */
 
@@ -27,6 +28,11 @@ router.post('/exists', (req, res) => {
 // DONE
 router.get('/list', (req, res) => {
     uListAbl(req, res)
+})
+
+// DONE
+router.post('/inkrementUserStreak', (req, res) => {
+    uInkrementUserStreak(req, res)
 })
 
 
