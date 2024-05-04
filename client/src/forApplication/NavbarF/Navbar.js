@@ -114,7 +114,7 @@ const Navbar = () => {
               ? redirectToUserGroups(loggedUser.id)
               : redirectToLogin()
           }
-          style={{ color: colorPallet.sixthcolor }}
+          style={{ color: colorPallet.fourthcolor }}
         />
       </div>
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -13,13 +13,15 @@ import EventListProvider from "./Technician/Providers/EventListProvider.js";
 import EventProvider from "./Technician/Providers/EventProvider.js";
 import LoggedUserProvider from "./Technician/Providers/LoggedUserProvider.js";
 import GroupProvider from "./Technician/Providers/GroupProvider.js";
-import ColorPalletProvider from "./Technician/Providers/ColorPalletProvider.js";
 
+import { ColorPalletContext } from "./Technician/Contexts/ColorPalletContext.js";
 
 const App = () => {
+  const { colorPallet } = useContext(ColorPalletContext)
+  
+
   return (
-    <div className="main-div">
-      <ColorPalletProvider>
+    <div className="main-div" style={ {backgroundColor: colorPallet.secondarycolor, minHeight: '100vh'}}>
         <div className="all-components">
           <LoggedUserProvider>
             <BrowserRouter>
@@ -63,7 +65,6 @@ const App = () => {
             </BrowserRouter>
           </LoggedUserProvider>
         </div>
-      </ColorPalletProvider>
     </div>
   );
 };
