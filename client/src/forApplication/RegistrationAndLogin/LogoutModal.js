@@ -13,7 +13,7 @@ const LogoutModal = ({ show, handleClose, handleLogout }) => {
         closeButton
         style={{
           backgroundColor: colorPallet.secondarycolor,
-          border: `2px solid ${colorPallet.fourthcolor}`,
+          border: `.5px solid ${colorPallet.fourthcolor}`,
           borderBottom: '0',
         }}
       >
@@ -25,7 +25,7 @@ const LogoutModal = ({ show, handleClose, handleLogout }) => {
         style={{
           color: colorPallet.fourthcolor,
           backgroundColor: colorPallet.secondarycolor,
-          border: `2px solid ${colorPallet.fourthcolor}`,
+          border: `.5px solid ${colorPallet.fourthcolor}`,
         }}
       >
         Chcete sa naozaj odhlásiť?
@@ -33,7 +33,7 @@ const LogoutModal = ({ show, handleClose, handleLogout }) => {
       <Modal.Footer
         style={{
           backgroundColor: colorPallet.secondarycolor,
-          border: `2px solid ${colorPallet.fourthcolor}`,
+          border: `.5px solid ${colorPallet.fourthcolor}`,
           borderTop: 0
 
         }}
@@ -43,19 +43,19 @@ const LogoutModal = ({ show, handleClose, handleLogout }) => {
           onClick={handleClose}
           style={{
             background: colorPallet.sixthcolor,
-            border: `2px solid ${colorPallet.fourthcolor}`,
+            border: `.5px solid ${colorPallet.fourthcolor}`,
           }}
         >
-          <p style={{ color: colorPallet.secondarycolor }}>Zrušiť</p>
+          <p style={{ color: 'white' }}>Zrušiť</p>
         </Button>
         <Button
           variant="danger"
           onClick={handleLogout}
           style={{
-            border: `2px solid ${colorPallet.fourthcolor}`,
+            border: `.5px solid ${colorPallet.fourthcolor}`,
           }}
         >
-          <p style={{ color: colorPallet.secondarycolor }}>Logout</p>
+          <p style={{ color: 'white' }}>Logout</p>
         </Button>
       </Modal.Footer>
     </Modal>

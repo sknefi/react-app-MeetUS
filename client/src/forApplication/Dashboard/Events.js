@@ -13,6 +13,8 @@ const Events = () => {
   const { allEvents } = useContext(EventListContext)
   const { loggedUser } = useContext(LoggedUserContext)
 
+
+  
   return (
     <div className="all-event-dashboard">
       {loggedUser && loggedUser.rola === 2 && <ModalCreateEvent />}

@@ -15,8 +15,7 @@ p {
     flex-direction: row;
     align-items: center;
 
-    border: 2px solid #424242;
-    border-radius: 5px;
+    border-radius: 20px;
 
     cursor: pointer;
 

@@ -38,7 +38,7 @@ const EventDiv = (props) => {
 
   function leftSide(event) {
     return (
-      <div className="left-side" >
+      <div className="left-side" style={ {borderRight: `2px solid ${colorPallet.maincolor}`}} >
         <div className="left-up">
           <h2 className="event-name" style={ {color: `${colorPallet.fourthcolor}`}}>{event.name}</h2>
           <div className="left-up-right">
@@ -62,13 +62,24 @@ const EventDiv = (props) => {
     )
   }
 
+  function isDatetimePassed(datetimeString) {
+    const givenDate = new Date(datetimeString)
+
+    const currentDate = new Date();
+
+    return givenDate < currentDate;
+}
+
+  const dateTimePassed = isDatetimePassed(event.dateTime)
+
   return (
-    <div className="all-event-dashboard">
+    <div className="event-div">
       <div
         className="event"
         key={event.id}
         onClick={() => redirectToEvent(event.id)}
-        style={ {border: `2px solid ${colorPallet.maincolor}`}}
+        style={ {border: `2px solid ${colorPallet.maincolor}`, backgroundColor: dateTimePassed ? colorPallet.thirdcolor : 'inherit'}}
+
       >
         {leftSide(event)}
         {rightSide(event)}

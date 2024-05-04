@@ -25,7 +25,7 @@ const ColorPalletProvider = ({ children }) => {
   };
 
   return (
-    <ColorPalletContext.Provider value={value}>
+    <ColorPalletContext.Provider value={value1}>
       {children}
     </ColorPalletContext.Provider>
   );

@@ -13,11 +13,12 @@ p {
     font-size: 1.2rem;
 }
 
-.all-event-dashboard {
+.event-div {
+    margin-bottom: 2vh;
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
+
 }
+
 
 .event {
     margin-bottom: 5px;
@@ -32,8 +33,6 @@ p {
     flex: 9;
     display: flex;
     flex-direction: column;
-    border-right: 2px solid black;
-
 }
 
 .left-up {

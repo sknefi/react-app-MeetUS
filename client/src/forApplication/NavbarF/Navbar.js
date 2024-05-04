@@ -6,9 +6,6 @@ import "./Navbar.css";
 import LogoutModal from "../RegistrationAndLogin/LogoutModal";
 
 import profilPhoto from "../images/profilPhoto.png";
-import ohnik from "../images/ohnik.png";
-import top from "../images/top.png";
-import group from "../images/group.png";
 import logo from "../images/logo.png";
 import { FaUser } from "react-icons/fa";
 import { FaFire } from "react-icons/fa";
@@ -70,7 +67,7 @@ const Navbar = () => {
       }}
     >
       <img
-        className="left-navbar"
+        className="left-navbar logo"
         src={logo}
         alt="Logo"
         onClick={redirectToMain}
@@ -124,7 +121,7 @@ const Navbar = () => {
           onClick={handleShowLogoutModal}
           style={{ color: colorPallet.fourthcolor }}
         >
-          Log out
+          Logout
         </h3>
       )}
 
@@ -137,7 +134,7 @@ const Navbar = () => {
           >
             Login
           </h3>
-          <h3>/</h3>
+          <h3 style={{ color: colorPallet.fourthcolor }}>/</h3>
           <h3
             className="right-navbar registration-btn"
             onClick={redirectToRegistration}

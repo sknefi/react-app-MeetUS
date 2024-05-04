@@ -1,11 +1,12 @@
-import React, { useContext } from "react"
-import Box from "@mui/material/Box"
-import Button from "@mui/material/Button"
-import Modal from "@mui/material/Modal"
-import AddGroup from "./AddGroup"
-import { useNavigate } from "react-router-dom"
+import React, { useContext } from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
+import AddGroup from "./AddGroup";
+import { useNavigate } from "react-router-dom";
 
-import { LoggedUserContext } from "../../Technician/Contexts/LoggedUserContext"
+import { LoggedUserContext } from "../../Technician/Contexts/LoggedUserContext";
+import { ColorPalletContext } from "../../Technician/Contexts/ColorPalletContext";
 
 const style = {
   position: "absolute",
@@ -17,29 +18,40 @@ const style = {
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
-}
+};
 
 export default function ModalCreateNewGroup() {
-  const { loggedUser } = useContext(LoggedUserContext)
+  const { colorPallet } = useContext(ColorPalletContext);
+  const { loggedUser } = useContext(LoggedUserContext);
 
-  const navigate = useNavigate()
-  
+  const navigate = useNavigate();
+
   const isUserLogged = () => {
-    return Object.keys(loggedUser).length !== 0
-  }
+    return Object.keys(loggedUser).length !== 0;
+  };
   const redirectToLogin = () => {
-    navigate("/login")
-  }
+    navigate("/login");
+  };
 
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
 
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     // ak neexistuje user, alebo jeho ID sa nenachádza v databáze, skupina sa nevytvorí
-    <div className="add-event-btn" style={{ marginLeft: "auto" }}>
-      <Button onClick={isUserLogged() ? handleOpen : redirectToLogin}>
+    <div className="add-event-btn" style={{ margin: "0 auto" }}>
+      <Button
+        onClick={isUserLogged() ? handleOpen : redirectToLogin}
+        style={{
+          backgroundColor: colorPallet.maincolor,
+          color: colorPallet.fourthcolor,
+          margin: "3vh",
+          fontSize: "1.5rem",
+          borderRadius: '10px',
+          border: `2px solid ${colorPallet.fourthcolor}`
+        }}
+      >
         Vytvoriť skupinu
       </Button>
       <Modal
@@ -48,10 +60,17 @@ export default function ModalCreateNewGroup() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box
+          sx={style}
+          style={{
+            backgroundColor: colorPallet.secondarycolor,
+            border: `.5px solid ${colorPallet.fourthcolor}`,
+            borderRadius: "20px",
+          }}
+        >
           <AddGroup handleClose={handleClose} />
         </Box>
       </Modal>
     </div>
-  )
+  );
 }

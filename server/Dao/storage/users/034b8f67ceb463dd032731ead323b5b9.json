@@ -1,12 +1,1 @@
-{
-    "id": "034b8f67ceb463dd032731ead323b5b9",
-    "name": "Emily",
-    "surname": "Williams",
-    "rola": "2",
-    "email": "emily@example.com",
-    "password": "123",
-    "streak": 5,
-    "rating": 9,
-    "igName": "emily_williams",
-    "photo": "emily.jpg"
-}
+{"id":"034b8f67ceb463dd032731ead323b5b9","name":"Emily","surname":"Williams","rola":"2","email":"emily@example.com","password":"123","streak":6,"rating":9,"igName":"emily_williams","photo":"emily.jpg"}

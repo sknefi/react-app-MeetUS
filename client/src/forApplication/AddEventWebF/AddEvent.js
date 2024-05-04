@@ -1,34 +1,35 @@
-import React, { useState, useContext } from "react"
-import "./AddEvent.css"
-import Calendar from "./Calendar.js"
-import Datetime from "react-datetime"
-import "react-datetime/css/react-datetime.css"
+import React, { useState, useContext } from "react";
+import "./AddEvent.css";
+import Calendar from "./Calendar.js";
+import Datetime from "react-datetime";
+import "react-datetime/css/react-datetime.css";
 
-import { EventListContext } from "../../Technician/Contexts/EventListContext"
+import { EventListContext } from "../../Technician/Contexts/EventListContext";
+import { ColorPalletContext } from "../../Technician/Contexts/ColorPalletContext";
 
 const AddEvent = ({ onClose }) => {
-    const { handleCreateEvent } = useContext( EventListContext )
+  const { colorPallet } = useContext(ColorPalletContext);
+  const { handleCreateEvent } = useContext(EventListContext);
 
+  const [inName, setInName] = useState("");
+  const [inLocation, setInLocation] = useState("");
+  const [inExpectedCountOfMembers, setInExpectedCountOfMembers] = useState("");
+  const [inPrice, setInPrice] = useState("");
+  const [inInfo, setInInfo] = useState("");
+  const [eventDateTime, setEventDateTime] = useState(null);
+  const [validDateTime, setValidDateTime] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [formData, setFormData] = useState({});
 
-  const [inName, setInName] = useState("")
-  const [inLocation, setInLocation] = useState("")
-  const [inExpectedCountOfMembers, setInExpectedCountOfMembers] = useState("")
-  const [inPrice, setInPrice] = useState("")
-  const [inInfo, setInInfo] = useState("")
-  const [eventDateTime, setEventDateTime] = useState(null)
-  const [validDateTime, setValidDateTime] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
-  const [selectedFile, setSelectedFile] = useState(null)
-  const [formData, setFormData] = useState({})
-
-  const [notEverythingIsFilled, setNotEverythingIsFilled] = useState()
+  const [notEverythingIsFilled, setNotEverythingIsFilled] = useState();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (isNaN(parseInt(inPrice)) || isNaN(parseInt(inExpectedCountOfMembers))) {
-      setNotEverythingIsFilled("Skontrolujte správnosť údajov")
-      return
+      setNotEverythingIsFilled("Skontrolujte správnosť údajov");
+      return;
     }
 
     if (
@@ -39,10 +40,10 @@ const AddEvent = ({ onClose }) => {
       inInfo.trim() !== "" &&
       validDateTime
     ) {
-      setSubmitted(true)
+      setSubmitted(true);
       // Convert price and expectedCountOfMembers to integers
-      const price = parseInt(inPrice)
-      const expectedCountOfMembers = parseInt(inExpectedCountOfMembers)
+      const price = parseInt(inPrice);
+      const expectedCountOfMembers = parseInt(inExpectedCountOfMembers);
       const formDataObject = {
         name: inName,
         location: inLocation,
@@ -51,47 +52,54 @@ const AddEvent = ({ onClose }) => {
         info: inInfo,
         dateTime: eventDateTime,
         //photo:
-      }
-      setFormData(formDataObject)
+      };
+      setFormData(formDataObject);
       //console.log(inName)
       //console.log(formDataObject)
 
-      handleCreateEvent(formDataObject)
-      onClose()
+      handleCreateEvent(formDataObject);
+      onClose();
     } else {
-      setNotEverythingIsFilled("Prosím vyplňte všetky požadované údaje")
+      setNotEverythingIsFilled("Prosím vyplňte všetky požadované údaje");
     }
-  }
+  };
 
   const handleDatetimeChange = (selectedDate) => {
     try {
-      const isoDateString = selectedDate.toISOString()
-      setEventDateTime(isoDateString)
-      setValidDateTime(true)
+      const isoDateString = selectedDate.toISOString();
+      setEventDateTime(isoDateString);
+      setValidDateTime(true);
     } catch (error) {
-      setValidDateTime(false)
-      console.log("invalid datetime")
+      setValidDateTime(false);
+      console.log("invalid datetime");
     }
-  }
+  };
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0]
+    const file = e.target.files[0];
     if (file) {
-      const extension = file.name.split(".").pop().toLowerCase()
+      const extension = file.name.split(".").pop().toLowerCase();
       if (extension === "jpg" || extension === "jpeg" || extension === "png") {
-        setSelectedFile(file)
+        setSelectedFile(file);
       } else {
-        setSelectedFile(null)
-        alert("Only JPG, JPEG, or PNG files are allowed.")
+        setSelectedFile(null);
+        alert("Only JPG, JPEG, or PNG files are allowed.");
       }
     }
-  }
+  };
 
   return (
     <>
-      <form className="all-add-event" onSubmit={handleSubmit}>
+      <form
+        className="all-add-event"
+        onSubmit={handleSubmit}
+        style={{ backgroundColor: colorPallet.secondarycolor }}
+      >
         <div className="left-add-event">
-          <label className="label-add-event">
+          <label
+            className="label-add-event"
+            style={{ color: colorPallet.fourthcolor }}
+          >
             Názov eventu:
             <input
               className="input-add-event"
@@ -101,7 +109,10 @@ const AddEvent = ({ onClose }) => {
             />
           </label>
 
-          <label className="label-add-event">
+          <label
+            className="label-add-event"
+            style={{ color: colorPallet.fourthcolor }}
+          >
             Lokácia:
             <input
               className="input-add-event"
@@ -111,7 +122,10 @@ const AddEvent = ({ onClose }) => {
             />
           </label>
 
-          <label className="label-add-event">
+          <label
+            className="label-add-event"
+            style={{ color: colorPallet.fourthcolor }}
+          >
             Predpokládaný počet účastníkov:
             <input
               className="input-add-event half-input"
@@ -121,7 +135,10 @@ const AddEvent = ({ onClose }) => {
             />
           </label>
 
-          <label className="label-add-event">
+          <label
+            className="label-add-event"
+            style={{ color: colorPallet.fourthcolor }}
+          >
             Cena vstupenky:
             <input
               className="input-add-event half-input"
@@ -132,7 +149,10 @@ const AddEvent = ({ onClose }) => {
           </label>
         </div>
         <div className="right-add-event">
-          <label className="label-add-event">
+          <label
+            className="label-add-event"
+            style={{ color: colorPallet.fourthcolor }}
+          >
             Informácie o evente:
             <textarea
               className="input-add-event custom-text-area"
@@ -142,15 +162,19 @@ const AddEvent = ({ onClose }) => {
             />
           </label>
           <div className="btn-and-date-time">
-            <p className="label-add-event date-time-text">
+            <p
+              className="label-add-event date-time-text"
+              style={{ color: colorPallet.fourthcolor }}
+            >
               Zadajte dátum a čas eventu
             </p>
             <Datetime onChange={handleDatetimeChange} />
             <label
               htmlFor="photoUpload"
               className="label-add-event smaller-text"
+              style={{ color: colorPallet.fourthcolor }}
             >
-              Upload a photo (JPG, JPEG, PNG)
+              Nahrajte fotku (JPG, JPEG, PNG)
             </label>
             <input
               type="file"
@@ -184,14 +208,24 @@ const AddEvent = ({ onClose }) => {
             <p style={{ color: "red", textAlign: "center" }}>
               {notEverythingIsFilled}
             </p>
-            <button type="submit" className="submit-btn-create-event">
+            <button
+              type="submit"
+              className="submit-btn-create-event"
+              style={{
+                color: colorPallet.fourthcolor,
+                backgroundColor: colorPallet.maincolor,
+                border: `2px solid ${colorPallet.fourthcolor}`,
+                borderRadius: "10px",
+                fontSize: '1.5rem'
+              }}
+            >
               Submit
             </button>
           </div>
         </div>
       </form>
     </>
-  )
-}
+  );
+};
 
-export default AddEvent
+export default AddEvent;

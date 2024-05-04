@@ -62,8 +62,8 @@ const EventProvider = ({ children }) => {
           state: "ready",
           events: [...current.events, createdEvent], // Add the created event to the events array
         }))
-        console.log(loadObject)
-        console.log(event)
+        //console.log(loadObject)
+        //console.log(event)
         return createdEvent
       } else {
         setLoadObject((current) => ({ ...current, state: "error" }))

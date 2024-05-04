@@ -8,6 +8,7 @@ import EventWeb from "./forApplication/EventWebF/EventWeb.js";
 import UserGroups from "./forApplication/UserGroupsF/UserGroups.js";
 import Registration from "./forApplication/RegistrationAndLogin/Registration.js";
 import Login from "./forApplication/RegistrationAndLogin/Login.js";
+import Footer from "./forApplication/FooterF/Footer.js";
 
 import EventListProvider from "./Technician/Providers/EventListProvider.js";
 import EventProvider from "./Technician/Providers/EventProvider.js";
@@ -18,11 +19,10 @@ import { ColorPalletContext } from "./Technician/Contexts/ColorPalletContext.js"
 
 const App = () => {
   const { colorPallet } = useContext(ColorPalletContext)
-  
 
   return (
     <div className="main-div" style={ {backgroundColor: colorPallet.secondarycolor, minHeight: '100vh'}}>
-        <div className="all-components">
+        <div className="all-components" style={ {minHeight: '96vh'}}>
           <LoggedUserProvider>
             <BrowserRouter>
               <Navbar />
@@ -65,6 +65,8 @@ const App = () => {
             </BrowserRouter>
           </LoggedUserProvider>
         </div>
+
+        <Footer/>
     </div>
   );
 };

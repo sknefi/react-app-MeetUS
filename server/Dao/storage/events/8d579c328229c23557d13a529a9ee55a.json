@@ -1,1 +1,13 @@
-{"name":"Cultural Festival","location":"Tokyo Cultural Center, Tokyo","expectedCountOfMembers":700,"price":30,"info":"Immerse yourself in the rich culture of Japan at our Cultural Festival in the Tokyo Cultural Center. Experience traditional music, dance, cuisine, and art exhibits showcasing Japan's heritage and diversity.","photo":"cultural-festival.jpg","dateTime":"2028-04-18T12:30:00.000Z","id":"8d579c328229c23557d13a529a9ee55a","listOfGroups":["799c1e42203eb1bd14687fc21c64f463"]}
+{
+    "name": "Cultural Festival",
+    "location": "Tokyo Cultural Center, Tokyo",
+    "expectedCountOfMembers": 700,
+    "price": 30,
+    "info": "Immerse yourself in the rich culture of Japan at our Cultural Festival in the Tokyo Cultural Center. Experience traditional music, dance, cuisine, and art exhibits showcasing Japan's heritage and diversity.",
+    "photo": "cultural-festival.jpg",
+    "dateTime": "2028-04-18T12:30:00.000Z",
+    "id": "8d579c328229c23557d13a529a9ee55a",
+    "listOfGroups": [
+        "799c1e42203eb1bd14687fc21c64f463"
+    ]
+}

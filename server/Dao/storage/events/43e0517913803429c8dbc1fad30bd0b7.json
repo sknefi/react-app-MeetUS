@@ -1,1 +1,23 @@
-{"name":"Jazz Night","location":"Blue Note Jazz Club, New York","expectedCountOfMembers":500,"price":300,"info":"Experience an enchanting evening of jazz music at the iconic Blue Note Jazz Club. Join us for a night filled with soulful melodies and captivating performances!","photo":"jazz-night.jpg","dateTime":"2024-04-12T13:45:30.000Z","id":"43e0517913803429c8dbc1fad30bd0b7","listOfGroups":["ddf0cada711e5697d115718da6db9908","087a0902fdbdeee06ac15ec1fcc03c19","483c82b578cb98ec344249eb50c86f6e","72fb54df69ff9ba91be34f22b13ffbfd","1764a37d6a9f0fc649f68512d341d90f","0dbde71f8b4ad8c652b9cd8724558da0","af08b2674c4d7f9ce75489cda476ac97","294c0456adbe4f2055361d56380de721","7a7abc948646b4f05a70465de9f3592a","118a836254182858bdf483dd6b7268c6","36bee1b51f5eed0ad2b4b56fa00ac0e5"]}
+{
+    "name": "Jazz Night",
+    "location": "Blue Note Jazz Club, New York",
+    "expectedCountOfMembers": 500,
+    "price": 300,
+    "info": "Experience an enchanting evening of jazz music at the iconic Blue Note Jazz Club. Join us for a night filled with soulful melodies and captivating performances!",
+    "photo": "jazz-night.jpg",
+    "dateTime": "2027-04-12T13:45:30.000Z",
+    "id": "43e0517913803429c8dbc1fad30bd0b7",
+    "listOfGroups": [
+        "ddf0cada711e5697d115718da6db9908",
+        "087a0902fdbdeee06ac15ec1fcc03c19",
+        "483c82b578cb98ec344249eb50c86f6e",
+        "72fb54df69ff9ba91be34f22b13ffbfd",
+        "1764a37d6a9f0fc649f68512d341d90f",
+        "0dbde71f8b4ad8c652b9cd8724558da0",
+        "af08b2674c4d7f9ce75489cda476ac97",
+        "294c0456adbe4f2055361d56380de721",
+        "7a7abc948646b4f05a70465de9f3592a",
+        "118a836254182858bdf483dd6b7268c6",
+        "36bee1b51f5eed0ad2b4b56fa00ac0e5"
+    ]
+}
