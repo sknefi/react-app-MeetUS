@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 
-import "./EventWebDiv.css"
+import "./EventGroupDiv.css"
 import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
 import ShowGroup from "../GroupInfo/ShowGroup"
@@ -11,7 +11,7 @@ import { LoggedUserContext } from "../../Technician/Contexts/LoggedUserContext"
 
 import vlada from "../images/userPhotos/vlada.jpg"
 
-const EventWebDiv = (props) => {
+const EventGroupDiv = (props) => {
   const { groupp } = props
   const [group, setGroup] = useState(groupp)
 
@@ -109,4 +109,4 @@ const EventWebDiv = (props) => {
   )
 }
 
-export default EventWebDiv
+export default EventGroupDiv

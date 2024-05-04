@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react" // Import useEffe
 import "./EventWeb.css"
 import party from "../images/party.jpeg"
 
-import EventWebDiv from "./EventWebDiv"
+import EventGroupDiv from "./EventGroupDiv"
 import ModalCreateNewGroup from "../CreateNewGroup/ModalCreateNewGroup"
 
 import { EventContext } from "../../Technician/Contexts/EventContext"
@@ -36,7 +36,7 @@ const EventWeb = () => {
       {event && eventGroups &&
             eventGroups.map( (group, index) => {
               //console.log(group)
-                return <EventWebDiv
+                return <EventGroupDiv
                           // v tomto momente ešte server nevytvoril ID pre skupinu
                           key={index}
                           groupp={group}

@@ -4,6 +4,8 @@ import { EventListContext } from "../../Technician/Contexts/EventListContext"
 import { LoggedUserContext } from "../../Technician/Contexts/LoggedUserContext"
 
 import "./Events.css"
+
+
 import ModalCreateEvent from "../AddEventWebF/ModalCreateEvent.js"
 import EventDiv from "./EventDiv"
 

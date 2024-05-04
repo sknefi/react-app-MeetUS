@@ -4,6 +4,9 @@ import Card from 'react-bootstrap/Card';
 import ohnik from '../images/ohnik.png';
 import top from '../images/top.png'
 
+import { FaFire } from "react-icons/fa";
+import { RiStarSFill } from "react-icons/ri";
+
 function UserCard(props) {
     const { streak, rating, photo, igName } = props
 
@@ -14,11 +17,11 @@ function UserCard(props) {
                 <div className="user-card-body">
 
                     <div className="me-3">
-                        <img src={ohnik} alt="Streak Icon" style={{ width: '32px', height: '32px' }} />
+                        <FaFire className='user-icon'/>
                         <span className="ms-2">{streak}</span>
                     </div>
                     <div>
-                        <img src={top} alt="Rating Icon" style={{ width: '32px', height: '32px' }} />
+                        <RiStarSFill className='user-icon'/>
                         <span className="ms-2">{rating}</span>
                     </div>
 

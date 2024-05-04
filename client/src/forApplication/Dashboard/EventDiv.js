@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router-dom"
+import { useContext } from "react";
+
+import { ColorPalletContext } from '../../Technician/Contexts/ColorPalletContext';
 
 import "./Events.css"
 import './EventDiv.css'
 
 const EventDiv = (props) => {
+  const { colorPallet } = useContext(ColorPalletContext)
   const { event } = props
 
   const navigate = useNavigate()
@@ -34,12 +38,12 @@ const EventDiv = (props) => {
 
   function leftSide(event) {
     return (
-      <div className="left-side">
+      <div className="left-side" >
         <div className="left-up">
-          <h2 className="event-name">{event.name}</h2>
+          <h2 className="event-name" style={ {color: `${colorPallet.fourthcolor}`}}>{event.name}</h2>
           <div className="left-up-right">
-            <p className="date-time">{convertIsoToDate(event.dateTime)}</p>
-            <p className="date-time">{convertIsoToTime(event.dateTime)}</p>
+            <p className="date-time" style={ {color: `${colorPallet.fourthcolor}`}}>{convertIsoToDate(event.dateTime)}</p>
+            <p className="date-time" style={ {color: `${colorPallet.fourthcolor}`}}>{convertIsoToTime(event.dateTime)}</p>
           </div>
         </div>
       </div>
@@ -50,10 +54,10 @@ const EventDiv = (props) => {
     return (
       <div className="right-side">
         <div className="right-up">
-          <p>Počet ľudí</p>
-          <p>{event.expectedCountOfMembers}</p>
+          <p style={ {color: `${colorPallet.fourthcolor}`}}>Počet ľudí</p>
+          <p style={ {color: `${colorPallet.fourthcolor}`}}>{event.expectedCountOfMembers}</p>
         </div>
-        <p>{event.price} €</p>
+        <p style={ {color: `${colorPallet.fourthcolor}`}}>{event.price} €</p>
       </div>
     )
   }
@@ -64,6 +68,7 @@ const EventDiv = (props) => {
         className="event"
         key={event.id}
         onClick={() => redirectToEvent(event.id)}
+        style={ {border: `2px solid ${colorPallet.maincolor}`}}
       >
         {leftSide(event)}
         {rightSide(event)}

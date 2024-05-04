@@ -20,12 +20,12 @@ p {
 }
 
 .event {
-    border: 2px solid #fe3c72;
     margin-bottom: 5px;
 
     display: flex;
     flex-direction: row;
-    
+    border-radius: 20px;
+
 }
 
 .left-side {

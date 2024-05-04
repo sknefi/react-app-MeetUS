@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import AddEvent from './AddEvent';
+
+import { ColorPalletContext } from '../../Technician/Contexts/ColorPalletContext';
 
 const style = {
     position: 'absolute',
@@ -17,6 +19,7 @@ const style = {
 };
 
 export default function BasicModal() {
+    const { colorPallet } = useContext(ColorPalletContext)
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => setOpen(true);
@@ -24,7 +27,7 @@ export default function BasicModal() {
 
     return (
         <div className='add-event-btn' style={{ marginLeft: 'auto' }}>
-            <Button onClick={handleOpen}>Vytvoriť event</Button>
+            <Button onClick={handleOpen} style={ { color: colorPallet.fourthcolor, backgroundColor: colorPallet.maincolor}}>Vytvoriť event</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
