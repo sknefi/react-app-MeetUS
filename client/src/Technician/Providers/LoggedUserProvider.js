@@ -12,17 +12,17 @@ const LoggedUserProvider = ({ children }) => {
   })
 
   const [loggedUser, setLoggedUser] = useState(
-    {
-    name: 'admin',
-    surname: 'admin',
-    email: 'admin@admin.admin',
-    password: 'a',
-    igName: 'admin',
-    id: '04f0ba2765c2fd8e89d604c0fb7f6bae',
-    streak: 89,
-    rating: 100,
-    rola: 2
-  }
+  //   {
+  //   name: 'admin',
+  //   surname: 'admin',
+  //   email: 'admin@admin.admin',
+  //   password: 'a',
+  //   igName: 'admin',
+  //   id: '04f0ba2765c2fd8e89d604c0fb7f6bae',
+  //   streak: 89,
+  //   rating: 100,
+  //   rola: 2
+  // }
 
   // {
   //   id: '8b2b893648d34fcc16a46abaf5ed3639',
@@ -49,6 +49,18 @@ const LoggedUserProvider = ({ children }) => {
   //   rating: 0,
   //   rola: 1
   // }
+
+  {
+    name: 'Natural',
+    surname: 'Tren',
+    email: 'aasdasdsd@gmail.com',
+    password: 'asd',
+    igName: 'naturalizmus',
+    id: '6e26bab7d8c576a71cdf876d884ebe53',
+    streak: 1,
+    rating: 0,
+    rola: 1
+  }
   
   // {}
   )

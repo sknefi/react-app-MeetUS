@@ -173,9 +173,9 @@ const Navbar = () => {
         <DarkModeButton />
         {isUserLoggedIn && (
           <h3
-            className="right-navbar"
+            className="right-navbar logout-text"
             onClick={handleShowLogoutModal}
-            style={{ color: colorPallet.fourthcolor, marginBottom: '5vh' }}
+            style={{ color: colorPallet.fourthcolor}}
           >
             Logout
           </h3>
