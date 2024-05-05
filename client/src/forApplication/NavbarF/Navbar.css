@@ -1,100 +1,139 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .body {
-    height: 10vh;
+  height: 10vh;
 }
 
-
-
 .user-profile-photo {
-    width: 6vw;
-    height: 10vh;
-    object-fit: cover;
-
-    border-radius: 50%;
+  width: max(6vw, 80px);
+  height: 10vh;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .profilPhoto {
-    height: 8vh;
-    width: auto;
+  height: 8vh;
+  width: auto;
 }
 
 .navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 2vh 0;
-    padding: 0 3%;
-
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2vh 0;
+  padding: 0 3%;
 }
 
 .left-navbar {
-    height: 7vh;
-    width: auto;
-    cursor: pointer;
-
+  height: 7vh;
+  width: auto;
+  cursor: pointer;
 }
 
 .mid-navbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
 }
 
 .right-navbar {
-    cursor: pointer;
-    margin: 0;
-    padding: 0;
-
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
 }
 
-
 .right-navbar:hover {
-    opacity: .5;
+  opacity: 0.5;
 }
 
 .icon-and-text {
-    height: 10vh;
-    width: auto;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  height: 10vh;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.top-icon, .ohnik-icon {
-    height: 5vh;
-    width: auto;
+.top-icon,
+.ohnik-icon {
+  height: 5vh;
+  width: auto;
 }
 
-.top-text, .ohnik-text {
-    height: 3vh;
-    margin: 0;
-    font-size: 1.4rem;
-    font-weight: bold;
+.top-text,
+.ohnik-text {
+  height: 3vh;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 
 .group-icon {
-    height: 7vh;
-    width: auto;
-    cursor: pointer;
+  height: 7vh;
+  width: auto;
+  cursor: pointer;
 }
 
 .login-or-registration {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .logo {
-    height: 13vh;
-    width: auto;
+  height: 13vh;
+  width: auto;
+}
+
+.navbar-toggle {
+  display: none; /* Hide the button by default */
+  z-index: 999;
+}
+
+@media only screen and (max-width: 1000px) {
+    .low-resolution-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+  .navbar-toggle {
+    display: block; /* Show the button on smaller screens */
+    height: 5vh;
+    width: 100px;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column; /* Adjust direction for smaller screens */
+    position: absolute; /* Position the Navbar absolutely */
+    top: 0; /* Align to the top */
+    left: 0; 
+    width: 100%;
+    background-color: #fff;
+    z-index: 1;
+  }
+
+  .navbar.open {
+    display: flex;
+    gap: 5vh;
+  }
+
+  .login-or-registration {
+    margin-bottom: 5vh;
+  }
+  
+  .low-resolution-log {
+    height: 10vh; /* Adjusted height */
+    max-width: auto; /* Adjusted max-width */
+  }
+
 }
