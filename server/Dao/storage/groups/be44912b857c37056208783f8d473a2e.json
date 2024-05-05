@@ -1,1 +1,11 @@
-{"name":"Automobilz","info":"a","maxMembers":"Infinity","id":"be44912b857c37056208783f8d473a2e","groupCreator":"8b2b893648d34fcc16a46abaf5ed3639","members":["8b2b893648d34fcc16a46abaf5ed3639","04f0ba2765c2fd8e89d604c0fb7f6bae"]}
+{
+    "name": "Automobilz",
+    "info": "a",
+    "maxMembers": "Infinity",
+    "id": "be44912b857c37056208783f8d473a2e",
+    "groupCreator": "8b2b893648d34fcc16a46abaf5ed3639",
+    "members": [
+        "8b2b893648d34fcc16a46abaf5ed3639",
+        "04f0ba2765c2fd8e89d604c0fb7f6bae"
+    ]
+}

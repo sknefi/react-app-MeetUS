@@ -21,7 +21,7 @@ const Events = () => {
 
       {allEvents.map((event) => (
 
-        <EventDiv event={event} loggedUser={loggedUser}/>
+        <EventDiv event={event} loggedUser={loggedUser} key={event.id}/>
       ))}
     </div>
   )

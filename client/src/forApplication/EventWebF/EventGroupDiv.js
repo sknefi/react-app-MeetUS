@@ -57,7 +57,6 @@ const EventGroupDiv = (props) => {
     }
   };
 
-  //console.log(group.id)
   return (
     <>
       <div className="clickable-event-web-div" onClick={handleDivClick}>
@@ -91,7 +90,7 @@ const EventGroupDiv = (props) => {
                     src={vlada}
                     alt=""
                     className="user-photo-in-div"
-                    key={index} // Use a unique identifier as the key
+                    key={index}
                   />
                 );
               })}

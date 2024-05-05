@@ -42,7 +42,7 @@ const EventDiv = (props) => {
         <div className="left-up">
           <h2 className="event-name" style={ {color: `${colorPallet.fourthcolor}`}}>{event.name}</h2>
           <div className="left-up-right">
-            <p className="date-time" style={ {color: `${colorPallet.fourthcolor}`}}>{convertIsoToDate(event.dateTime)}</p>
+            <p className="date-time date" style={ {color: `${colorPallet.fourthcolor}`}}>{convertIsoToDate(event.dateTime)}</p>
             <p className="date-time" style={ {color: `${colorPallet.fourthcolor}`}}>{convertIsoToTime(event.dateTime)}</p>
           </div>
         </div>
@@ -54,10 +54,10 @@ const EventDiv = (props) => {
     return (
       <div className="right-side">
         <div className="right-up">
-          <p style={ {color: `${colorPallet.fourthcolor}`}}>Počet ľudí</p>
-          <p style={ {color: `${colorPallet.fourthcolor}`}}>{event.expectedCountOfMembers}</p>
+          <p style={ {color: `${colorPallet.fourthcolor}`}} className="hide-when-small-resolution">Počet ľudí</p>
+          <p style={ {color: `${colorPallet.fourthcolor}`}} className="count-of-people">{event.expectedCountOfMembers}</p>
         </div>
-        <p style={ {color: `${colorPallet.fourthcolor}`}}>{event.price} €</p>
+        <p style={ {color: `${colorPallet.fourthcolor}`}} className="event-price">{event.price} €</p>
       </div>
     )
   }

@@ -91,3 +91,36 @@ p {
     align-items: center;
 }
 
+
+@media only screen and (min-width: 360px) and (max-width: 1199.98px) {
+    .left-up {
+        flex-direction: column;
+    }
+
+    .hide-when-small-resolution {
+        display: none;
+    }
+    .left-up-right {
+        margin: 10px;
+    }
+
+    .right-side {
+        justify-content: center;
+    }
+
+    .date {
+        margin-right: 20px;
+    }
+
+    .count-of-people {
+        margin-bottom: 20px;
+    }
+
+    .count-of-people, .event-price {
+        white-space: nowrap;
+    }
+
+    h2.event-name {
+        font-size: 5rem;
+    }
+}

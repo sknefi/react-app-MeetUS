@@ -81,8 +81,6 @@
 
 
 
-
-
 /* Styles for Datetime */
 
 /* Styling for the calendar */
@@ -129,4 +127,20 @@
     margin: 0;
     display: flex;
     align-items: flex-end;
+}
+
+@media only screen and (min-width: 360px) and (max-width: 1199.98px) {
+    .all-add-event {
+        flex-direction: column;       
+    }
+    .label-add-event {
+        font-size: 1.3rem;
+    }
+    .submit-btn-create-event {
+        font-size: 1.2rem;
+    }
+
+    .input-add-event, .half-input {
+        width: 100%;
+    }
 }

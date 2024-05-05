@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 import LogoutModal from "../RegistrationAndLogin/LogoutModal";
+import DarkModeButton from "../DarkModeButtonF/DarkModeButton";
 
 import profilPhoto from "../images/profilPhoto.png";
 import logo from "../images/logo.png";
@@ -115,6 +116,7 @@ const Navbar = () => {
         />
       </div>
 
+      <DarkModeButton/>
       {isUserLoggedIn && (
         <h3
           className="right-navbar"

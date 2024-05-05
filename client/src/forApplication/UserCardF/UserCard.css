@@ -1,6 +1,7 @@
 .user-card {
     margin: 3%;
-    width: 20rem;
+    width: max(300px, 30%);
+    
 }
 
 .user-card-body {
@@ -22,4 +23,8 @@
 
 .user-icon {
     font-size: 3vh;
+}
+
+.no-wrap {
+    white-space: nowrap;
 }

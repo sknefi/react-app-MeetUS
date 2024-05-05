@@ -87,7 +87,7 @@ const AddEvent = ({ onClose }) => {
       }
     }
   };
-
+  
   return (
     <>
       <form

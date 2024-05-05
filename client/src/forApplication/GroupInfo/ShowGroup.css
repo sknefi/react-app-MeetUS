@@ -1,0 +1,5 @@
+.zes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Optional: Adjust as needed */
+  }

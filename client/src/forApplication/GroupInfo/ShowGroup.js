@@ -4,6 +4,8 @@ import filip from "../images/userPhotos/filip.jpg"
 import klausik from "../images/userPhotos/klausik.jpg"
 import vlada from "../images/userPhotos/vlada.jpg"
 
+import './ShowGroup.css'
+
 import { EventContext } from "../../Technician/Contexts/EventContext"
 import { useContext, useEffect, useState } from "react"
 

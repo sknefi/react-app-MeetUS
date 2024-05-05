@@ -24,7 +24,7 @@ p {
 
 .user-photo-in-div {
     height: 19vh;
-    width: 15%;
+    width: max(15%, 150px);
     object-fit: cover;
     object-position: top;
     margin: 0 1%;

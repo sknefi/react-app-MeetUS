@@ -14,17 +14,17 @@ function UserCard(props) {
     const { streak, rating, photo, igName } = props
 
     return (
-        <Card style={{ width: '18rem' }} className='user-card'>
+        <Card className='user-card'>
             <Card.Img variant="top" src={photo} className='user-photo'/>
             <Card.Body>
                 <div className="user-card-body">
 
-                    <div className="me-3">
+                    <div className="me-3 no-wrap">
                         <FaFire className='user-icon' style={ {color: colorPallet.thirdcolor}}/>
                         <span className="ms-2">{streak}</span>
                     </div>
                     <div>
-                        <RiStarSFill className='user-icon' style={ {color: colorPallet.fifthcolor}}/>
+                        <RiStarSFill className='user-icon no-wrap' style={ {color: colorPallet.fifthcolor}}/>
                         <span className="ms-2">{rating}</span>
                     </div>
 
