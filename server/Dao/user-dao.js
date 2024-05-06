@@ -3,6 +3,7 @@ const fs = require('fs')
 const crypto = require('crypto')
 
 const pathToUsers = path.join(__dirname, 'storage', 'users')
+const pathToUsersPhotos = path.join(__dirname, '..', 'Public', 'UserPhotos')
 // console.log(pathToUsers)
 
 
@@ -13,17 +14,25 @@ function get(userID) {
     try {
         const pathToUser = path.join(pathToUsers, `${userID}.json`)
         const userData = JSON.parse(fs.readFileSync(pathToUser, 'utf-8'))
+        const photoPath = path.join(pathToUsersPhotos, `${userID}.jpg`)
         
-        return userData
-    }
-    catch (error) {
+        // Check if the photo file exists
+        if (fs.existsSync(photoPath)) {
+            userData.photo = photoPath;
+        } else {
+            // Use a default photo or set photo to null if not found
+            userData.photo = '';
+        }
+
+        return userData;
+    } catch (error) {
         // user doesnt exist (there is no file {user.id}.json)
-        if (error.code === 'ENOENT') return null
+        if (error.code === 'ENOENT') return null;
 
         throw { code: "failedToGetUser", message: error.message };
     }
-
 }
+
 
 // used - Registration
 function create(user) {
@@ -77,7 +86,7 @@ function isUserInDatabase(email, password) {
             }
         })
 
-    return findUser ? findUser : {}
+    return findUser ? get(findUser.id) : {}
 }
 
 // used - Navbar
@@ -97,7 +106,6 @@ function inkrementUserStreak(userID) {
     catch (error) {
         throw { code: "failedtoInkrementUserStreak", message: error.message };
     }
-
 }
 
 //console.log(inkrementUserStreak('e079bfa26dde23b5390ed770143354eb'))

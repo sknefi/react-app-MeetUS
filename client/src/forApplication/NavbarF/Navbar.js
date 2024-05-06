@@ -79,27 +79,31 @@ const Navbar = () => {
     setIsNavbarOpen(false);
   };
 
+  console.log(loggedUser);
   return (
     <>
       <div className="low-resolution-div">
-      <RxTextAlignJustify
-        className="navbar-toggle"
-        onClick={toggleNavbar}
-        style={{ color: colorPallet.fourthcolor, height: "64px", cursor: 'pointer' }}
-      />
-
-      {windowWidth <= 1000 && (
-        <img
-          className="low-resolution-log"
-          src={logo}
-          alt="Logo"
-          onClick={() => {
-            redirectToMain();
-            hideNavbar();
+        <RxTextAlignJustify
+          className="navbar-toggle"
+          onClick={toggleNavbar}
+          style={{
+            color: colorPallet.fourthcolor,
+            height: "64px",
+            cursor: "pointer",
           }}
         />
-      )}
 
+        {windowWidth <= 1000 && (
+          <img
+            className="low-resolution-log"
+            src={logo}
+            alt="Logo"
+            onClick={() => {
+              redirectToMain();
+              hideNavbar();
+            }}
+          />
+        )}
       </div>
 
       <div
@@ -175,7 +179,7 @@ const Navbar = () => {
           <h3
             className="right-navbar logout-text"
             onClick={handleShowLogoutModal}
-            style={{ color: colorPallet.fourthcolor}}
+            style={{ color: colorPallet.fourthcolor }}
           >
             Logout
           </h3>

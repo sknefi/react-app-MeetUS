@@ -1,1 +1,12 @@
-{"name":"John","surname":"Doe","email":"johndoe@example.com","password":"a","igName":"johndoe_ig","photo":"","id":"c13b6c6e17b749735950c09e41bd8449","streak":10,"rating":0,"rola":1}
+{
+    "name": "John",
+    "surname": "Doe",
+    "email": "johndoe@example.com",
+    "password": "a",
+    "igName": "johndoe_ig",
+    "photo": "",
+    "id": "c13b6c6e17b749735950c09e41bd8449",
+    "streak": 10,
+    "rating": 0,
+    "rola": 1
+}

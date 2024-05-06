@@ -21,7 +21,8 @@ const LoggedUserProvider = ({ children }) => {
   //   id: '04f0ba2765c2fd8e89d604c0fb7f6bae',
   //   streak: 89,
   //   rating: 100,
-  //   rola: 2
+  //   rola: 2,
+  //   photo: ''
   // }
 
   // {
@@ -50,19 +51,19 @@ const LoggedUserProvider = ({ children }) => {
   //   rola: 1
   // }
 
-  {
-    name: 'Natural',
-    surname: 'Tren',
-    email: 'aasdasdsd@gmail.com',
-    password: 'asd',
-    igName: 'naturalizmus',
-    id: '6e26bab7d8c576a71cdf876d884ebe53',
-    streak: 1,
-    rating: 0,
-    rola: 1
-  }
+  // {
+  //   name: 'Natural',
+  //   surname: 'Tren',
+  //   email: 'aasdasdsd@gmail.com',
+  //   password: 'asd',
+  //   igName: 'naturalizmus',
+  //   id: '6e26bab7d8c576a71cdf876d884ebe53',
+  //   streak: 1,
+  //   rating: 0,
+  //   rola: 1
+  // }
   
-  // {}
+  {}
   )
 
   const [userGroups, setUserGroups] = useState([])
