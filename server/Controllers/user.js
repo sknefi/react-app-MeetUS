@@ -1,24 +1,27 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
-const uGetAbl = require('../Abl/user/uGetAbl')
-const uListAbl = require('../Abl/user/uListAbl')
-const uIsUserInDatabase = require('../Abl/user/uIsUserInDatabase')
-const uCreateAbl = require('../Abl/user/uCreateAbl')
+const uGetAbl = require('../Abl/user/uGetAbl');
+const uListAbl = require('../Abl/user/uListAbl');
+const uIsUserInDatabase = require('../Abl/user/uIsUserInDatabase');
+const uCreateAbl = require('../Abl/user/uCreateAbl');
 const uInkrementUserStreak = require('../Abl/user/uInkrementUserStreak');
 
-const multer  = require('multer')
+const multer  = require('multer');
+const path = require('path');
+
+const destinationDir = path.resolve(__dirname, '../Public/UserPhotos/');
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, '/Public/UserPhotos')
+        cb(null, destinationDir);
     },
     filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-      cb(null, file.fieldname + '-' + uniqueSuffix)
+        cb(null, Date.now() + path.extname(file.originalname) )
     }
-  })
+});
 
-const upload = multer({dest: '/'})
+const upload = multer({ storage: storage });
 
 
 /* /user */
@@ -49,8 +52,8 @@ router.post('/inkrementUserStreak', (req, res) => {
     uInkrementUserStreak(req, res)
 })
 
-router.post('/uploadPhoto', upload.single('file') ,(req, res) => {
-    res.send('works')
-})
+router.post('/uploadPhoto', upload.single('file'), (req, res) => {
+    res.send(200);
+});
 
 module.exports = router
