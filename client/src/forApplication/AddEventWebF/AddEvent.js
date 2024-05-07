@@ -53,6 +53,9 @@ const AddEvent = ({ onClose }) => {
         dateTime: eventDateTime,
         //photo:
       };
+
+      console.log(selectedFile)
+
       setFormData(formDataObject);
       //console.log(inName)
       //console.log(formDataObject)

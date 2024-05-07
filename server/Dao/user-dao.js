@@ -17,12 +17,12 @@ function get(userID) {
         const photoPath = path.join(pathToUsersPhotos, `${userID}.jpg`)
         
         // Check if the photo file exists
-        if (fs.existsSync(photoPath)) {
-            userData.photo = photoPath;
-        } else {
-            // Use a default photo or set photo to null if not found
-            userData.photo = '';
-        }
+        // if (fs.existsSync(photoPath)) {
+        //     userData.photo = photoPath;
+        // } else {
+        //     // Use a default photo or set photo to null if not found
+        //     userData.photo = '';
+        // }
 
         return userData;
     } catch (error) {

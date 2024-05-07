@@ -7,6 +7,20 @@ const uIsUserInDatabase = require('../Abl/user/uIsUserInDatabase')
 const uCreateAbl = require('../Abl/user/uCreateAbl')
 const uInkrementUserStreak = require('../Abl/user/uInkrementUserStreak');
 
+const multer  = require('multer')
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, '/Public/UserPhotos')
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+      cb(null, file.fieldname + '-' + uniqueSuffix)
+    }
+  })
+
+const upload = multer({dest: '/'})
+
+
 /* /user */
 
 
@@ -35,5 +49,8 @@ router.post('/inkrementUserStreak', (req, res) => {
     uInkrementUserStreak(req, res)
 })
 
+router.post('/uploadPhoto', upload.single('file') ,(req, res) => {
+    res.send('works')
+})
 
 module.exports = router
