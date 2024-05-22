@@ -1,1 +1,14 @@
-{"name":"Kvetinový Raj","location":"Botanická záhrada","expectedCountOfMembers":500,"price":20,"info":"Tento podujatie oslavuje krásu prírody prostredníctvom pestrofarebných kvetov a záhradných aranžmánov. Návštevníci si môžu vychutnať prehliadku rozmanitých kvetinových záhrad, zúčastniť sa workshopov na aranžovanie kvetín a získať odborné rady od záhradných dizajnérov. Pre deti budú k dispozícii edukačné aktivity a hry spojené s prírodou.","dateTime":"2024-05-25T14:00:00.000Z","id":"accccc2a5f5992ad58d1fc59c3d8ce2a","listOfGroups":["6df96449f1289b3e2601d8c084dcb971","b9e44263744cd2a479f8153d69037e1c","053ab801d1e477bad36c13ffa3a82409"]}
+{
+    "name": "Kvetinový Raj",
+    "location": "Botanická záhrada",
+    "expectedCountOfMembers": 500,
+    "price": 20,
+    "info": "Tento podujatie oslavuje krásu prírody prostredníctvom pestrofarebných kvetov a záhradných aranžmánov. Návštevníci si môžu vychutnať prehliadku rozmanitých kvetinových záhrad, zúčastniť sa workshopov na aranžovanie kvetín a získať odborné rady od záhradných dizajnérov. Pre deti budú k dispozícii edukačné aktivity a hry spojené s prírodou.",
+    "dateTime": "2024-05-25T14:00:00.000Z",
+    "id": "accccc2a5f5992ad58d1fc59c3d8ce2a",
+    "listOfGroups": [
+        "6df96449f1289b3e2601d8c084dcb971",
+        "b9e44263744cd2a479f8153d69037e1c",
+        "053ab801d1e477bad36c13ffa3a82409"
+    ]
+}

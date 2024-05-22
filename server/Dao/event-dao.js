@@ -30,27 +30,6 @@ function update(event) {
   }
 }
 
-// used in Creating group in event
-// used in group-dao.js as helper function
-// function addGroupToEvent(eventID, groupID) {
-//     try {
-//         console.log('first')
-//         const event = get(eventID)
-//         if (!event) {
-//             throw { code: 'eventNotFound', message: 'Event not found.' };
-//         }
-
-//         event.listOfGroups.push(groupID)
-
-//         update(event)
-
-//         return event
-//     }
-//     catch (error) {
-//         throw { code: "failedToAddGroupToEvent", message: error.message }
-//     }
-// }
-
 // MAIN FUNCTIONS
 
 // used - Event website
@@ -149,38 +128,19 @@ function getEventGroups(listGroupIDs) {
   return filteredGroups;
 }
 
-// create({
-//     name: 'Summer Festival',
-//     date: '2024-08-20',
-//     time: '18:00',
-//     location: 'Central Park, New York',
-//     expectedCountOfMembers: 500,
-//     price: 15,
-//     info: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde odit harum ea in praesentium nulla labore voluptates doloremque ullam beatae placeat amet, quod, voluptatum, non necessitatibus ab aperiam voluptatibus iure!',
-//     photo: '-'
-// })
-// create({
-//     name: 'Music Concert',
-//     date: '2024-09-10',
-//     time: '20:00',
-//     location: 'Madison Square Garden, New York',
-//     expectedCountOfMembers: 1000,
-//     price: 25,
-//     info: 'Join us for a spectacular music concert featuring top artists from around the world. Experience the magic of live music in the heart of New York City!',
-//     photo: 'concert.jpg'
-// })
+function addPhotoNameToEvent(eventId, fileName) {
+  try {
+    const event = get(eventId)
+    event.photo = fileName
+  
+    update(event)
+    
+    return event
+  } catch (error) {
+      throw { code: "failedToAddPhotoNameToEvent", message: error.message };
+  }
 
-// create({
-//     name: 'Art Exhibition',
-//     date: '2024-07-25',
-//     time: '12:00',
-//     location: 'Metropolitan Museum of Art, New York',
-//     expectedCountOfMembers: 300,
-//     price: 10,
-//     info: 'Explore a stunning collection of contemporary art at our exclusive exhibition. Immerse yourself in creativity and inspiration.',
-//     photo: 'art_exhibition.jpg'
-// }
-// )
+}
 
 module.exports = {
   get,
@@ -189,4 +149,5 @@ module.exports = {
   // addGroupToEvent,
   getEventGroups,
   update,
+  addPhotoNameToEvent,
 };

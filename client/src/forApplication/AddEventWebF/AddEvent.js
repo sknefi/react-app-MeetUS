@@ -41,6 +41,7 @@ const AddEvent = ({ onClose }) => {
       validDateTime
     ) {
       setSubmitted(true);
+
       // Convert price and expectedCountOfMembers to integers
       const price = parseInt(inPrice);
       const expectedCountOfMembers = parseInt(inExpectedCountOfMembers);
@@ -51,10 +52,10 @@ const AddEvent = ({ onClose }) => {
         price: price,
         info: inInfo,
         dateTime: eventDateTime,
-        //photo:
+        photo: selectedFile
       };
 
-      console.log(selectedFile)
+      console.log(formDataObject)
 
       setFormData(formDataObject);
       //console.log(inName)

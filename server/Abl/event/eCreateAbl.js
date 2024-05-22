@@ -10,7 +10,7 @@ const schema = {
         expectedCountOfMembers: { type: 'number' },
         price: { type: 'number' },
         info: { type: 'string' },
-        dateTime: { type: "string" } ,
+        dateTime: { type: "string" },
         photo: { type: "string" }
     },
     required: ["name", "location", "expectedCountOfMembers", "price", "info", "dateTime"],
@@ -25,8 +25,9 @@ async function eCreateAbl(req, res) {
         // musíme premeniť hodnoty na integere
         event.expectedCountOfMembers = parseInt(event.expectedCountOfMembers)
         event.price = parseInt(event.price)
+        event.photo = ''
 
-        console.log(event);
+        //console.log(event);
 
         const valid = ajv.validate(schema, event)
         if (!valid) {
@@ -37,6 +38,7 @@ async function eCreateAbl(req, res) {
             });
             return;
         }
+
 
         event = await eventDao.create(event)
         res.json(event)
