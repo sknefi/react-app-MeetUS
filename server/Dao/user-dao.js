@@ -3,8 +3,29 @@ const fs = require('fs')
 const crypto = require('crypto')
 
 const pathToUsers = path.join(__dirname, 'storage', 'users')
-const pathToUsersPhotos = path.join(__dirname, '..', 'Public', 'UserPhotos')
 // console.log(pathToUsers)
+
+// HELPERS
+function update(user) {
+    try {
+      const readUserData = get(user.id);
+  
+      if (!readUserData) return null;
+  
+      const updatedUser = { ...readUserData, ...user };
+  
+      const pathToUser = path.join(
+        pathToUsers,
+        `${user.id}.json`
+      );
+      const dataToFile = JSON.stringify(updatedUser);
+      fs.writeFileSync(pathToUser, dataToFile, "utf-8");
+  
+      return updatedUser;
+    } catch (error) {
+      throw { code: "failedToUpdateUser", message: error.message };
+    }
+  }
 
 
 // MAIN FUNCTIONS
@@ -14,15 +35,6 @@ function get(userID) {
     try {
         const pathToUser = path.join(pathToUsers, `${userID}.json`)
         const userData = JSON.parse(fs.readFileSync(pathToUser, 'utf-8'))
-        const photoPath = path.join(pathToUsersPhotos, `${userID}.jpg`)
-        
-        // Check if the photo file exists
-        // if (fs.existsSync(photoPath)) {
-        //     userData.photo = photoPath;
-        // } else {
-        //     // Use a default photo or set photo to null if not found
-        //     userData.photo = '';
-        // }
 
         return userData;
     } catch (error) {
@@ -108,7 +120,18 @@ function inkrementUserStreak(userID) {
     }
 }
 
-//console.log(inkrementUserStreak('e079bfa26dde23b5390ed770143354eb'))
+function addPhotoNameToUser(userId, fileName) {
+    try {
+      const user = get(userId)
+      user.photo = fileName
+    
+      update(user)
+      
+      return user
+    } catch (error) {
+        throw { code: "failedToAddPhotoNameToUser", message: error.message };
+    }
+  }
 
 module.exports = {
     get,
@@ -116,4 +139,5 @@ module.exports = {
     list,
     isUserInDatabase,
     inkrementUserStreak,
+    addPhotoNameToUser,
 }

@@ -30,6 +30,14 @@ async function eUploadPhotoAbl(req, res) {
     }
 
     const eventId = req.body.id;
+
+    // const event = eventDao.get(eventId)
+    // if (!event) {
+    //     return res.status(400).send({
+    //         message: "event doesnt exists, cant upload photo",
+    //     });
+    // }
+
     await eventDao.addPhotoNameToEvent(eventId, req.file.filename);
 
     res.status(200).send({

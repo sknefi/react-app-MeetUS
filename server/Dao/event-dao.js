@@ -131,6 +131,7 @@ function getEventGroups(listGroupIDs) {
 function addPhotoNameToEvent(eventId, fileName) {
   try {
     const event = get(eventId)
+
     event.photo = fileName
   
     update(event)
@@ -139,7 +140,6 @@ function addPhotoNameToEvent(eventId, fileName) {
   } catch (error) {
       throw { code: "failedToAddPhotoNameToEvent", message: error.message };
   }
-
 }
 
 module.exports = {
