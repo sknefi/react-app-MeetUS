@@ -10,7 +10,6 @@ app.get('/', (req, res) => {
 
 app.use(express.json()) // podpora pro application/json
 app.use(express.urlencoded({ extended: true })) // podpora pro application/x-www-form-urlencoded
-
 app.use(cors())
 
 

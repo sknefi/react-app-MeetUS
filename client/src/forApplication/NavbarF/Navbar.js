@@ -79,7 +79,7 @@ const Navbar = () => {
     setIsNavbarOpen(false);
   };
 
-  console.log(loggedUser);
+  //console.log(loggedUser);
   return (
     <>
       <div className="low-resolution-div">

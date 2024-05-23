@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+
 const multer = require('multer');
+const eventExistance = require('../Helpers/eventExistance');
 
 const eGetAbl = require('../Abl/event/eGetAbl');
 const eListAbl = require('../Abl/event/eListAbl');
@@ -20,8 +22,24 @@ const storage = multer.diskStorage({
     }
 })
 
-const upload = multer({ storage: storage });
+// problem - keď chcem uploadnuť fotku a event neexistuje (neplatne ID) tak fotka sa aj tak nahrá na server
+// const fileFilter = async (req, file, cb) => {
+//     const eventId = req.body.id;
+//     console.log(eventId)
 
+//     try {
+//         const eventExists = await eventExistance(eventId);
+//         if (eventExists) {
+//             cb(null, true);
+//         } else {
+//             cb(new Error("Event doesn't exist, can't upload event photo"), false);
+//         }
+//     } catch (error) {
+//         cb(new Error("Error checking event existence"), false);
+//     }
+// };
+
+const upload = multer({ storage: storage});
 
 /* /event */
 

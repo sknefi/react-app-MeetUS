@@ -203,6 +203,34 @@ const LoggedUserProvider = ({ children }) => {
     }
   }
   
+  async function handleFileUpload(file, newUserId) {
+    setLoadObject((current) => ({ ...current, state: "pending" }));
+    const formData = new FormData();
+    formData.append("photo", file);
+    formData.append("id", newUserId);
+
+    console.log(formData)
+  
+    try {
+      const response = await fetch(`${serverInfo.gateway}/user/uploadPhoto`, {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (response.status < 400) {
+        const responseData = await response.json();
+        setLoadObject((current) => ({ ...current, state: "ready" }));
+        return responseData;
+      } else {
+        setLoadObject((current) => ({ ...current, state: "error" }));
+        throw new Error("Failed to upload photo");
+      }
+    } catch (error) {
+      setLoadObject((current) => ({ ...current, state: "error" }));
+      console.error("Error uploading file:", error.message);
+    }
+  }
+  
   
 
   const value = {
@@ -210,7 +238,7 @@ const LoggedUserProvider = ({ children }) => {
     loggedUser: loggedUser,
     //userGroups: userGroups,
     handlerMapForLogin: { logout, userIsLoggingIn, findUserInDatabase },
-    handlerMapForRegistration: { userRegistration },
+    handlerMapForRegistration: { userRegistration, handleFileUpload },
     handlerMapForUserUpdate: { handleInkrementUserStreak },
     handlerMapForUserGroups: { getUserGroups }
   }

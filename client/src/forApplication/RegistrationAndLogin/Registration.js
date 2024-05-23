@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './Registration.css'
+import "./Registration.css";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -82,6 +82,7 @@ function Registration() {
 
       const registrationResult =
         await handlerMapForRegistration.userRegistration(formData);
+
       if (
         registrationResult &&
         registrationResult.code === "emailAlreadyExists"
@@ -89,11 +90,18 @@ function Registration() {
         setEmailWasAlreadyTakenError("Email už existuje");
         setFormErrors({ ...formErrors, email: "Email is already taken" });
       } else if (registrationResult) {
+        console.log(registrationResult)
+        console.log(photoFile)
+        
+        await handlerMapForRegistration.handleFileUpload(photoFile, registrationResult.id);
+
+
         setRegistrationSuccess(true);
         setTimeout(() => {
           redirectToLogin();
-        }, 3000);
+        }, 5000);
       }
+
     } else {
       setFormErrors(errors);
     }
@@ -105,7 +113,7 @@ function Registration() {
         onSubmit={handleSubmit}
         style={{
           width: "50vw",
-          margin: '0 auto'
+          margin: "0 auto",
         }}
       >
         <Form.Group className="mb-3" controlId="formBasicName">
@@ -214,12 +222,16 @@ function Registration() {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Button variant="primary" type="submit" style={{
-          color: colorPallet.fourthcolor,
-          backgroundColor: colorPallet.maincolor,
-          border: `2px solid ${colorPallet.fourthcolor}`,
-          borderRadius: '10px',
-        }}>
+        <Button
+          variant="primary"
+          type="submit"
+          style={{
+            color: colorPallet.fourthcolor,
+            backgroundColor: colorPallet.maincolor,
+            border: `2px solid ${colorPallet.fourthcolor}`,
+            borderRadius: "10px",
+          }}
+        >
           REGISTROVAŤ
         </Button>
       </Form>
@@ -228,7 +240,6 @@ function Registration() {
           name={formData.name}
           show={handleOpenModal}
           onClose={handleCloseModal}
-          
         />
       )}
     </>
