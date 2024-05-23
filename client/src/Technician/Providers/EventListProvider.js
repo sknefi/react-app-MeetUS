@@ -64,6 +64,8 @@ const EventProvider = ({ children }) => {
         }))
         //console.log(loadObject)
         //console.log(event)
+
+        //console.log(createdEvent)
         return createdEvent
       } else {
         setLoadObject((current) => ({ ...current, state: "error" }))
@@ -74,10 +76,39 @@ const EventProvider = ({ children }) => {
     }
   }
 
+  async function handleFileUpload(file, newEventId) {
+    setLoadObject((current) => ({ ...current, state: "pending" }));
+    const formData = new FormData();
+    formData.append("photo", file);
+    formData.append("id", newEventId);
+
+    //console.log(formData)
+  
+    try {
+      const response = await fetch(`${serverInfo.gateway}/event/uploadPhoto`, {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (response.status < 400) {
+        const responseData = await response.json();
+        setLoadObject((current) => ({ ...current, state: "ready" }));
+        return responseData;
+      } else {
+        setLoadObject((current) => ({ ...current, state: "error" }));
+        throw new Error("Failed to upload photo");
+      }
+    } catch (error) {
+      setLoadObject((current) => ({ ...current, state: "error" }));
+      console.error("Error uploading file:", error.message);
+    }
+  }
+
   const value = {
     state: loadObject.state,
     allEvents: loadObject.events,
     handleCreateEvent: createEvent,
+    handleFileUpload: handleFileUpload,
   }
 
   return (

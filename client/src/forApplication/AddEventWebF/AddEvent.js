@@ -9,7 +9,7 @@ import { ColorPalletContext } from "../../Technician/Contexts/ColorPalletContext
 
 const AddEvent = ({ onClose }) => {
   const { colorPallet } = useContext(ColorPalletContext);
-  const { handleCreateEvent } = useContext(EventListContext);
+  const { handleCreateEvent, handleFileUpload } = useContext(EventListContext);
 
   const [inName, setInName] = useState("");
   const [inLocation, setInLocation] = useState("");
@@ -22,9 +22,11 @@ const AddEvent = ({ onClose }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [formData, setFormData] = useState({});
 
+  const [newCreatedEvent, setNewCreatedEvent] = useState({})
+
   const [notEverythingIsFilled, setNotEverythingIsFilled] = useState();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (isNaN(parseInt(inPrice)) || isNaN(parseInt(inExpectedCountOfMembers))) {
@@ -55,13 +57,11 @@ const AddEvent = ({ onClose }) => {
         photo: selectedFile
       };
 
-      console.log(formDataObject)
-
-      setFormData(formDataObject);
-      //console.log(inName)
       //console.log(formDataObject)
 
-      handleCreateEvent(formDataObject);
+      setFormData(formDataObject)
+      const newEvent = await handleCreateEvent(formDataObject)
+      handleFileUpload(formDataObject.photo, newEvent.id)
       onClose();
     } else {
       setNotEverythingIsFilled("Prosím vyplňte všetky požadované údaje");
@@ -194,7 +194,7 @@ const AddEvent = ({ onClose }) => {
             >
               Upload Photo
             </button>
-            {selectedFile && <p>Selected File: {selectedFile.name}</p>}
+            {selectedFile && <p style={{color: colorPallet.fourthcolor}}>Selected File: {selectedFile.name}</p>}
             {submitted && (
               <>
                 {(inName.trim() === "" ||

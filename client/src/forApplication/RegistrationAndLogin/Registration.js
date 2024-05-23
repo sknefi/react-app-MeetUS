@@ -90,8 +90,8 @@ function Registration() {
         setEmailWasAlreadyTakenError("Email už existuje");
         setFormErrors({ ...formErrors, email: "Email is already taken" });
       } else if (registrationResult) {
-        console.log(registrationResult)
-        console.log(photoFile)
+        //console.log(registrationResult)
+        //console.log(photoFile)
         
         await handlerMapForRegistration.handleFileUpload(photoFile, registrationResult.id);
 
