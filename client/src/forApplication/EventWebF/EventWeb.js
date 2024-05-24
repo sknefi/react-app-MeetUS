@@ -8,11 +8,13 @@ import ModalCreateNewGroup from "../CreateNewGroup/ModalCreateNewGroup"
 
 import { EventContext } from "../../Technician/Contexts/EventContext"
 import { ColorPalletContext } from "../../Technician/Contexts/ColorPalletContext"
+import InfoAboutServer from "../../Technician/InfoAboutServer"
 
 const EventWeb = () => {
   const { colorPallet } = useContext(ColorPalletContext)
   const { handlerMap, eventGroups } = useContext(EventContext)
   const [event, setEvent] = useState()
+  const serverInfo = InfoAboutServer()
 
   useEffect(() => {
     handlerMap
@@ -30,7 +32,7 @@ const EventWeb = () => {
   return (
     <div className="all-event-web">
       <h2 className="event-name" style={{color: `${colorPallet.fourthcolor}`}}>{event ? event.name : ""}</h2>
-      <img className="event-image" src={party} alt={event ? event.name : ""} />
+      <img className="event-image" src={ event ? `${serverInfo.eventPhotosPath}/${event.photo}` : ''} alt={event ? event.name : ""} />
       <p className="event-info" style={{color: `${colorPallet.fourthcolor}`, borderBottom: `2px solid ${colorPallet.fourthcolor}`}}>{event ? event.info : ""}</p>
 
       <ModalCreateNewGroup />

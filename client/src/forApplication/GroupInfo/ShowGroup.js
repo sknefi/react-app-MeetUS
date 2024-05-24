@@ -8,38 +8,17 @@ import './ShowGroup.css'
 
 import { EventContext } from "../../Technician/Contexts/EventContext"
 import { useContext, useEffect, useState } from "react"
+import InfoAboutServer from "../../Technician/InfoAboutServer"
 
 function ShowGroup(props) {
+  const serverInfo = InfoAboutServer()
   const { groupMembers } = props
-  const { handlerMap } = useContext(EventContext)
-  const [groupUsers, setGroupUsers] = useState([])
-
-  useEffect(() => {
-    const dataObject = {
-      members: groupMembers
-    }
-    handlerMap
-      .handleGetGroupUsers(dataObject)
-      .then((groupData) => {
-        setGroupUsers(groupData)
-      })
-      .catch((error) => {
-        console.error("Error fetching event data:", error)
-      })
-  }, [])
-
-
 
   return (
     <div className="d-flex justify-content-around zes">
-      {/* { 
-        temp.map( (user) => {
-            <UserCard photo={user.photo} streak={user.streak} rating={user.rating}/>
-        })
-    } */}
 
-    {groupUsers && groupUsers.map( (user) => {
-      return <UserCard photo={filip} streak={user.streak} rating={user.rating} igName={user.igName} key={user.id}/>
+    {groupMembers && groupMembers.map( (user) => {
+      return <UserCard photo={user ? `${serverInfo.userPhotosPath}/${user.photo}` : ''} streak={user.streak} rating={user.rating} igName={user.igName} key={user.id}/>
     })}
 
       

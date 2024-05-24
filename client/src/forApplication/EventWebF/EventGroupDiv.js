@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./EventGroupDiv.css";
@@ -9,16 +9,32 @@ import ShowGroup from "../GroupInfo/ShowGroup";
 import { EventContext } from "../../Technician/Contexts/EventContext";
 import { LoggedUserContext } from "../../Technician/Contexts/LoggedUserContext";
 import { ColorPalletContext } from "../../Technician/Contexts/ColorPalletContext";
-
-import vlada from "../images/userPhotos/vlada.jpg";
+import InfoAboutServer from "../../Technician/InfoAboutServer";
 
 const EventGroupDiv = (props) => {
+  const serverInfo = InfoAboutServer()
   const { colorPallet } = useContext(ColorPalletContext);
   const { groupp } = props;
   const [group, setGroup] = useState(groupp);
 
   const { handlerMap } = useContext(EventContext);
   const { loggedUser, handlerMapForUserUpdate } = useContext(LoggedUserContext);
+
+  const [groupUsers, setGroupUsers] = useState([])
+
+  useEffect(() => {
+    const dataObject = {
+      members: group.members
+    }
+    handlerMap
+      .handleGetGroupUsers(dataObject)
+      .then((groupData) => {
+        setGroupUsers(groupData)
+      })
+      .catch((error) => {
+        console.error("Error fetching event data:", error)
+      })
+  }, [])
 
   const navigate = useNavigate();
 
@@ -83,11 +99,12 @@ const EventGroupDiv = (props) => {
           </div>
           <div className="right-event-members">
             {/*potrebujeme zmapovat array a pridat user.photo pre hodnotu (user.id) */}
-            {group.members &&
-              group.members.map((user, index) => {
+            {groupUsers &&
+              groupUsers.map((user, index) => {
+                console.log(user)
                 return (
                   <img
-                    src={vlada}
+                    src={user ? `${serverInfo.userPhotosPath}/${user.photo}` : ''}
                     alt=""
                     className="user-photo-in-div"
                     key={index}
@@ -125,7 +142,7 @@ const EventGroupDiv = (props) => {
           {/*  */}
           <p>{group.info}</p>
 
-          <ShowGroup groupMembers={group.members} />
+          <ShowGroup groupMembers={groupUsers} />
         </Modal.Body>
         <Modal.Footer
           style={{

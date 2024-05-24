@@ -5,13 +5,10 @@ import "./UserGroupDiv.css"
 
 import { GroupContext } from "../../Technician/Contexts/GroupContext"
 import { ColorPalletContext } from "../../Technician/Contexts/ColorPalletContext"
-
-import david from "../images/userPhotos/david.jpg"
-import filip from "../images/userPhotos/filip.jpg"
-import klausik from "../images/userPhotos/klausik.jpg"
-import vlada from "../images/userPhotos/vlada.jpg"
+import InfoAboutServer from "../../Technician/InfoAboutServer"
 
 const UserGroupDiv = (props) => {
+  const serverInfo = InfoAboutServer()
   const { colorPallet } = useContext(ColorPalletContext)
   const { group } = props
   const { handlerMapForGroup } = useContext(GroupContext)
@@ -35,7 +32,7 @@ const UserGroupDiv = (props) => {
 
   const createSlides = groupUsers.map((user) => {
     return {
-      image: user.photo,
+      image: `${serverInfo.userPhotosPath}/${user.photo}`,
       title: user.name,
       description: user.igName,
       clickEvent: sliderClick,
