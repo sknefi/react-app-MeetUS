@@ -1,15 +1,1 @@
-{
-    "name": "Letný Piknik",
-    "location": "Záhrada Senovka",
-    "expectedCountOfMembers": 200,
-    "price": 5,
-    "info": "Vidiecka lokalita obklopená prírodou Toto podujatie pozýva návštevníkov na relaxačný letný piknik v malebných záhradách Senovka. Návštevníci si môžu priniesť vlastné piknikové koše alebo si zakúpiť občerstvenie na mieste a užívať si voľný čas v prírode. Program bude obsahovať živú hudbu od miestnych umelcov, zábavné aktivity pre deti ako maľovanie na tvár a lopty, a možnosť prechádzok po okolitom vidieckom prostredí s výhľadmi na okolité kopce a polia.",
-    "dateTime": "2025-03-21T23:00:00.000Z",
-    "id": "f199e49aa80de857dd08d4f72c1f505b",
-    "listOfGroups": [
-        "0f5cc810d66adb027e1975f0a2c7bbc4",
-        "f858967ce28348778a51cfe73f14ef2c",
-        "3c661e50624f52f528b21f0f7e10cf75"
-    ],
-    "photo": "1716395850560.JPG"
-}
+{"name":"Letný Piknik","location":"Záhrada Senovka","expectedCountOfMembers":200,"price":5,"info":"Vidiecka lokalita obklopená prírodou Toto podujatie pozýva návštevníkov na relaxačný letný piknik v malebných záhradách Senovka. Návštevníci si môžu priniesť vlastné piknikové koše alebo si zakúpiť občerstvenie na mieste a užívať si voľný čas v prírode. Program bude obsahovať živú hudbu od miestnych umelcov, zábavné aktivity pre deti ako maľovanie na tvár a lopty, a možnosť prechádzok po okolitom vidieckom prostredí s výhľadmi na okolité kopce a polia.","dateTime":"2025-03-21T23:00:00.000Z","id":"f199e49aa80de857dd08d4f72c1f505b","listOfGroups":["0f5cc810d66adb027e1975f0a2c7bbc4","f858967ce28348778a51cfe73f14ef2c","3c661e50624f52f528b21f0f7e10cf75","830141a936db1b1b7ccaa11e2964add9"],"photo":"1716466199101.png"}

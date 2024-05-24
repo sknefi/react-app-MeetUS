@@ -1,12 +1,1 @@
-{
-    "id": "034b8f67ceb463dd032731ead323b5b9",
-    "name": "Emily",
-    "surname": "Williams",
-    "rola": "2",
-    "email": "emily@example.com",
-    "password": "123",
-    "streak": 6,
-    "rating": 9,
-    "igName": "emily_williams",
-    "photo": ""
-}
+{"id":"034b8f67ceb463dd032731ead323b5b9","name":"Vlada","surname":"Masek","rola":"2","email":"vm@vm.vm","password":"123","streak":7,"rating":9,"igName":"basicVlada","photo":"7281d62a069df16ba6d993d5d3ac4048.jpg"}

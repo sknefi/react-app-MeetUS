@@ -1,1 +1,11 @@
-{"name":"Duchovný Rozvojový Kruh","info":"\"Duchovný Rozvojový Kruh\" je skupina ľudí zaujímajúcich sa o osobný rast a duchovný rozvoj, ktorí sa stretávajú na spoločných cestách za poznatkom a vnútorným obohatením.","maxMembers":6,"id":"b9e44263744cd2a479f8153d69037e1c","groupCreator":"c13b6c6e17b749735950c09e41bd8449","members":["c13b6c6e17b749735950c09e41bd8449"]}
+{
+    "name": "Duchovný Rozvojový Kruh",
+    "info": "\"Duchovný Rozvojový Kruh\" je skupina ľudí zaujímajúcich sa o osobný rast a duchovný rozvoj, ktorí sa stretávajú na spoločných cestách za poznatkom a vnútorným obohatením.",
+    "maxMembers": 6,
+    "id": "b9e44263744cd2a479f8153d69037e1c",
+    "groupCreator": "c13b6c6e17b749735950c09e41bd8449",
+    "members": [
+        "c13b6c6e17b749735950c09e41bd8449",
+        "04f0ba2765c2fd8e89d604c0fb7f6bae"
+    ]
+}

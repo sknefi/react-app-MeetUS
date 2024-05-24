@@ -1,1 +1,11 @@
-{"name":"Kulturná Karavana","info":"združuje milovníkov histórie, umenia a kultúry, ktorí sa radi ponáhľajú za kultúrnymi skvostami po celom svete.","maxMembers":5,"id":"3f082e424f384569442f615f81c9e42c","groupCreator":"8b2b893648d34fcc16a46abaf5ed3639","members":["8b2b893648d34fcc16a46abaf5ed3639","c13b6c6e17b749735950c09e41bd8449"]}
+{
+    "name": "Kulturná Karavana",
+    "info": "združuje milovníkov histórie, umenia a kultúry, ktorí sa radi ponáhľajú za kultúrnymi skvostami po celom svete.",
+    "maxMembers": 5,
+    "id": "3f082e424f384569442f615f81c9e42c",
+    "groupCreator": "8b2b893648d34fcc16a46abaf5ed3639",
+    "members": [
+        "8b2b893648d34fcc16a46abaf5ed3639",
+        "c13b6c6e17b749735950c09e41bd8449"
+    ]
+}

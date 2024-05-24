@@ -39,6 +39,7 @@ const UserGroupDiv = (props) => {
     }
   })
 
+
   return (
     <div className="group-slider">
       <div className="group-basic-info">
@@ -50,7 +51,7 @@ const UserGroupDiv = (props) => {
 
       </div>
 
-      <ReactCardSlider slides={createSlides} />
+      <ReactCardSlider slides={createSlides}/>
     </div>
   )
 }

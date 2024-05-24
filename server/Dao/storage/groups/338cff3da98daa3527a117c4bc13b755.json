@@ -1,1 +1,10 @@
-{"name":"Zdravotná Turistika","info":"\"Zdravotná Turistika\" je zameraná na cestovanie a zároveň starostlivosť o zdravie a pohodu svojich členov.","maxMembers":15,"id":"338cff3da98daa3527a117c4bc13b755","groupCreator":"8b2b893648d34fcc16a46abaf5ed3639","members":["8b2b893648d34fcc16a46abaf5ed3639"]}
+{
+    "name": "Zdravotná Turistika",
+    "info": "\"Zdravotná Turistika\" je zameraná na cestovanie a zároveň starostlivosť o zdravie a pohodu svojich členov.",
+    "maxMembers": 15,
+    "id": "338cff3da98daa3527a117c4bc13b755",
+    "groupCreator": "8b2b893648d34fcc16a46abaf5ed3639",
+    "members": [
+        "8b2b893648d34fcc16a46abaf5ed3639"
+    ]
+}
