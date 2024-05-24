@@ -22,8 +22,6 @@ const AddEvent = ({ onClose }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [formData, setFormData] = useState({});
 
-  const [newCreatedEvent, setNewCreatedEvent] = useState({})
-
   const [notEverythingIsFilled, setNotEverythingIsFilled] = useState();
 
   const handleSubmit = async (e) => {

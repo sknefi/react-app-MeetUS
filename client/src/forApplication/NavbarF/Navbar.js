@@ -18,8 +18,11 @@ import { RxTextAlignJustify } from "react-icons/rx";
 import { LoggedUserContext } from "../../Technician/Contexts/LoggedUserContext";
 import { ColorPalletContext } from "../../Technician/Contexts/ColorPalletContext";
 
+import InfoAboutServer from "../../Technician/InfoAboutServer";
+
 const Navbar = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const serverInfo = InfoAboutServer()
 
   useEffect(() => {
     const handleResize = () => {
@@ -80,6 +83,7 @@ const Navbar = () => {
   };
 
   //console.log(loggedUser);
+  //console.log(`${serverInfo.userPhotosPath}/${loggedUser.photo}`)
   return (
     <>
       <div className="low-resolution-div">
@@ -127,7 +131,9 @@ const Navbar = () => {
         <div className="mid-navbar">
           {isUserLoggedIn ? (
             <img
-              src={loggedUser.photo}
+              // src={'http://localhost:3001/public/UserPhotos/1716468309875.jpg'}
+              src={`${serverInfo.userPhotosPath}/${loggedUser.photo}`}
+
               alt=""
               className={isUserLoggedIn ? "user-profile-photo" : "profilPhoto"}
               style={{ border: `1px solid ${colorPallet.fourthcolor}` }}

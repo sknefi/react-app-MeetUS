@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const path = require('path');
 const cors = require("cors")
 const port = 3001
 
@@ -13,7 +14,6 @@ app.use(express.urlencoded({ extended: true })) // podpora pro application/x-www
 app.use(cors())
 
 
-
 const userController = require('./Controllers/user.js')
 const eventController = require('./Controllers/event.js')
 const groupController = require('./Controllers/group.js')
@@ -21,6 +21,8 @@ const groupController = require('./Controllers/group.js')
 app.use('/group', groupController)
 app.use('/user', userController)
 app.use('/event', eventController)
+
+app.use('/public', express.static(path.join(__dirname, 'Public')))
 
 app.listen(port, () => { console.log(`Listening on port ${port}`) })
 
