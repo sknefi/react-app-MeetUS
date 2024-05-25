@@ -1,15 +1,1 @@
-{
-    "name": "Filmová Noc",
-    "location": "Letné kino v parku",
-    "expectedCountOfMembers": 800,
-    "price": 5,
-    "info": "Toto podujatie je venované nostalgii a kultovým filmom, ktoré zanechali nezmazateľnú stopu v kinematografii. Návštevníci si môžu vychutnať nočné premietanie klasických filmov pod holým nebom, sprevádzané retro občerstvením a hudobnými vystúpeniami. Atmosféra letného kina v parku dodáva tomuto podujatiu špeciálny čar.",
-    "dateTime": "2024-09-17T22:00:00.000Z",
-    "id": "586657c6cf3dd41ac9bac16fe779ca7f",
-    "listOfGroups": [
-        "94108d176f8eedf340b33251d5eefa3d",
-        "7eca57fcb0e51d65b4e109da193bcb02",
-        "600acb2bf732118f0c7216aae0dc80f3"
-    ],
-    "photo": "1716466199098.png"
-}
+{"name":"Filmová Noc","location":"Letné kino v parku","expectedCountOfMembers":800,"price":5,"info":"Toto podujatie je venované nostalgii a kultovým filmom, ktoré zanechali nezmazateľnú stopu v kinematografii. Návštevníci si môžu vychutnať nočné premietanie klasických filmov pod holým nebom, sprevádzané retro občerstvením a hudobnými vystúpeniami. Atmosféra letného kina v parku dodáva tomuto podujatiu špeciálny čar.","dateTime":"2024-09-17T22:00:00.000Z","id":"586657c6cf3dd41ac9bac16fe779ca7f","listOfGroups":["94108d176f8eedf340b33251d5eefa3d","7eca57fcb0e51d65b4e109da193bcb02","600acb2bf732118f0c7216aae0dc80f3","f8fcdeb4d17c136ec0eabf1789c6a3a3"],"photo":"1716466199098.png"}

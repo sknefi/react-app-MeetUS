@@ -29,6 +29,7 @@ p {
     object-position: top;
     margin: 0 1%;
     overflow: hidden;
+    border-radius: 10px;
 
 }
 

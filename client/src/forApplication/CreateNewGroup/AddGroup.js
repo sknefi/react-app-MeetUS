@@ -68,7 +68,7 @@ function AddGroup({ handleClose }) {
     const groupData = {
       name: groupName,
       info: groupInfo,
-      maxMembers: unlimited ? "Infinity" : maxMembers,
+      maxMembers: unlimited ? "Infinity" : maxMembers
     };
 
     const eventId = getEventFromUrl();

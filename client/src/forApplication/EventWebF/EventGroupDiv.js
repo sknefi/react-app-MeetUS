@@ -65,6 +65,9 @@ const EventGroupDiv = (props) => {
         members: [...current.members, loggedUser.id],
       }));
 
+      // aby sa pridaný user zobrazil hneď v dive - fotka usera
+      setGroupUsers((current) => [...current, loggedUser])
+
       handlerMapForUserUpdate.handleInkrementUserStreak();
       setModalOpen(false);
     } else {
@@ -101,7 +104,7 @@ const EventGroupDiv = (props) => {
             {/*potrebujeme zmapovat array a pridat user.photo pre hodnotu (user.id) */}
             {groupUsers &&
               groupUsers.map((user, index) => {
-                console.log(user)
+                //console.log(user)
                 return (
                   <img
                     src={user ? `${serverInfo.userPhotosPath}/${user.photo}` : ''}
