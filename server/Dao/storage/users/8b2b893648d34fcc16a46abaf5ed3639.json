@@ -1,1 +1,12 @@
-{"id":"8b2b893648d34fcc16a46abaf5ed3639","name":"CoolVlada","surname":"Masek","rola":"1","email":"cvm@vm.vm","password":"a","streak":15,"rating":5,"igName":"coolirus_vladimirus","photo":"IMG_8144.JPG"}
+{
+    "id": "8b2b893648d34fcc16a46abaf5ed3639",
+    "name": "CoolVlada",
+    "surname": "Masek",
+    "rola": "1",
+    "email": "cvm@vm.vm",
+    "password": "a",
+    "streak": 20,
+    "rating": 5,
+    "igName": "coolirus_vladimirus",
+    "photo": "IMG_8144.JPG"
+}

@@ -1,11 +1,1 @@
-{
-    "name": "Jazykový Spolok",
-    "info": "zoskupenie ľudí, ktorí sa zaujímajú o cudzie jazyky a stretávajú sa na konverzačných stretnutiach a jazykových výmenných kurzoch.",
-    "maxMembers": 5,
-    "id": "3c661e50624f52f528b21f0f7e10cf75",
-    "groupCreator": "6e26bab7d8c576a71cdf876d884ebe53",
-    "members": [
-        "6e26bab7d8c576a71cdf876d884ebe53",
-        "04f0ba2765c2fd8e89d604c0fb7f6bae"
-    ]
-}
+{"name":"Jazykový Spolok","info":"zoskupenie ľudí, ktorí sa zaujímajú o cudzie jazyky a stretávajú sa na konverzačných stretnutiach a jazykových výmenných kurzoch.","maxMembers":5,"id":"3c661e50624f52f528b21f0f7e10cf75","groupCreator":"6e26bab7d8c576a71cdf876d884ebe53","members":["6e26bab7d8c576a71cdf876d884ebe53","04f0ba2765c2fd8e89d604c0fb7f6bae","8b2b893648d34fcc16a46abaf5ed3639"]}
