@@ -7,6 +7,7 @@
 + Plánujete sa zúčastniť letného festivalu v zahraničí, ale nechcete ísť sám?
 
 Potom je tu riešenie - `Meet Us`, aplikácia ktorá spája ľudí
+![Showcase](./imgs/menu.png)<br>
 
 ## Používanie aplikácie
 ### 3 pohlady - public, user, admin
@@ -67,3 +68,7 @@ Spustenie `clienta` (uistite sa, že ste v zložke ./client)
 npm start
 ```
 Užite si aplikáciu 🙂
+![Showcase](./imgs/user_groups.png)<br>
+
+Prikladám iba pár obrázkov, pre najlepšiu vizualizáciu aplikáciu odporúčam aby ste si ju prešli sami
+![Showcase](./imgs/resp_event.png)<br>
